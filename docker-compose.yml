@@ -1,12 +1,12 @@
 # PalletRotator website — Portainer "Stacks from Git" stack.
 # Volgt exact de bestaande VM-conventie (zie Cheese Stock Manager):
-# containernaam "<appnaam>-app", alleen op het externe npm_default-netwerk,
-# geen eigen database (statische Astro-build, geen backend nodig).
+# alleen op het externe npm_default-netwerk, geen eigen database
+# (statische Astro-build, geen backend nodig).
 
 services:
-  palletrotator-app:
+  palletrotator-website:
     build: .
-    container_name: palletrotator-app
+    container_name: palletrotator-website
     restart: unless-stopped
     networks:
       - npm_default

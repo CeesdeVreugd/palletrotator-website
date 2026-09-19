@@ -122,13 +122,13 @@ op jullie VM.
      Authentication uit, Access Control: Administrators.
    - Nieuwe **Stack**, build-methode "Repository", gekoppeld aan die Source.
      Dit project heeft geen environment variables nodig voor de basisversie.
-   - Stack deployen. Container `palletrotator-app` komt op het
+   - Stack deployen. Container `palletrotator-website` komt op het
      `npm_default`-netwerk (zoals in `docker-compose.yml`), draait op
      interne poort 80.
 
 2. **Nginx Proxy Manager → Proxy Hosts → Add Proxy Host**
    - Domain Names: `palletrotator.devreugd-pt.nl`
-   - Forward Hostname/IP: `palletrotator-app`
+   - Forward Hostname/IP: `palletrotator-website`
    - Forward Port: `80`
    - SSL-tab: Let's Encrypt-certificaat aanvragen, **Force SSL** aan.
 
@@ -163,7 +163,7 @@ Zodra de staging-versie is goedgekeurd:
    - Domain Names: `www.palletrotator.nl` én `palletrotator.nl`
      (met een redirect van het kale domein naar `www.`, of andersom —
      kies er één als canoniek en redirect de rest, belangrijk voor SEO).
-   - Forward Hostname/IP: `palletrotator-app` (dezelfde container — geen
+   - Forward Hostname/IP: `palletrotator-website` (dezelfde container — geen
      nieuwe stack nodig, één image bediende straks beide domeinen).
    - Forward Port: `80`
    - SSL: Let's Encrypt + Force SSL.
@@ -193,7 +193,7 @@ moet worden zodra `www.palletrotator.nl` live staat:
 ## Docker — losse test (zonder Portainer)
 
 ```bash
-docker build -t palletrotator-app .
-docker run --rm -p 8080:80 palletrotator-app
+docker build -t palletrotator-website .
+docker run --rm -p 8080:80 palletrotator-website
 # open http://localhost:8080
 ```
