@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Toepassingen PalletRotator | Pallet wisselen, kunststof naar hout, vriesspacers';
+const description = 'Drie toepassingen van de PalletRotator palletkantelaar: pallets wisselen zonder ompakken, kunststof naar houten pallet wisselen, en freezer spacers verwijderen in vrieshuizen.';
+
+const items = [
+  {
+    id: 'pallet-wisselen',
+    title: 'Pallet wisselen zonder ompakken',
+    text: 'Komen er dagelijks goederen binnen op verkeerde, vuile of beschadigde pallets? De PalletRotator klemt de complete lading vast, roteert deze, en u vervangt de pallet in één beweging — zonder producten handmatig te verplaatsen. Dat bespaart tijd en voorkomt fysieke belasting bij medewerkers.',
+  },
+  {
+    id: 'kunststof-naar-hout',
+    title: 'Kunststof naar houten pallet omwisselen',
+    text: 'Sommige klanten of hygiëneprotocollen vragen om een houten pallet, terwijl goederen op kunststof binnenkomen (of andersom). Met de PalletRotator wisselt u eenvoudig van pallettype, passend bij de eisen van uw klant of interne kwaliteitsnormen.',
+  },
+  {
+    id: 'vriesspacers',
+    title: 'Vriesspacers en vriesmatten verwijderen',
+    text: 'In coldstores en vrieshuizen worden freezer spacers en vriesmatten gebruikt om productlagen tijdens het invriezen te scheiden. Bij het uitleveren verwijdert u deze eenvoudig en snel met de PalletRotator — ook bij temperaturen tot -25°C.',
+  },
+];
+---
+<BaseLayout title={title} description={description} path="/toepassingen/">
+  <section class="dark-band title-band">
+    <svg class="title-shape" width="360" height="360" viewBox="0 0 620 720" fill="none">
+      <path d="M60 60 L220 60 L400 420 L560 60 L620 60 L400 560 L280 560 Z" fill="#0080FF" fill-opacity="0.14"/>
+    </svg>
+    <div class="wrap title-inner">
+      <nav class="breadcrumb"><a href="/">Home</a> <span>/</span> <span class="current">Toepassingen</span></nav>
+      <span class="eyebrow">Toepassingen</span>
+      <h1>Eén machine, drie toepassingen</h1>
+      <p>Van pallets wisselen tot het verwijderen van vriesspacers: de PalletRotator is inzetbaar op meerdere plekken in uw logistieke proces.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap toepassing-list">
+      {items.map((item, i) => (
+        <div class="toepassing-item" id={item.id}>
+          <span class="toepassing-index">0{i + 1}</span>
+          <div>
+            <h2>{item.title}</h2>
+            <p>{item.text}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="wrap cta-inner">
+      <div>
+        <h2 style="color:#fff;">Welke toepassing past bij uw proces?</h2>
+        <p style="color:#E3EEFF;">Vraag een vrijblijvende offerte of demonstratie aan.</p>
+      </div>
+      <div style="display:flex; gap:14px;">
+        <a href="/offerte-aanvragen/" class="btn" style="background:var(--navy); border-color:var(--navy); color:#fff;">Offerte aanvragen</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .toepassing-list { display: flex; flex-direction: column; gap: 48px; }
+  .toepassing-item { display: flex; gap: 32px; align-items: flex-start; padding-bottom: 48px; border-bottom: 1px solid var(--border-2); scroll-margin-top: 100px; }
+  .toepassing-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .toepassing-index { font-size: 40px; font-weight: 700; color: var(--bg-soft-2); flex: 0 0 auto; -webkit-text-stroke: 1.5px var(--blue); color: transparent; }
+  .toepassing-item h2 { font-size: 24px; margin-bottom: 12px; }
+  .toepassing-item p { font-size: 15px; max-width: 680px; }
+  @media (max-width: 700px) {
+    .toepassing-item { gap: 16px; }
+    .toepassing-index { font-size: 28px; }
+  }
+</style>

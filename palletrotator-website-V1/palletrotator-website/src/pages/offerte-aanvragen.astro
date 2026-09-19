@@ -1,0 +1,106 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Offerte aanvragen PalletRotator | Brochure downloaden';
+const description = 'Vraag een vrijblijvende offerte of brochure aan voor de PalletRotator palletkantelaar. Geef aan welk model, aantal en temperatuurbereik u nodig heeft.';
+---
+<BaseLayout title={title} description={description} path="/offerte-aanvragen/">
+  <section class="dark-band title-band">
+    <svg class="title-shape" width="360" height="360" viewBox="0 0 620 720" fill="none">
+      <path d="M60 60 L220 60 L400 420 L560 60 L620 60 L400 560 L280 560 Z" fill="#0080FF" fill-opacity="0.14"/>
+    </svg>
+    <div class="wrap title-inner">
+      <nav class="breadcrumb"><a href="/">Home</a> <span>/</span> <span class="current">Offerte aanvragen</span></nav>
+      <span class="eyebrow">Offerte &amp; brochure</span>
+      <h1>Vraag een vrijblijvende offerte aan</h1>
+      <p>Laat hieronder uw gegevens achter en we sturen u een vrijblijvende prijsopgave. Wilt u een demonstratie? Vermeld dit in het formulier, dan nemen we contact op.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap contact-grid">
+      <div class="card form-card">
+        <!--
+          TODO (techniek): dit formulier post nu naar een placeholder-endpoint.
+          Koppel dit aan een echte formulierverwerker (bijv. Formspree, of een
+          kleine eigen backend/e-mail-API) voordat de site live gaat.
+        -->
+        <form class="form-grid" method="POST" action="https://formspree.io/f/REPLACE_ME" id="offerte-form">
+          <div class="form-field">
+            <label for="naam">Naam*</label>
+            <input type="text" id="naam" name="naam" required />
+          </div>
+          <div class="form-field">
+            <label for="bedrijf">Bedrijfsnaam</label>
+            <input type="text" id="bedrijf" name="bedrijf" />
+          </div>
+          <div class="form-field">
+            <label for="telefoon">Telefoonnummer*</label>
+            <input type="tel" id="telefoon" name="telefoon" required />
+          </div>
+          <div class="form-field">
+            <label for="email">E-mailadres*</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="form-field full">
+            <label for="model">Welk model heeft uw voorkeur?</label>
+            <select id="model" name="model">
+              <option>PalletRotator</option>
+              <option>PalletRotator EPT</option>
+              <option>Beide / weet ik nog niet</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="aantal">Aantal PalletRotators</label>
+            <select id="aantal" name="aantal">
+              <option>1</option>
+              <option>2</option>
+              <option>3 tot 5</option>
+              <option>6 of meer</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="temperatuur">Temperatuur op locatie</label>
+            <select id="temperatuur" name="temperatuur">
+              <option>5°C tot 40°C</option>
+              <option>-25°C tot 40°C (vrieshuis)</option>
+            </select>
+          </div>
+          <div class="form-field full">
+            <label for="opmerking">Opmerking / vraag om demonstratie</label>
+            <textarea id="opmerking" name="opmerking" rows="4"></textarea>
+          </div>
+          <div class="form-field full">
+            <button type="submit" class="btn btn-primary" style="width:100%;">Offerte aanvragen</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="contact-side">
+        <div class="card contact-info">
+          <h3>Liever direct contact?</h3>
+          <a href="tel:+31488412828">+31 (0)488 412 828</a>
+          <a href="mailto:info@palletrotator.nl">info@palletrotator.nl</a>
+          <p style="margin-top:14px;">Edisonring 11<br />6669 NA Dodewaard</p>
+        </div>
+        <div class="card contact-info">
+          <h3>Brochure downloaden</h3>
+          <p>Ontvang de uitgebreide PalletRotator-brochure met alle technische informatie en mogelijkheden direct in uw inbox — vermeld dit in het opmerkingenveld.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .contact-grid { display: flex; gap: 40px; align-items: flex-start; }
+  .form-card { flex: 1.4; max-width: none; }
+  .contact-side { flex: 1; display: flex; flex-direction: column; gap: 20px; }
+  .contact-info { padding: 28px; }
+  .contact-info h3 { font-size: 16px; margin-bottom: 12px; }
+  .contact-info a { display: block; margin-bottom: 6px; font-weight: 600; }
+  .contact-info p { font-size: 13.5px; }
+  @media (max-width: 980px) {
+    .contact-grid { flex-direction: column; }
+  }
+</style>

@@ -1,0 +1,145 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Specificaties PalletRotator vs. PalletRotator EPT | Palletkantelaar';
+const description = 'Vergelijk de technische specificaties van de PalletRotator en PalletRotator EPT palletkantelaar: laadcapaciteit, klembereik, rotatietijd, voeding en CE-certificering.';
+
+const rows = [
+  ['Laadcapaciteit', '2000 kg', '1600 kg'],
+  ['Hoogte klembord', '280 mm', '60 mm'],
+  ['Oprit voor klembord', 'Nee', 'Ja'],
+  ['Te beladen met heftruck', 'Ja', 'Ja'],
+  ['Te beladen met stapelaar', 'Ja', 'Ja'],
+  ['Te beladen met elektrische palletwagen (EPT)', 'Nee', 'Ja'],
+  ['Te beladen met handpalletwagen', 'Nee', 'Ja'],
+  ['Afmetingen klembord', '1200 x 1200 mm', '1200 x 1200 mm'],
+  ['Maat tussen de klemborden', '1100–2500 mm', '1310–2500 mm'],
+  ['Rotatietijd (180°)', '11 sec.', '11 sec.'],
+  ['Klemtijd (max. slag)', '13 sec.', '13 sec.'],
+  ['Omgevingstemperatuur', '-25°C tot +40°C', '-25°C tot +40°C'],
+  ['Rotatie', 'Elektrisch, frequentiegeregeld', 'Elektrisch, frequentiegeregeld'],
+  ['Klemmen', 'Hydraulisch, mech. gelijkloop', 'Hydraulisch, mech. gelijkloop'],
+  ['Besturing', 'Drukknoppen, hold to run', 'Drukknoppen, hold to run'],
+  ['Voeding', '400V 3ph 50Hz 32A', '400V 3ph 50Hz 32A'],
+  ['CE', 'Hekwerk + EG-verklaring', 'Hekwerk + EG-verklaring'],
+  ['Herkomst componenten A-merken', 'Europa', 'Europa'],
+  ['Jaarlijkse inspectie', 'Ja', 'Ja'],
+];
+---
+<BaseLayout title={title} description={description} path="/specificaties/">
+  <section class="dark-band title-band">
+    <svg class="title-shape" width="360" height="360" viewBox="0 0 620 720" fill="none">
+      <path d="M60 60 L220 60 L400 420 L560 60 L620 60 L400 560 L280 560 Z" fill="#0080FF" fill-opacity="0.14"/>
+    </svg>
+    <div class="wrap title-inner">
+      <nav class="breadcrumb"><a href="/">Home</a> <span>/</span> <span class="current">Specificaties</span></nav>
+      <span class="eyebrow">Techniek &amp; vergelijking</span>
+      <h1>PalletRotator vs. PalletRotator EPT — volledige specificaties</h1>
+      <p>Beide uitvoeringen van de palletkantelaar wisselen pallets snel en veilig. Vergelijk laadcapaciteit, belading en technische specificaties om te bepalen welke PalletRotator bij uw situatie past.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-bottom:40px;">
+    <div class="wrap summary-grid">
+      <div class="card summary-card">
+        <div class="summary-head summary-head-light">
+          <span class="eyebrow">Standaard</span>
+          <h2>PalletRotator</h2>
+          <p>Voor hoge volumes, beladen met heftruck, reachtruck of stapelaar.</p>
+        </div>
+        <div class="summary-stats">
+          <div><strong>2000 kg</strong><span>laadcapaciteit</span></div>
+          <div><strong>11 sec</strong><span>rotatietijd</span></div>
+          <div><strong>280 mm</strong><span>klembord</span></div>
+        </div>
+      </div>
+      <div class="card summary-card summary-featured">
+        <div class="summary-head summary-head-dark">
+          <span class="eyebrow">Laagdrempelig beladen</span>
+          <h2 style="color:#fff;">PalletRotator EPT</h2>
+          <p style="color:#C9D2FF;">Voor belading zonder heftruck: palletwagen of elektrische pompwagen.</p>
+        </div>
+        <div class="summary-stats">
+          <div><strong>1600 kg</strong><span>laadcapaciteit</span></div>
+          <div><strong>11 sec</strong><span>rotatietijd</span></div>
+          <div><strong>60 mm</strong><span>klembord + oprit</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="wrap">
+      <div class="card spec-table">
+        <div class="spec-row spec-header">
+          <div>Specificatie</div>
+          <div>PalletRotator</div>
+          <div>PalletRotator EPT</div>
+        </div>
+        {rows.map(([label, a, b]) => (
+          <div class="spec-row">
+            <div class="spec-label">{label}</div>
+            <div class="spec-value">{a}</div>
+            <div class="spec-value">{b}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="wrap cta-inner">
+      <div>
+        <h2 style="color:#fff;">Twijfelt u nog tussen Standaard en EPT?</h2>
+        <p style="color:#E3EEFF;">Wij denken graag mee over de juiste uitvoering voor uw magazijn, coldstore of vrieshuis.</p>
+      </div>
+      <div style="display:flex; gap:14px;">
+        <a href="/offerte-aanvragen/" class="btn" style="background:var(--navy); border-color:var(--navy); color:#fff;">Offerte aanvragen</a>
+        <a href="/offerte-aanvragen/" class="btn btn-on-dark">Brochure downloaden</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .title-band { padding: 56px 0 52px; }
+  .title-shape { position: absolute; top: -40px; right: -20px; opacity: 0.9; }
+  .title-inner { position: relative; }
+  .breadcrumb { display: flex; gap: 8px; font-size: 13px; color: #9AA5D6; margin-bottom: 16px; }
+  .breadcrumb a { color: #9AA5D6; }
+  .breadcrumb .current { color: #fff; }
+  .title-band h1 { font-size: 38px; max-width: 700px; margin-top: 10px; }
+  .title-band p { max-width: 620px; margin-top: 14px; }
+
+  .summary-grid { display: flex; gap: 26px; }
+  .summary-card { flex: 1; padding: 0; overflow: hidden; }
+  .summary-featured { border: 2px solid var(--blue); }
+  .summary-head { padding: 30px 30px 22px; }
+  .summary-head-light { background: var(--bg-soft); }
+  .summary-head-dark { background: var(--navy); }
+  .summary-head h2 { font-size: 21px; margin-top: 6px; }
+  .summary-head p { font-size: 13.5px; margin-top: 6px; }
+  .summary-stats { display: flex; gap: 20px; padding: 22px 30px 28px; }
+  .summary-stats div { flex: 1; text-align: center; }
+  .summary-stats strong { display: block; font-size: 22px; color: var(--navy); }
+  .summary-stats span { font-size: 12px; color: #7B84AD; }
+
+  .spec-table { padding: 0; overflow: hidden; }
+  .spec-row { display: grid; grid-template-columns: 1.6fr 1fr 1fr; }
+  .spec-header { background: var(--bg-soft-2); font-size: 12px; font-weight: 700; color: var(--gray-light); text-transform: uppercase; letter-spacing: 0.5px; }
+  .spec-header > div:nth-child(2), .spec-header > div:nth-child(3) { color: var(--navy); }
+  .spec-row > div { padding: 15px 24px; font-size: 14px; border-top: 1px solid var(--border-2); }
+  .spec-header > div { border-top: none; padding: 16px 24px; }
+  .spec-label { color: var(--gray); }
+  .spec-value { font-weight: 700; color: var(--navy); }
+
+  .cta-band { padding: 72px 0; background: var(--blue); }
+  .cta-inner { display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+  .cta-inner h2 { font-size: 28px; margin-bottom: 10px; }
+
+  @media (max-width: 900px) {
+    .summary-grid { flex-direction: column; }
+    .spec-row { grid-template-columns: 1.3fr 1fr 1fr; }
+    .spec-row > div { padding: 12px; font-size: 12.5px; }
+  }
+</style>
