@@ -1,0 +1,91 @@
+---
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="wrap footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <img src="/images/logo-mark-white.png" alt="PalletRotator beeldmerk" width="28" height="28" />
+        <span>PalletRotator</span>
+      </div>
+      <p>De PalletRotator is een merk / product van De Vreugd Productietechniek — specialist in speciaaloplossingen voor de voedingsmiddelenindustrie.</p>
+      <div class="footer-powered">
+        <img src="/images/logo-mark-white.png" alt="De Vreugd beeldmerk" width="16" height="16" />
+        <span>Powered by <a href="https://devreugd-pt.nl" target="_blank" rel="noopener">De Vreugd Productietechniek</a></span>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Product</h4>
+      <a href="/palletrotator/">PalletRotator</a>
+      <a href="/palletrotator-ept/">PalletRotator EPT</a>
+      <a href="/vrieshuis-palletkantelaar/">Vrieshuis-uitvoering</a>
+      <a href="/specificaties/">Specificaties</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Informatie</h4>
+      <a href="/toepassingen/">Toepassingen</a>
+      <a href="/referenties/">Referenties</a>
+      <a href="/offerte-aanvragen/">Brochure aanvragen</a>
+      <a href="/over-palletrotator/">Over PalletRotator</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <span class="footer-text">Edisonring 11<br />6669 NA Dodewaard</span>
+      <a href="mailto:info@palletrotator.nl">info@palletrotator.nl</a>
+      <a href="tel:+31488412828">+31 (0)488 412 828</a>
+    </div>
+  </div>
+
+  <div class="wrap footer-bottom">
+    <span>© {year} PalletRotator — een merk van De Vreugd Productietechniek B.V.</span>
+    <div class="footer-legal">
+      <a href="https://devreugd-pt.nl/privacyverklaring/" target="_blank" rel="noopener">Privacyverklaring</a>
+      <a href="https://devreugd-pt.nl/metaalunievoorwaarden/" target="_blank" rel="noopener">Algemene voorwaarden</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer { background: var(--navy); color: #FFFFFF; padding-top: 64px; }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+  }
+  .footer-logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 19px; margin-bottom: 14px; }
+  .footer-brand p { font-size: 13.5px; color: #9AA5D6; line-height: 1.65; max-width: 280px; margin-bottom: 16px; }
+  .footer-powered { display: flex; align-items: center; gap: 9px; font-size: 12.5px; color: #7B84C4; }
+  .footer-powered a { color: #7B84C4; font-weight: 600; }
+  .footer-powered a:hover { color: #FFFFFF; }
+
+  .footer-col h4 { font-size: 13px; color: #FFFFFF; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+  .footer-col { display: flex; flex-direction: column; gap: 11px; }
+  .footer-col a, .footer-text { font-size: 14px; color: #9AA5D6; }
+  .footer-col a:hover { color: #FFFFFF; }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 22px 24px 30px;
+    font-size: 13px;
+    color: #7B84C4;
+  }
+  .footer-legal { display: flex; gap: 22px; }
+  .footer-legal a { color: #7B84C4; }
+  .footer-legal a:hover { color: #FFFFFF; }
+
+  @media (max-width: 900px) {
+    .footer-top { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    .footer-top { grid-template-columns: 1fr; }
+  }
+</style>

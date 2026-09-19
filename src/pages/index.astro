@@ -1,0 +1,287 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'PalletRotator — Palletkantelaar voor pallets wisselen in 5 seconden';
+const description = 'De PalletRotator is dé palletkantelaar (palletwisselaar) voor de foodindustrie: pallets wisselen zonder ompakken, kunststof naar hout wisselen en freezer spacers verwijderen. CE-gecertificeerd, ook geschikt voor vrieshuis (-25°C tot +40°C).';
+
+const usps = [
+  { title: 'Groot klembereik', text: 'Klembereik van 1100 tot 2500 mm en een klemsnelheid van 200 mm per seconde.' },
+  { title: 'Snel pallets kantelen', text: 'Een complete palletlading in circa 11 seconden naar de gewenste positie draaien.' },
+  { title: 'Veilig in gebruik', text: 'Robuust hekwerk met geïntegreerd bedieningspaneel en hold-to-run besturing.' },
+  { title: 'Onderhoudsarm', text: 'Kettingloze overbrenging en een gecentreerd zwaartepunt voor beperkt onderhoud.' },
+  { title: 'Klasse A kwaliteit', text: 'Opgebouwd uit A-merk componenten van Europese makelij. 100% kwaliteit.' },
+  { title: 'Geschikt voor vrieshuis', text: 'Optionele coldstore-uitvoering, bestand tegen -25°C tot +40°C.' },
+];
+
+const toepassingen = [
+  { title: 'Pallet wisselen zonder ompakken', text: 'Vervang een beschadigde of vervuilde pallet in één beweging, zonder producten handmatig te verplaatsen.', href: '/toepassingen/#pallet-wisselen' },
+  { title: 'Kunststof naar houten pallet', text: 'Wissel eenvoudig van kunststof pallet naar houten pallet (of andersom), passend bij klant- of hygiëne-eisen.', href: '/toepassingen/#kunststof-naar-hout' },
+  { title: 'Vriesspacers verwijderen', text: 'Verwijder freezer spacers en vriesmatten tussen bevroren productlagen in coldstores en vrieshuizen.', href: '/toepassingen/#vriesspacers' },
+];
+
+const klanten = ['Lamb Weston', 'Lineage', 'Kühne+Nagel', 'Clarebout', 'NewCold', 'Vreugdenhil Dairy Foods', 'Ojah', 'Mydibel'];
+---
+<BaseLayout title={title} description={description} path="/">
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: 'PalletRotator',
+    description: description,
+    brand: { '@type': 'Brand', name: 'PalletRotator' },
+    manufacturer: { '@type': 'Organization', name: 'De Vreugd Productietechniek', url: 'https://devreugd-pt.nl' },
+    category: 'Palletkantelaar',
+  })} />
+
+  <!-- HERO -->
+  <section class="dark-band hero">
+    <svg class="hero-shape" width="620" height="720" viewBox="0 0 620 720" fill="none">
+      <path d="M60 60 L220 60 L400 420 L560 60 L620 60 L400 560 L280 560 Z" fill="#0080FF" fill-opacity="0.16"/>
+      <path d="M400 420 L560 60 L620 60 L440 460 Z" fill="#0080FF" fill-opacity="0.28"/>
+    </svg>
+    <div class="wrap hero-inner">
+      <div class="hero-copy">
+        <span class="eyebrow">Palletkantelaar · Palletwisselaar</span>
+        <h1>Pallets wisselen in 5 seconden. Zónder ompakken.</h1>
+        <p>De PalletRotator is dé palletkantelaar voor foodproducenten en distributiecentra. Klem, kantel en wissel een complete palletlading — van kunststof naar hout, van beschadigd naar nieuw, of verwijder vriesspacers tussen bevroren producten.</p>
+        <div class="hero-actions">
+          <a href="/offerte-aanvragen/" class="btn btn-primary">Vraag de brochure aan</a>
+          <a href="/specificaties/" class="btn btn-on-dark">Bekijk specificaties</a>
+        </div>
+        <div class="hero-chips">
+          <span class="chip">CE-gecertificeerd</span>
+          <span class="chip">Ontwikkeld in Nederland</span>
+          <span class="chip">-25°C tot +40°C</span>
+        </div>
+      </div>
+      <div class="hero-media">
+        <div class="media-placeholder">
+          <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#0080FF" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span>Foto: PalletRotator in bedrijf</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGO STRIP -->
+  <section class="section-soft logo-strip">
+    <div class="wrap logo-strip-inner">
+      <span class="logo-strip-label">Al in gebruik bij</span>
+      <div class="logo-strip-names">
+        {klanten.map((k) => <span>{k}</span>)}
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="section">
+    <div class="wrap intro-grid">
+      <div>
+        <span class="eyebrow">De oplossing</span>
+        <h2>Waarom een PalletRotator palletkantelaar?</h2>
+      </div>
+      <div class="intro-copy">
+        <p>Komen er dagelijks goederen binnen op verkeerde, vuile of beschadigde pallets? Of zijn medewerkers veel tijd kwijt aan handmatig overstapelen? De PalletRotator klemt de complete palletlading vast en roteert deze in seconden naar de gewenste positie — zodat u de pallet in één beweging wisselt, zonder producten om te pakken.</p>
+        <div class="stat-row">
+          <div class="card stat"><strong>≤ 5 sec</strong><span>een pallet wisselen</span></div>
+          <div class="card stat"><strong>2000 kg</strong><span>laadcapaciteit</span></div>
+          <div class="card stat"><strong>-25°C</strong><span>vrieshuis-geschikt</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- USPS -->
+  <section class="section section-soft">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Waarom kiezen voor de PalletRotator</span>
+        <h2>Zes redenen om over te stappen</h2>
+      </div>
+      <div class="usp-grid">
+        {usps.map((u) => (
+          <div class="card usp">
+            <div class="usp-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0080FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            </div>
+            <h3>{u.title}</h3>
+            <p>{u.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARISON -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Twee uitvoeringen</span>
+        <h2>Welke PalletRotator past bij uw situatie?</h2>
+        <p class="section-sub">Beide uitvoeringen kantelen en wisselen pallets snel en veilig. Het verschil zit in laadcapaciteit en de manier van beladen.</p>
+      </div>
+      <div class="compare-grid">
+        <div class="card compare-card">
+          <div class="compare-head compare-head-light">
+            <span class="eyebrow">Standaard</span>
+            <h3>PalletRotator</h3>
+            <p>Voor hoge volumes en belading met heftruck.</p>
+          </div>
+          <div class="compare-body">
+            <div class="compare-row"><span>Laadcapaciteit</span><strong>2000 kg</strong></div>
+            <div class="compare-row"><span>Beladen met</span><strong>Heftruck, reachtruck, stapelaar</strong></div>
+            <div class="compare-row"><span>Hoogte klembord</span><strong>280 mm</strong></div>
+            <a href="/palletrotator/" class="btn btn-outline">Bekijk PalletRotator</a>
+          </div>
+        </div>
+        <div class="card compare-card compare-featured">
+          <div class="compare-head compare-head-dark">
+            <span class="eyebrow">Laagdrempelig beladen</span>
+            <h3 style="color:#fff;">PalletRotator EPT</h3>
+            <p style="color:#C9D2FF;">Voor belading zonder heftruck: palletwagen of elektrische pompwagen.</p>
+          </div>
+          <div class="compare-body">
+            <div class="compare-row"><span>Laadcapaciteit</span><strong>1600 kg</strong></div>
+            <div class="compare-row"><span>Beladen met</span><strong>Palletwagen, EPT</strong></div>
+            <div class="compare-row"><span>Hoogte klembord</span><strong>60 mm + oprit</strong></div>
+            <a href="/palletrotator-ept/" class="btn btn-primary">Bekijk PalletRotator EPT</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VRIESHUIS -->
+  <section class="dark-band vrieshuis">
+    <svg class="vrieshuis-shape" width="520" height="620" viewBox="0 0 520 620" fill="none">
+      <path d="M40 40 L180 40 L340 380 L480 40 L520 40 L340 480 L240 480 Z" fill="#0080FF" fill-opacity="0.14"/>
+    </svg>
+    <div class="wrap vrieshuis-inner">
+      <div class="media-placeholder vrieshuis-media">
+        <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#0080FF" stroke-width="1.5"><path d="M12 2v20M2 12h20M5 5l14 14M19 5L5 19"/></svg>
+        <span>Foto: coldstore-uitvoering</span>
+      </div>
+      <div class="vrieshuis-copy">
+        <span class="eyebrow">Coldstore-uitvoering</span>
+        <h2>Ook in de vriezer? Geen probleem.</h2>
+        <p>De coldstore-uitvoering van de PalletRotator is bestand tegen temperaturen van -25°C tot +40°C. Naast het wisselen van pallets verwijdert u eenvoudig freezer spacers en vriesmatten tussen bevroren producten — zonder de vrieslading te onderbreken.</p>
+        <div class="hero-chips">
+          <span class="chip">-25°C tot +40°C</span>
+          <span class="chip">Freezer spacers verwijderen</span>
+          <span class="chip">Geschikt voor coldstore &amp; vrieshuis</span>
+        </div>
+        <a href="/vrieshuis-palletkantelaar/" class="btn btn-on-dark" style="margin-top:20px;">Meer over de vrieshuis-uitvoering</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOEPASSINGEN -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Toepassingen</span>
+        <h2>Eén machine, drie toepassingen</h2>
+      </div>
+      <div class="usp-grid">
+        {toepassingen.map((t) => (
+          <a href={t.href} class="card usp usp-link">
+            <h3>{t.title}</h3>
+            <p>{t.text}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band">
+    <div class="wrap cta-inner">
+      <div>
+        <h2 style="color:#fff;">Klaar om sneller en veiliger pallets te wisselen?</h2>
+        <p style="color:#E3EEFF;">Vraag een vrijblijvende offerte aan of download de brochure met alle technische specificaties.</p>
+      </div>
+      <div class="cta-actions">
+        <div style="display:flex; gap:14px;">
+          <a href="/offerte-aanvragen/" class="btn" style="background:var(--navy); border-color:var(--navy); color:#fff;">Offerte aanvragen</a>
+          <a href="/offerte-aanvragen/" class="btn btn-on-dark">Brochure downloaden</a>
+        </div>
+        <span style="color:#E3EEFF; font-size:13.5px;">Liever bellen? +31 (0)488 412 828</span>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero { padding: 96px 0 110px; }
+  .hero-shape { position: absolute; top: 0; right: -40px; height: 100%; opacity: 0.9; }
+  .hero-inner { display: flex; gap: 64px; align-items: center; position: relative; }
+  .hero-copy { flex: 1 1 0; display: flex; flex-direction: column; gap: 24px; max-width: 620px; }
+  .hero h1 { font-size: 50px; line-height: 1.12; }
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+  .hero-chips { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 6px; }
+  .hero-media { flex: 0 0 440px; }
+  .media-placeholder {
+    border-radius: 24px;
+    background: linear-gradient(155deg, rgba(255,255,255,0.10), rgba(255,255,255,0.03));
+    border: 1px solid rgba(255,255,255,0.18);
+    display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 12px;
+    height: 380px;
+  }
+  .media-placeholder span { color: #9AA5D6; font-size: 13px; font-weight: 500; text-align: center; padding: 0 24px; }
+
+  .logo-strip-inner { display: flex; align-items: center; gap: 40px; flex-wrap: wrap; padding: 36px 0; }
+  .logo-strip-label { font-size: 13px; font-weight: 700; color: #7B84AD; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+  .logo-strip-names { display: flex; gap: 20px; flex-wrap: wrap; flex: 1; }
+  .logo-strip-names span { color: #414A72; font-weight: 700; font-size: 14.5px; opacity: 0.55; }
+
+  .intro-grid { display: flex; gap: 72px; align-items: flex-start; }
+  .intro-grid > div:first-child { flex: 1 1 0; }
+  .intro-grid h2 { font-size: 32px; margin-top: 10px; max-width: 420px; }
+  .intro-copy { flex: 1 1 0; display: flex; flex-direction: column; gap: 28px; }
+  .stat-row { display: flex; gap: 14px; }
+  .stat { flex: 1; padding: 22px 16px; text-align: center; display: flex; flex-direction: column; gap: 6px; }
+  .stat strong { font-size: 26px; color: var(--navy); }
+  .stat span { font-size: 12.5px; color: #7B84AD; }
+
+  .section-head { text-align: center; max-width: 640px; margin: 0 auto 48px; }
+  .section-head h2 { font-size: 32px; margin-top: 10px; }
+  .section-sub { margin-top: 14px; }
+
+  .usp-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 24px; }
+  .usp { padding: 30px; display: block; }
+  .usp-link:hover { border-color: var(--blue); }
+  .usp-icon { width: 48px; height: 48px; border-radius: 13px; background: rgba(0,128,255,0.1); display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+  .usp h3 { font-size: 17px; margin-bottom: 8px; }
+  .usp p { font-size: 14px; }
+
+  .compare-grid { display: flex; gap: 26px; }
+  .compare-card { flex: 1; padding: 0; overflow: hidden; }
+  .compare-featured { border: 2px solid var(--blue); }
+  .compare-head { padding: 32px 32px 24px; }
+  .compare-head-light { background: var(--bg-soft); }
+  .compare-head-dark { background: var(--navy); }
+  .compare-head h3 { font-size: 22px; margin-top: 6px; }
+  .compare-head p { margin-top: 6px; font-size: 14px; }
+  .compare-body { padding: 28px 32px 32px; display: flex; flex-direction: column; gap: 14px; }
+  .compare-row { display: flex; justify-content: space-between; padding-bottom: 12px; border-bottom: 1px solid var(--border-2); font-size: 14px; color: var(--gray-light); }
+  .compare-row strong { color: var(--navy); }
+  .compare-body .btn { margin-top: 8px; }
+
+  .vrieshuis { padding: 96px 0; }
+  .vrieshuis-shape { position: absolute; top: 0; left: -60px; height: 100%; opacity: 0.9; }
+  .vrieshuis-inner { display: flex; gap: 60px; align-items: center; position: relative; }
+  .vrieshuis-media { flex: 0 0 360px; height: 300px; }
+  .vrieshuis-copy { flex: 1 1 0; display: flex; flex-direction: column; gap: 20px; max-width: 560px; }
+  .vrieshuis-copy h2 { font-size: 32px; }
+
+  .cta-band { padding: 72px 0; background: var(--blue); }
+  .cta-inner { display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+  .cta-inner h2 { font-size: 28px; margin-bottom: 10px; }
+  .cta-actions { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+
+  @media (max-width: 980px) {
+    .hero-inner, .vrieshuis-inner, .intro-grid, .compare-grid { flex-direction: column; align-items: stretch; }
+    .hero-media, .vrieshuis-media { width: 100%; flex-basis: auto; }
+    .usp-grid { grid-template-columns: 1fr; }
+    .logo-strip-inner { flex-direction: column; align-items: flex-start; }
+  }
+</style>

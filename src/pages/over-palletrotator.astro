@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Over PalletRotator | Powered by De Vreugd Productietechniek';
+const description = 'De PalletRotator is een Nederlands product van De Vreugd Productietechniek — specialist in speciaaloplossingen voor de voedingsmiddelenindustrie, met ruim 25 jaar ervaring.';
+---
+<BaseLayout title={title} description={description} path="/over-palletrotator/">
+  <section class="dark-band title-band">
+    <svg class="title-shape" width="360" height="360" viewBox="0 0 620 720" fill="none">
+      <path d="M60 60 L220 60 L400 420 L560 60 L620 60 L400 560 L280 560 Z" fill="#0080FF" fill-opacity="0.14"/>
+    </svg>
+    <div class="wrap title-inner">
+      <nav class="breadcrumb"><a href="/">Home</a> <span>/</span> <span class="current">Over PalletRotator</span></nav>
+      <span class="eyebrow">Powered by De Vreugd</span>
+      <h1>Een Nederlands product, gebouwd door specialisten</h1>
+      <p>De PalletRotator is ontworpen en geproduceerd door De Vreugd Productietechniek — met aandacht voor detail, veiligheid en lage onderhoudskosten.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap about-grid">
+      <div class="about-logo-card card">
+        <img src="/images/logo-horizontal-blue.png" alt="De Vreugd Productietechniek" width="260" />
+        <p style="margin-top:20px;">De Vreugd Productietechniek is gespecialiseerd in speciaaloplossingen voor de voedingsmiddelenindustrie: van machinebouw tot procesoptimalisatie.</p>
+        <a href="https://devreugd-pt.nl" target="_blank" rel="noopener" class="btn btn-outline" style="margin-top:20px;">Bezoek devreugd-pt.nl</a>
+      </div>
+      <div class="about-copy">
+        <p>In een wereld waar technologische vooruitgang het tempo van productie en innovatie versnelt, staat De Vreugd Productietechniek als betrouwbare partner voor de foodindustrie klaar. Met ruim 25 jaar ervaring en een team met praktijkervaring zijn ze expert in het leveren van hoogwaardige technische oplossingen.</p>
+        <p>De PalletRotator is daar het meest zichtbare resultaat van: een oer-Nederlands product waar het team trots op is. Uniek is het grote klembereik en de snelle rotatie — opgebouwd uit klasse-A componenten, dus kwaliteit is gegarandeerd.</p>
+        <p>Vanuit de Betuwe werkt De Vreugd met een no-nonsense aanpak: meer dan 75 productieprocessen verbeterd en 30 producten ontwikkeld, waarvan de PalletRotator het meest recente zelfstandige merk is.</p>
+        <div class="stat-row">
+          <div class="card stat"><strong>25+ jaar</strong><span>ervaring</span></div>
+          <div class="card stat"><strong>75+</strong><span>processen verbeterd</span></div>
+          <div class="card stat"><strong>30</strong><span>producten ontwikkeld</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="wrap cta-inner">
+      <div>
+        <h2 style="color:#fff;">Vragen over de PalletRotator of De Vreugd?</h2>
+        <p style="color:#E3EEFF;">Neem gerust contact op — we denken graag mee.</p>
+      </div>
+      <div style="display:flex; gap:14px;">
+        <a href="/offerte-aanvragen/" class="btn" style="background:var(--navy); border-color:var(--navy); color:#fff;">Neem contact op</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .about-grid { display: flex; gap: 56px; align-items: flex-start; }
+  .about-logo-card { flex: 0 0 340px; padding: 32px; }
+  .about-logo-card p { font-size: 14px; }
+  .about-copy { flex: 1 1 0; display: flex; flex-direction: column; gap: 20px; }
+  .stat-row { display: flex; gap: 14px; margin-top: 6px; }
+  .stat { flex: 1; padding: 20px 14px; text-align: center; display: flex; flex-direction: column; gap: 6px; }
+  .stat strong { font-size: 22px; color: var(--navy); }
+  .stat span { font-size: 12px; color: #7B84AD; }
+  @media (max-width: 900px) {
+    .about-grid { flex-direction: column; }
+    .about-logo-card { width: 100%; }
+  }
+</style>

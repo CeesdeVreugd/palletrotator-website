@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'PalletRotator (Standaard) — Palletkantelaar voor heftruck & reachtruck';
+const description = 'De standaard PalletRotator palletkantelaar: 2000 kg laadcapaciteit, te beladen met heftruck, reachtruck of elektrische stapelaar. CE-gecertificeerd, optioneel geschikt voor vrieshuis.';
+---
+<BaseLayout title={title} description={description} path="/palletrotator/">
+  <section class="dark-band title-band">
+    <svg class="title-shape" width="360" height="360" viewBox="0 0 620 720" fill="none">
+      <path d="M60 60 L220 60 L400 420 L560 60 L620 60 L400 560 L280 560 Z" fill="#0080FF" fill-opacity="0.14"/>
+    </svg>
+    <div class="wrap title-inner">
+      <nav class="breadcrumb"><a href="/">Home</a> <span>/</span> <span class="current">PalletRotator</span></nav>
+      <span class="eyebrow">Standaard uitvoering</span>
+      <h1>PalletRotator — de standaard palletkantelaar</h1>
+      <p>De standaard PalletRotator is de robuuste palletkantelaar voor hoge volumes: laadcapaciteit tot 2000 kg, te beladen met heftruck, reachtruck of elektrische stapelaar.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap intro-grid">
+      <div class="media-placeholder product-media">
+        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#0080FF" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span style="color:#7B84AD;">Foto: PalletRotator standaard uitvoering</span>
+      </div>
+      <div class="intro-copy">
+        <p>De PalletRotator klemt de complete palletlading stevig vast en roteert deze snel en veilig naar de gewenste positie. Vervolgens kan de bestaande pallet eenvoudig worden verwijderd en vervangen — zonder dat producten handmatig worden overgepakt.</p>
+        <p>De standaard uitvoering wordt beladen met een heftruck, reachtruck of elektrische stapelaar en is ontworpen voor hoge volumes en frequent gebruik. Optioneel leverbaar als coldstore-uitvoering, bestand tegen -25°C tot +40°C.</p>
+        <ul class="check-list">
+          <li>Laadcapaciteit tot 2000 kg</li>
+          <li>Klembereik 1100–2500 mm</li>
+          <li>Rotatietijd van 180° in circa 11 seconden</li>
+          <li>Geleverd met EG-verklaring (CE-certificaat)</li>
+          <li>Optioneel geschikt voor vrieshuis</li>
+        </ul>
+        <div class="hero-actions">
+          <a href="/offerte-aanvragen/" class="btn btn-primary">Offerte aanvragen</a>
+          <a href="/specificaties/" class="btn btn-outline">Vergelijk met EPT-uitvoering</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Niet de juiste uitvoering?</span>
+        <h2>Bekijk de PalletRotator EPT</h2>
+        <p class="section-sub">Wilt u de palletkantelaar beladen zonder heftruck? De PalletRotator EPT is geschikt voor een palletwagen of elektrische pompwagen.</p>
+      </div>
+      <div style="text-align:center;">
+        <a href="/palletrotator-ept/" class="btn btn-primary">Naar PalletRotator EPT</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="wrap cta-inner">
+      <div>
+        <h2 style="color:#fff;">Interesse in de PalletRotator?</h2>
+        <p style="color:#E3EEFF;">Vraag een vrijblijvende offerte aan of download de brochure met alle technische specificaties.</p>
+      </div>
+      <div style="display:flex; gap:14px;">
+        <a href="/offerte-aanvragen/" class="btn" style="background:var(--navy); border-color:var(--navy); color:#fff;">Offerte aanvragen</a>
+        <a href="/offerte-aanvragen/" class="btn btn-on-dark">Brochure downloaden</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .intro-grid { display: flex; gap: 64px; align-items: flex-start; }
+  .product-media { flex: 0 0 440px; height: 360px; }
+  .intro-copy { flex: 1 1 0; display: flex; flex-direction: column; gap: 20px; }
+  .check-list { display: flex; flex-direction: column; gap: 10px; margin: 4px 0; }
+  .check-list li { position: relative; padding-left: 26px; font-size: 14.5px; color: var(--gray); }
+  .check-list li::before {
+    content: "";
+    position: absolute; left: 0; top: 6px;
+    width: 16px; height: 16px;
+    background: var(--blue);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E") center/contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E") center/contain no-repeat;
+  }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 6px; }
+  @media (max-width: 980px) {
+    .intro-grid { flex-direction: column; }
+    .product-media { width: 100%; }
+  }
+</style>

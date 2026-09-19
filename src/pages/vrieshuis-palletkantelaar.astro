@@ -1,0 +1,106 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Palletkantelaar voor vrieshuis & coldstore | PalletRotator';
+const description = 'De coldstore-uitvoering van de PalletRotator is bestand tegen -25°C tot +40°C. Wissel pallets en verwijder freezer spacers en vriesmatten in vrieshuizen en coldstores.';
+---
+<BaseLayout title={title} description={description} path="/vrieshuis-palletkantelaar/">
+  <section class="dark-band title-band">
+    <svg class="title-shape" width="360" height="360" viewBox="0 0 620 720" fill="none">
+      <path d="M60 60 L220 60 L400 420 L560 60 L620 60 L400 560 L280 560 Z" fill="#0080FF" fill-opacity="0.14"/>
+    </svg>
+    <div class="wrap title-inner">
+      <nav class="breadcrumb"><a href="/">Home</a> <span>/</span> <span class="current">Vrieshuis-uitvoering</span></nav>
+      <span class="eyebrow">Coldstore-uitvoering</span>
+      <h1>Palletkantelaar voor vrieshuis en coldstore</h1>
+      <p>Werkt de PalletRotator ook in de diepvries? Ja. De coldstore-uitvoering is bestand tegen temperaturen van -25°C tot +40°C, en ideaal voor het wisselen van pallets én het verwijderen van freezer spacers.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap intro-grid">
+      <div class="media-placeholder product-media">
+        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#0080FF" stroke-width="1.5"><path d="M12 2v20M2 12h20M5 5l14 14M19 5L5 19"/></svg>
+        <span style="color:#7B84AD;">Foto: PalletRotator in vrieshuis</span>
+      </div>
+      <div class="intro-copy">
+        <p>In coldstores en vrieshuizen liggen producten vaak op vriesmatten of tussen freezer spacers, om de lading tijdens het invriezen te scheiden en te koelen. Bij het uitleveren moeten deze spacers en matten weer verwijderd worden — met de PalletRotator kan dat snel en veilig, zonder dat de vrieslading onderbroken wordt.</p>
+        <p>Daarnaast wisselt de coldstore-uitvoering ook gewoon pallets: van beschadigd naar nieuw, of van kunststof naar hout — precies zoals de standaard PalletRotator, maar dan bestand tegen extreme kou.</p>
+        <ul class="check-list">
+          <li>Omgevingstemperatuur -25°C tot +40°C</li>
+          <li>Freezer spacers en vriesmatten verwijderen</li>
+          <li>Pallets wisselen zonder de vrieslading te onderbreken</li>
+          <li>Leverbaar voor zowel de standaard als de EPT-uitvoering</li>
+          <li>CE-gecertificeerd, onderhoudsarm ontwerp</li>
+        </ul>
+        <div class="hero-actions">
+          <a href="/offerte-aanvragen/" class="btn btn-primary">Offerte aanvragen voor vrieshuis</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Welke uitvoering past bij u?</span>
+        <h2>Standaard of EPT — ook in de vrieshuisversie</h2>
+      </div>
+      <div class="compare-grid">
+        <div class="card compare-card">
+          <div class="compare-head compare-head-light">
+            <span class="eyebrow">Standaard</span>
+            <h3>PalletRotator</h3>
+            <p>Beladen met heftruck, reachtruck of stapelaar.</p>
+          </div>
+          <div class="compare-body">
+            <a href="/palletrotator/" class="btn btn-outline">Bekijk PalletRotator</a>
+          </div>
+        </div>
+        <div class="card compare-card compare-featured">
+          <div class="compare-head compare-head-dark">
+            <span class="eyebrow">Laagdrempelig</span>
+            <h3 style="color:#fff;">PalletRotator EPT</h3>
+            <p style="color:#C9D2FF;">Beladen met palletwagen of elektrische pompwagen.</p>
+          </div>
+          <div class="compare-body">
+            <a href="/palletrotator-ept/" class="btn btn-primary">Bekijk PalletRotator EPT</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="wrap cta-inner">
+      <div>
+        <h2 style="color:#fff;">Palletkantelaar nodig voor uw vrieshuis?</h2>
+        <p style="color:#E3EEFF;">We denken graag mee over de juiste uitvoering voor uw coldstore of vriesopslag.</p>
+      </div>
+      <div style="display:flex; gap:14px;">
+        <a href="/offerte-aanvragen/" class="btn" style="background:var(--navy); border-color:var(--navy); color:#fff;">Offerte aanvragen</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .intro-grid { display: flex; gap: 64px; align-items: flex-start; }
+  .product-media { flex: 0 0 440px; height: 360px; }
+  .intro-copy { flex: 1 1 0; display: flex; flex-direction: column; gap: 20px; }
+  .check-list { display: flex; flex-direction: column; gap: 10px; margin: 4px 0; }
+  .check-list li { position: relative; padding-left: 26px; font-size: 14.5px; color: var(--gray); }
+  .check-list li::before {
+    content: "";
+    position: absolute; left: 0; top: 6px;
+    width: 16px; height: 16px;
+    background: var(--blue);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E") center/contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E") center/contain no-repeat;
+  }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 6px; }
+  @media (max-width: 980px) {
+    .intro-grid { flex-direction: column; }
+    .product-media { width: 100%; }
+  }
+</style>
