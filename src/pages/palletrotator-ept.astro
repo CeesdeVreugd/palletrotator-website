@@ -1,8 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ProductAnimation from '../components/ProductAnimation.astro';
 
 const title = 'PalletRotator EPT — Palletkantelaar voor palletwagen & elektrische pompwagen';
 const description = 'De PalletRotator EPT is dé palletkantelaar voor belading zonder heftruck: geschikt voor een handpalletwagen of elektrische pompwagen (EPT). Laadcapaciteit 1600 kg, CE-gecertificeerd.';
+
+const eptFrames = Array.from({ length: 6 }, (_, i) => `/images/animation/k13-ept/frame-${String(i + 1).padStart(2, '0')}.jpg`);
 ---
 <BaseLayout title={title} description={description} path="/palletrotator-ept/">
   <section class="dark-band title-band">
@@ -19,9 +22,8 @@ const description = 'De PalletRotator EPT is dé palletkantelaar voor belading z
 
   <section class="section">
     <div class="wrap intro-grid">
-      <div class="media-placeholder product-media">
-        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#0080FF" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-        <span style="color:#7B84AD;">Foto: PalletRotator EPT met oprit</span>
+      <div class="product-media">
+        <ProductAnimation frames={eptFrames} alt="PalletRotator EPT met oprit voor palletwagen of elektrische pompwagen" interval={1300} />
       </div>
       <div class="intro-copy">
         <p>Wilt u de palletkantelaar beladen met een elektrische pallettruck (EPT) of handpalletwagen? Dan is de PalletRotator EPT hiervoor speciaal ontwikkeld. Dankzij het lage klembord met oprit rijdt u eenvoudig naar binnen, zonder heftruck of reachtruck nodig te hebben.</p>

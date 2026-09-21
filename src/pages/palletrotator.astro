@@ -1,8 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ProductAnimation from '../components/ProductAnimation.astro';
 
 const title = 'PalletRotator (Standaard) — Palletkantelaar voor heftruck & reachtruck';
 const description = 'De standaard PalletRotator palletkantelaar: 2000 kg laadcapaciteit, te beladen met heftruck, reachtruck of elektrische stapelaar. CE-gecertificeerd, optioneel geschikt voor vrieshuis.';
+
+const stdFrames = Array.from({ length: 6 }, (_, i) => `/images/animation/k11-std/frame-${String(i + 1).padStart(2, '0')}.jpg`);
 ---
 <BaseLayout title={title} description={description} path="/palletrotator/">
   <section class="dark-band title-band">
@@ -19,9 +22,8 @@ const description = 'De standaard PalletRotator palletkantelaar: 2000 kg laadcap
 
   <section class="section">
     <div class="wrap intro-grid">
-      <div class="media-placeholder product-media">
-        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#0080FF" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-        <span style="color:#7B84AD;">Foto: PalletRotator standaard uitvoering</span>
+      <div class="product-media">
+        <ProductAnimation frames={stdFrames} alt="PalletRotator standaard uitvoering — pallet laden, kantelen en wisselen" interval={1100} />
       </div>
       <div class="intro-copy">
         <p>De PalletRotator klemt de complete palletlading stevig vast en roteert deze snel en veilig naar de gewenste positie. Vervolgens kan de bestaande pallet eenvoudig worden verwijderd en vervangen — zonder dat producten handmatig worden overgepakt.</p>
