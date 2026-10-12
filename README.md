@@ -331,3 +331,9 @@ Zonder portaal werkt de site gewoon (volumes zijn dan leeg).
 Deploy: eerst deze stack opnieuw (maakt de volumes aan), daarna de portaalstack; de volgorde maakt niet uit.
 
 V26: alleen hernoeming — het portaal heet nu **WebsiteBeheerPortal** (stack/container `websitebeheerportal`, map `WebsiteBeheerPortal-V1`). Volumes `portal-bridge` en `portal-media` blijven ongewijzigd.
+
+## V27 — bezoeken zichtbaar in de WebsiteBeheerPortal
+De website legt per bekeken HTML-pagina één regel vast in `/bridge/_visits/palletrotator/JJJJ-MM-DD.log` (volume `portal-bridge`); de WebsiteBeheerPortal toont dit onder **Bezoeken** (bezoekers, paginaweergaven, populaire pagina's, herkomst, per taalsite, 404's).
+- **Privacy**: geen cookies, geen scripts. Het IP-adres wordt in nginx geanonimiseerd vóór het wordt weggeschreven (IPv4 laatste deel weg, IPv6 alleen eerste drie blokken), van de herkomst blijft alleen het domein over, bestanden ouder dan 90 dagen worden bij het opstarten verwijderd. Noem dit in de privacyverklaring ("anonieme serverlogs voor statistiek, 90 dagen").
+- Gebruikt `nginx.conf` (maps + `log_format visits`) en `portal-bundle/46-visits-dir.sh`. Zonder portaalvolume werkt de site gewoon (alleen een melding in het nginx-foutlogboek).
+- De Docker-healthcheck en de websitevoorbeelden van het portaal worden niet meegeteld; robots worden in het portaal apart geteld.

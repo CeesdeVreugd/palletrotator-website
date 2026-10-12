@@ -33,7 +33,8 @@ COPY --from=build /app/dist/es /usr/share/nginx/html/es
 # De mappen zijn beschrijfbaar gemaakt zodat de volumes ook goed starten als deze container ze als eerste aanmaakt.
 COPY --from=build /app/portal-bundle-out /portal-bundle
 COPY portal-bundle/45-portal-bundle.sh /docker-entrypoint.d/45-portal-bundle.sh
-RUN chmod +x /docker-entrypoint.d/45-portal-bundle.sh \
+COPY portal-bundle/46-visits-dir.sh /docker-entrypoint.d/46-visits-dir.sh
+RUN chmod +x /docker-entrypoint.d/45-portal-bundle.sh /docker-entrypoint.d/46-visits-dir.sh \
  && mkdir -p /usr/share/nginx/media /bridge && chmod 777 /usr/share/nginx/media /bridge
 
 EXPOSE 80
