@@ -1,10 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import KlantLogos from '../components/KlantLogos.astro';
 
 const title = 'Referenties PalletRotator | Vertrouwd in de foodindustrie';
 const description = 'De PalletRotator palletkantelaar draait dagelijks mee bij toonaangevende foodproducenten, coldstores en logistieke dienstverleners.';
 
-const klanten = ['Lamb Weston', 'Lineage', 'Kühne+Nagel', 'Clarebout', 'NewCold', 'Vreugdenhil Dairy Foods', 'Ojah', 'Mydibel'];
 ---
 <BaseLayout title={title} description={description} path="/referenties/">
   <section class="dark-band title-band">
@@ -21,12 +21,8 @@ const klanten = ['Lamb Weston', 'Lineage', 'Kühne+Nagel', 'Clarebout', 'NewCold
 
   <section class="section">
     <div class="wrap">
-      <div class="klanten-grid">
-        {klanten.map((k) => (
-          <div class="card klant-card"><span>{k}</span></div>
-        ))}
-      </div>
-      <p class="klanten-note">Referentiecases met concrete resultaten volgen binnenkort op deze pagina. Benieuwd naar een klantverhaal uit uw sector? Neem contact op.</p>
+      <KlantLogos size="lg" />
+      <p class="klanten-note" style="margin-top:28px;">Referentiecases met concrete resultaten volgen binnenkort op deze pagina. Benieuwd naar een klantverhaal uit uw sector? Neem contact op.</p>
     </div>
   </section>
 
@@ -53,9 +49,5 @@ const klanten = ['Lamb Weston', 'Lineage', 'Kühne+Nagel', 'Clarebout', 'NewCold
 </BaseLayout>
 
 <style>
-  .klanten-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 18px; margin-bottom: 28px; }
-  .klant-card { padding: 32px 16px; display: flex; align-items: center; justify-content: center; text-align: center; }
-  .klant-card span { font-weight: 700; color: var(--navy); font-size: 15px; }
   .klanten-note { text-align: center; font-size: 14px; }
-  @media (max-width: 900px) { .klanten-grid { grid-template-columns: repeat(2, minmax(0,1fr)); } }
 </style>

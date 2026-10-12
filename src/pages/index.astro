@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProductAnimation from '../components/ProductAnimation.astro';
+import KlantLogos from '../components/KlantLogos.astro';
 
 const heroFrames = Array.from({ length: 6 }, (_, i) => `/images/animation/k11-std/frame-${String(i + 1).padStart(2, '0')}.jpg`);
 
@@ -22,7 +23,6 @@ const toepassingen = [
   { title: 'Vriesspacers verwijderen', text: 'Verwijder freezer spacers en vriesmatten tussen bevroren productlagen in coldstores en vrieshuizen.', href: '/toepassingen/#vriesspacers' },
 ];
 
-const klanten = ['Lamb Weston', 'Lineage', 'Kühne+Nagel', 'Clarebout', 'NewCold', 'Vreugdenhil Dairy Foods', 'Ojah', 'Mydibel'];
 ---
 <BaseLayout title={title} description={description} path="/">
   <script type="application/ld+json" slot="head" set:html={JSON.stringify({
@@ -105,13 +105,14 @@ const klanten = ['Lamb Weston', 'Lineage', 'Kühne+Nagel', 'Clarebout', 'NewCold
     </div>
   </section>
 
-  <!-- LOGO STRIP -->
+  <!-- REFERENTIES -->
   <section class="section-soft logo-strip">
-    <div class="wrap logo-strip-inner">
-      <span class="logo-strip-label">Al in gebruik bij</span>
-      <div class="logo-strip-names">
-        {klanten.map((k) => <span>{k}</span>)}
+    <div class="wrap">
+      <div class="logo-strip-head">
+        <span class="logo-strip-label">Al in gebruik bij</span>
+        <a href="/referenties/" class="logo-strip-more">Alle referenties →</a>
       </div>
+      <KlantLogos />
     </div>
   </section>
 
@@ -232,10 +233,10 @@ const klanten = ['Lamb Weston', 'Lineage', 'Kühne+Nagel', 'Clarebout', 'NewCold
   }
   .media-placeholder span { color: #9AA5D6; font-size: 13px; font-weight: 500; text-align: center; padding: 0 24px; }
 
-  .logo-strip-inner { display: flex; align-items: center; gap: 40px; flex-wrap: wrap; padding: 36px 0; }
+  .logo-strip { padding: 44px 0; }
+  .logo-strip-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 20px; flex-wrap: wrap; }
+  .logo-strip-more { font-size: 14px; font-weight: 600; color: var(--blue); }
   .logo-strip-label { font-size: 13px; font-weight: 700; color: #7B84AD; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
-  .logo-strip-names { display: flex; gap: 20px; flex-wrap: wrap; flex: 1; }
-  .logo-strip-names span { color: #414A72; font-weight: 700; font-size: 14.5px; opacity: 0.55; }
 
   .intro-grid { display: flex; gap: 72px; align-items: flex-start; }
   .intro-grid > div:first-child { flex: 1 1 0; }
@@ -286,6 +287,5 @@ const klanten = ['Lamb Weston', 'Lineage', 'Kühne+Nagel', 'Clarebout', 'NewCold
     .hero-inner, .vrieshuis-inner, .intro-grid, .compare-grid { flex-direction: column; align-items: stretch; }
     .hero-media, .vrieshuis-media { width: 100%; flex-basis: auto; }
     .usp-grid { grid-template-columns: 1fr; }
-    .logo-strip-inner { flex-direction: column; align-items: flex-start; }
   }
 </style>

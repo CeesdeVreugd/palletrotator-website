@@ -199,8 +199,13 @@ docker run --rm -p 8080:80 palletrotator-website
 ```
 
 
-## Foto's en video (V9)
+## Foto's en video (V9/V10)
 - `/palletrotator-ept/`: fotoreeks (`PhotoSequence.astro`) met 4 stappen uit `public/images/foto/` (WebP 800/1600 px).
 - `/palletrotator/` en `/palletrotator-ept/`: YouTube-video via `YouTubeEmbed.astro` (klik-om-te-laden, `youtube-nocookie.com`, eigen posterfoto, geen Google-verbinding vóór de klik).
 - `VideoObject`-schema wordt pas geplaatst als `uploadDate` aan `YouTubeEmbed` is meegegeven.
 - Homepage-hero en `/palletrotator/` gebruiken nog de renders (`ProductAnimation.astro`) tot de K11-foto's er zijn.
+
+## Referenties (V10)
+- Klantlogo's staan transparant in `public/images/klanten/`; de lijst staat in `src/data/klanten.ts`.
+- Component `KlantLogos.astro` toont ze als raster op de homepage (onder de hero-uitvoeringen) en groot op `/referenties/`.
+- Nieuwe klant toevoegen = logo-PNG in die map + één regel in `klanten.ts`.
