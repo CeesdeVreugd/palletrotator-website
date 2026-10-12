@@ -234,3 +234,9 @@ docker run --rm -p 8080:80 palletrotator-website
 ## V18 — taalafhankelijke WhatsApp-knop en teamblok
 
 - `src/data/contact.ts` bevat per taal (`nl`, `de`) knoptekst, toegankelijkheidslabel en voorgevulde WhatsApp-tekst (DE: "Guten Tag, ich habe eine Frage zum PalletRotator.", Sie-vorm). `BaseLayout` krijgt een `lang`-prop (standaard `nl`; zet ook `<html lang>` en `og:locale`) en geeft die door aan `WhatsAppButton`. `TeamPortretten` accepteert `lang` en toont dan de Duitse functietitels en tekst. Nieuwe talen: type `Lang` en teksten uitbreiden.
+
+## V19 — offerte-aanvraag per e-mail
+
+- `/offerte-aanvragen/` post naar `/api/offerte` (zelfde `palletrotator-forms`-container). De service mailt de aanvraag via SMTP (`forms-service/smtp.mjs`, geen dependencies; STARTTLS op 587 of TLS op 465) naar `MAIL_TO` (standaard info@palletrotator.nl), met Reply-To = aanvrager. Telefoon is verplicht. Optioneel vinkje 'Houd mij op de hoogte' zet het adres alleen met toestemming in Laposta-lijst `b12sde1bbp`.
+- Portainer-variabelen: `SMTP_HOST`, `SMTP_PORT` (587), `SMTP_SECURE` (`true` bij 465), `SMTP_USER`, `SMTP_PASS`, optioneel `MAIL_FROM`, `MAIL_TO`. `GET /api/health` toont `mailConfigured`. Spambeveiliging als bij de brochure (honeypot, 2,5 s, 5/uur/IP).
+- Teamportretten in staand 3:2-formaat met telefoon en e-mail per persoon (`src/data/team.ts`).

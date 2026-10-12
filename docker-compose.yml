@@ -25,6 +25,14 @@ services:
       # NOOIT de sleutel in de repo zetten.
       LAPOSTA_API_KEY: ${LAPOSTA_API_KEY}
       LAPOSTA_LIST_ID: ${LAPOSTA_LIST_ID:-b12sde1bbp}
+      # Offerte-aanvragen worden per e-mail (SMTP) verstuurd. Zet deze als Portainer-variabelen.
+      SMTP_HOST: ${SMTP_HOST}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_SECURE: ${SMTP_SECURE:-false}   # true voor poort 465
+      SMTP_USER: ${SMTP_USER}
+      SMTP_PASS: ${SMTP_PASS}
+      MAIL_FROM: ${MAIL_FROM:-info@palletrotator.nl}
+      MAIL_TO: ${MAIL_TO:-info@palletrotator.nl}
     # Geen "ports:" - alleen bereikbaar via palletrotator-website (nginx /api/).
 
 networks:
