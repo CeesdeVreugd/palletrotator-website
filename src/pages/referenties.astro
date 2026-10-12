@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import KlantLogos from '../components/KlantLogos.astro';
+
+const title = 'Referenties PalletRotator | Vertrouwd in de foodindustrie';
+const description = 'De PalletRotator palletkantelaar draait dagelijks mee bij toonaangevende foodproducenten, coldstores en logistieke dienstverleners.';
+
+---
+<BaseLayout title={title} description={description} path="/referenties/">
+  <section class="dark-band title-band">
+    <img class="title-shape" src="/images/logo-mark-shape.png" alt="" aria-hidden="true" width="1000" height="766" />
+    <div class="wrap title-inner">
+      <nav class="breadcrumb"><a href="/">Home</a> <span>/</span> <span class="current">Referenties</span></nav>
+      <span class="eyebrow">Referenties</span>
+      <h1>Vertrouwd in de foodindustrie</h1>
+      <p>Van diepvriesgroente tot zuivel en logistieke dienstverlening: de PalletRotator draait dagelijks mee bij toonaangevende foodproducenten en coldstores.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <KlantLogos size="lg" />
+      <p class="klanten-note" style="margin-top:28px;">Referentiecases met concrete resultaten volgen binnenkort op deze pagina. Benieuwd naar een klantverhaal uit uw sector? Neem contact op.</p>
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="wrap" style="text-align:center;">
+      <span class="eyebrow">Ook onderdeel van De Vreugd</span>
+      <h2 style="margin-top:10px;">Bekijk meer projecten van De Vreugd Productietechniek</h2>
+      <p style="max-width:560px; margin:14px auto 28px;">De Vreugd realiseert speciaaloplossingen voor de voedingsmiddelenindustrie — van machinebouw tot procesoptimalisatie.</p>
+      <a href="https://devreugd-pt.nl/projecten/" target="_blank" rel="noopener" class="btn btn-outline">Bekijk projecten van De Vreugd</a>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="wrap cta-inner">
+      <div>
+        <h2 style="color:#fff;">Word de volgende referentie</h2>
+        <p style="color:#E3EEFF;">Vraag een vrijblijvende offerte of demonstratie aan.</p>
+      </div>
+      <div style="display:flex; gap:14px;">
+        <a href="/offerte-aanvragen/" class="btn" style="background:var(--navy); border-color:var(--navy); color:#fff;">Offerte aanvragen</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .klanten-note { text-align: center; font-size: 14px; }
+</style>

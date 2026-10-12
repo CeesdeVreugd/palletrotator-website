@@ -1,7 +1,17 @@
 {
-  "name": "websitebeheerportal",
+  "name": "palletrotator-website",
+  "type": "module",
   "version": "1.0.0",
   "private": true,
-  "type": "module",
-  "scripts": { "start": "node server.mjs", "test": "node test/run.mjs" }
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "build:all": "node i18n/build-all.mjs",
+    "vertalen": "node i18n/translate.mjs"
+  },
+  "dependencies": {
+    "astro": "^4.16.0"
+  }
 }

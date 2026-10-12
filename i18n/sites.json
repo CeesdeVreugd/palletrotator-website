@@ -1,0 +1,8 @@
+{
+  "nl": { "origin": "https://www.palletrotator.nl", "locale": "nl_NL", "label": "NL", "name": "Nederlands", "email": "info@palletrotator.nl" },
+  "de": { "origin": "https://www.palletrotator.de", "locale": "de_DE", "label": "DE", "name": "Deutsch", "email": "info@palletrotator.de", "deepl": "DE", "formality": true },
+  "en": { "origin": "https://www.palletrotator.eu", "locale": "en_GB", "label": "EN", "name": "English", "email": "info@palletrotator.eu", "deepl": "EN-GB", "formality": false },
+  "fr": { "origin": "https://www.palletrotator.fr", "locale": "fr_FR", "label": "FR", "name": "Français", "email": "info@palletrotator.fr", "deepl": "FR", "formality": true },
+  "it": { "origin": "https://www.palletrotator.it", "locale": "it_IT", "label": "IT", "name": "Italiano", "email": "info@palletrotator.it", "deepl": "IT", "formality": true },
+  "es": { "origin": "https://www.palletrotator.es", "locale": "es_ES", "label": "ES", "name": "Español", "email": "info@palletrotator.es", "deepl": "ES", "formality": true }
+}

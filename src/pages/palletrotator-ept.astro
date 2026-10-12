@@ -1,0 +1,109 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PhotoSequence from '../components/PhotoSequence.astro';
+import YouTubeEmbed from '../components/YouTubeEmbed.astro';
+import VersionSwitch from '../components/VersionSwitch.astro';
+import { eptSteps } from '../data/fotoreeks';
+
+const title = 'PalletRotator EPT — Palletkantelaar voor palletwagen & elektrische pompwagen';
+const description = 'De PalletRotator EPT is dé palletkantelaar voor belading zonder heftruck: geschikt voor een handpalletwagen of elektrische pompwagen (EPT). Laadcapaciteit 1600 kg, CE-gecertificeerd.';
+
+---
+<BaseLayout title={title} description={description} path="/palletrotator-ept/">
+  <section class="dark-band title-band">
+    <img class="title-shape" src="/images/logo-mark-shape.png" alt="" aria-hidden="true" width="1000" height="766" />
+    <div class="wrap title-inner">
+      <nav class="breadcrumb"><a href="/">Home</a> <span>/</span> <span class="current">PalletRotator EPT</span></nav>
+      <span class="eyebrow">Laagdrempelig beladen</span>
+      <h1>PalletRotator EPT — palletkantelaar zonder heftruck</h1>
+      <p>De PalletRotator EPT is speciaal ontwikkeld voor magazijnen zonder heftruck: beladen met een handpalletwagen of elektrische pompwagen (EPT), even snel en veilig als de standaard uitvoering.</p>
+    </div>
+  </section>
+
+  <VersionSwitch current="ept" />
+
+  <section class="section">
+    <div class="wrap intro-grid">
+      <div class="product-media">
+        <PhotoSequence steps={eptSteps} label="PalletRotator EPT in gebruik, stap voor stap" />
+      </div>
+      <div class="intro-copy">
+        <p>Wilt u de palletkantelaar beladen met een elektrische pallettruck (EPT) of handpalletwagen? Dan is de PalletRotator EPT hiervoor speciaal ontwikkeld. Dankzij het lage klembord met oprit rijdt u eenvoudig naar binnen, zonder heftruck of reachtruck nodig te hebben.</p>
+        <p>De PalletRotator EPT werkt in de basis hetzelfde als de standaard uitvoering: de complete palletlading wordt geklemd en geroteerd, waarna u de pallet eenvoudig wisselt.</p>
+        <ul class="check-list">
+          <li>Laadcapaciteit tot 1600 kg</li>
+          <li>Beladen met palletwagen of elektrische pompwagen</li>
+          <li>Laag klembord (130 mm) met oprit</li>
+          <li>Klembereik 1250–2500 mm</li>
+          <li>Geleverd met EG-verklaring (CE-certificaat)</li>
+          <li>Ook leverbaar in volledig RVS-uitvoering</li>
+        </ul>
+        <div class="hero-actions">
+          <a href="/offerte-aanvragen/" class="btn btn-primary">Offerte aanvragen</a>
+          <a href="/specificaties/" class="btn btn-outline">Vergelijk met standaard uitvoering</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="wrap video-wrap">
+      <div class="section-head">
+        <span class="eyebrow">Zie hem in actie</span>
+        <h2>PalletRotator K13 EPT in beeld</h2>
+        <p class="section-sub">Bekijk hoe de palletkantelaar met oprit een pallet van 1.600 kg klemt, kantelt en wisselt.</p>
+      </div>
+      <div class="video-box">
+        <YouTubeEmbed id="Hmex1aMoLbM" title="PalletRotator K13 | Palletkantelaar 1.600 KG | De Vreugd" poster="/images/foto/palletrotator-k13-ept-machine-1600.webp" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Wel een heftruck aanwezig?</span>
+        <h2>Bekijk de standaard PalletRotator</h2>
+        <p class="section-sub">De standaard uitvoering heeft een hogere laadcapaciteit (2000 kg) en wordt beladen met heftruck, reachtruck of stapelaar.</p>
+      </div>
+      <div style="text-align:center;">
+        <a href="/palletrotator/" class="btn btn-primary">Naar PalletRotator (Standaard)</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="wrap cta-inner">
+      <div>
+        <h2 style="color:#fff;">Interesse in de PalletRotator EPT?</h2>
+        <p style="color:#E3EEFF;">Vraag een vrijblijvende offerte aan of download de brochure met alle technische specificaties.</p>
+      </div>
+      <div style="display:flex; gap:14px;">
+        <a href="/offerte-aanvragen/" class="btn" style="background:var(--navy); border-color:var(--navy); color:#fff;">Offerte aanvragen</a>
+        <a href="/brochure/" class="btn btn-on-dark">Brochure downloaden</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .intro-grid { display: flex; gap: 64px; align-items: flex-start; }
+  .product-media { flex: 0 0 440px; height: 360px; }
+  .intro-copy { flex: 1 1 0; display: flex; flex-direction: column; gap: 20px; }
+  .check-list { display: flex; flex-direction: column; gap: 10px; margin: 4px 0; }
+  .check-list li { position: relative; padding-left: 26px; font-size: 14.5px; color: var(--gray); }
+  .check-list li::before {
+    content: "";
+    position: absolute; left: 0; top: 6px;
+    width: 16px; height: 16px;
+    background: var(--blue);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E") center/contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E") center/contain no-repeat;
+  }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 6px; }
+  @media (max-width: 980px) {
+    .intro-grid { flex-direction: column; }
+    .product-media { width: 100%; }
+  }
+  .video-box { max-width: 880px; margin: 0 auto; }
+</style>

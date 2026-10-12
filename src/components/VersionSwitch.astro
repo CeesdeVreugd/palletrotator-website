@@ -1,0 +1,33 @@
+---
+interface Props { current: 'standaard' | 'ept'; }
+const { current } = Astro.props;
+---
+<nav class="version-switch" aria-label="Kies uitvoering">
+  <div class="wrap vs-inner">
+    <span class="vs-label">Twee uitvoeringen</span>
+    <a href="/palletrotator/" class={`vs-tab${current === 'standaard' ? ' on' : ''}`} aria-current={current === 'standaard' ? 'page' : undefined}>
+      <strong>Standaard</strong><small>K11 · 2000 kg · heftruck</small>
+    </a>
+    <a href="/palletrotator-ept/" class={`vs-tab${current === 'ept' ? ' on' : ''}`} aria-current={current === 'ept' ? 'page' : undefined}>
+      <strong>EPT</strong><small>K13 · 1600 kg · palletwagen</small>
+    </a>
+    <a href="/specificaties/" class="vs-compare">Vergelijk specificaties →</a>
+  </div>
+</nav>
+
+<style>
+  .version-switch { background: #fff; border-bottom: 1px solid var(--border-2, #E3E7F5); }
+  .vs-inner { display: flex; align-items: center; gap: 12px; padding-top: 12px; padding-bottom: 12px; flex-wrap: wrap; }
+  .vs-label { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--blue); margin-right: 6px; }
+  .vs-tab {
+    display: flex; flex-direction: column; padding: 8px 18px; border-radius: 12px; border: 1.5px solid #C9CEE6;
+    color: var(--navy); line-height: 1.2; transition: border-color .2s, background .2s;
+  }
+  .vs-tab strong { font-size: 15px; }
+  .vs-tab small { font-size: 12px; color: #5b6480; }
+  .vs-tab:hover { border-color: var(--blue); }
+  .vs-tab.on { background: var(--navy); border-color: var(--navy); color: #fff; }
+  .vs-tab.on small { color: #C9D2FF; }
+  .vs-compare { margin-left: auto; font-size: 14px; font-weight: 600; color: var(--blue); }
+  @media (max-width: 700px) { .vs-compare { margin-left: 0; } .vs-label { width: 100%; } }
+</style>
