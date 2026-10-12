@@ -15,6 +15,11 @@ services:
     restart: unless-stopped
     networks:
       - npm_default
+    volumes:
+      # Foto's die via de WebsiteBeheerPortal zijn vervangen (alleen-lezen; het portaal schrijft erin).
+      - portal-media:/usr/share/nginx/media:ro
+      # Hier meldt deze website zich aan bij de WebsiteBeheerPortal (koppelbestand).
+      - portal-bridge:/bridge
     # Geen "ports:" nodig - Nginx Proxy Manager bereikt deze container
     # via het interne npm_default-netwerk op containerpoort 80.
 
@@ -44,6 +49,14 @@ services:
       MAIL_FROM: ${MAIL_FROM:-info@palletrotator.nl}
       MAIL_TO: ${MAIL_TO:-sales@devreugd-pt.nl}
     # Geen "ports:" - alleen bereikbaar via palletrotator-website (nginx /api/).
+
+# Koppeling met de WebsiteBeheerPortal (aparte stack, zie de map/repo "WebsiteBeheerPortal"). Deze volumes zijn gedeeld met die
+# stack: bij beide stacks staat dezelfde 'name:'. Het portaal hoeft niet te draaien voor deze website.
+volumes:
+  portal-media:
+    name: portal-media
+  portal-bridge:
+    name: portal-bridge
 
 networks:
   npm_default:

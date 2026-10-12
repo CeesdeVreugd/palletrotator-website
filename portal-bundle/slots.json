@@ -1,0 +1,278 @@
+[
+  {
+    "id": "k11-machine",
+    "site": "palletrotator",
+    "dir": "foto",
+    "base": "palletrotator-k11-machine",
+    "label": "K11 standaard · De machine",
+    "usage": "Fotoreeks Standaard (stap 1), o.a. homepage-hero en keuzekaart",
+    "aspect": "3:2",
+    "sizes": [
+      1600,
+      800
+    ],
+    "dims": {
+      "1600": [
+        1600,
+        1067
+      ],
+      "800": [
+        800,
+        533
+      ]
+    }
+  },
+  {
+    "id": "k11-heftruck",
+    "site": "palletrotator",
+    "dir": "foto",
+    "base": "palletrotator-k11-heftruck",
+    "label": "K11 standaard · Aanrijden",
+    "usage": "Fotoreeks Standaard (stap 2)",
+    "aspect": "3:2",
+    "sizes": [
+      1600,
+      800
+    ],
+    "dims": {
+      "1600": [
+        1600,
+        1067
+      ],
+      "800": [
+        800,
+        533
+      ]
+    }
+  },
+  {
+    "id": "k11-pallet-in-machine",
+    "site": "palletrotator",
+    "dir": "foto",
+    "base": "palletrotator-k11-pallet-in-machine",
+    "label": "K11 standaard · Klemmen",
+    "usage": "Fotoreeks Standaard (stap 3)",
+    "aspect": "3:2",
+    "sizes": [
+      1600,
+      800
+    ],
+    "dims": {
+      "1600": [
+        1600,
+        1067
+      ],
+      "800": [
+        800,
+        533
+      ]
+    }
+  },
+  {
+    "id": "k11-kantelen",
+    "site": "palletrotator",
+    "dir": "foto",
+    "base": "palletrotator-k11-kantelen",
+    "label": "K11 standaard · Kantelen en wisselen",
+    "usage": "Fotoreeks Standaard (stap 4)",
+    "aspect": "3:2",
+    "sizes": [
+      1600,
+      800
+    ],
+    "dims": {
+      "1600": [
+        1600,
+        1067
+      ],
+      "800": [
+        800,
+        533
+      ]
+    }
+  },
+  {
+    "id": "k13-ept-machine",
+    "site": "palletrotator",
+    "dir": "foto",
+    "base": "palletrotator-k13-ept-machine",
+    "label": "K13 EPT · De machine",
+    "usage": "Fotoreeks EPT (stap 1), o.a. keuzekaart",
+    "aspect": "3:2",
+    "sizes": [
+      1600,
+      800
+    ],
+    "dims": {
+      "1600": [
+        1600,
+        1067
+      ],
+      "800": [
+        800,
+        533
+      ]
+    }
+  },
+  {
+    "id": "k13-ept-oprijden",
+    "site": "palletrotator",
+    "dir": "foto",
+    "base": "palletrotator-k13-ept-oprijden",
+    "label": "K13 EPT · Oprijden",
+    "usage": "Fotoreeks EPT (stap 2)",
+    "aspect": "3:2",
+    "sizes": [
+      1600,
+      800
+    ],
+    "dims": {
+      "1600": [
+        1600,
+        1067
+      ],
+      "800": [
+        800,
+        533
+      ]
+    }
+  },
+  {
+    "id": "k13-ept-pallet-in-machine",
+    "site": "palletrotator",
+    "dir": "foto",
+    "base": "palletrotator-k13-ept-pallet-in-machine",
+    "label": "K13 EPT · Klemmen",
+    "usage": "Fotoreeks EPT (stap 3)",
+    "aspect": "3:2",
+    "sizes": [
+      1600,
+      800
+    ],
+    "dims": {
+      "1600": [
+        1600,
+        1067
+      ],
+      "800": [
+        800,
+        533
+      ]
+    }
+  },
+  {
+    "id": "k13-ept-gekanteld",
+    "site": "palletrotator",
+    "dir": "foto",
+    "base": "palletrotator-k13-ept-gekanteld",
+    "label": "K13 EPT · Kantelen en wisselen",
+    "usage": "Fotoreeks EPT (stap 4)",
+    "aspect": "3:2",
+    "sizes": [
+      1600,
+      800
+    ],
+    "dims": {
+      "1600": [
+        1600,
+        1067
+      ],
+      "800": [
+        800,
+        533
+      ]
+    }
+  },
+  {
+    "id": "vrieshuis",
+    "site": "palletrotator",
+    "dir": "foto",
+    "base": "palletrotator-vrieshuis",
+    "label": "Vrieshuis-uitvoering",
+    "usage": "Foto op de pagina Vrieshuis-uitvoering (nu nog een placeholder tot hier een foto is goedgekeurd)",
+    "aspect": "3:2",
+    "sizes": [
+      1600,
+      800
+    ],
+    "dims": {
+      "1600": [
+        1600,
+        1067
+      ],
+      "800": [
+        800,
+        533
+      ]
+    }
+  },
+  {
+    "id": "team-wim",
+    "site": "palletrotator",
+    "dir": "team",
+    "base": "wim-de-vreugd",
+    "label": "Portret Wim de Vreugd",
+    "usage": "Teamblok op de offertepagina (vierkant, wordt in 3:2 uitgesneden getoond)",
+    "aspect": "1:1",
+    "sizes": [
+      800,
+      400
+    ],
+    "dims": {
+      "400": [
+        400,
+        400
+      ],
+      "800": [
+        800,
+        800
+      ]
+    }
+  },
+  {
+    "id": "team-cees",
+    "site": "palletrotator",
+    "dir": "team",
+    "base": "cees-de-vreugd",
+    "label": "Portret Cees de Vreugd",
+    "usage": "Teamblok op de offertepagina (vierkant, wordt in 3:2 uitgesneden getoond)",
+    "aspect": "1:1",
+    "sizes": [
+      800,
+      400
+    ],
+    "dims": {
+      "400": [
+        400,
+        400
+      ],
+      "800": [
+        800,
+        800
+      ]
+    }
+  },
+  {
+    "id": "team-bert",
+    "site": "palletrotator",
+    "dir": "team",
+    "base": "bert-van-lankeren",
+    "label": "Portret Bert van Lankeren",
+    "usage": "Teamblok op de offertepagina (vierkant, wordt in 3:2 uitgesneden getoond)",
+    "aspect": "1:1",
+    "sizes": [
+      800,
+      400
+    ],
+    "dims": {
+      "400": [
+        400,
+        400
+      ],
+      "800": [
+        800,
+        800
+      ]
+    }
+  }
+]

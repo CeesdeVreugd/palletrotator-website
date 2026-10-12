@@ -13,6 +13,8 @@ COPY . .
 ARG STAGING_BASE=""
 ENV STAGING_BASE=$STAGING_BASE
 RUN npm run build:all
+# Koppelbestand voor de WebsiteBeheerPortal (manifest, nalezen-bestanden, originele foto's)
+RUN node portal-bundle/make.mjs /app/portal-bundle-out
 
 # --- Run stage: statische sites geserveerd door nginx (kiest de taal op basis van het domein) ----
 FROM nginx:1.27-alpine AS run
@@ -24,6 +26,15 @@ COPY --from=build /app/dist/en /usr/share/nginx/html/en
 COPY --from=build /app/dist/fr /usr/share/nginx/html/fr
 COPY --from=build /app/dist/it /usr/share/nginx/html/it
 COPY --from=build /app/dist/es /usr/share/nginx/html/es
+
+# Koppeling met de WebsiteBeheerPortal (aparte stack). Beide volumes zijn gedeeld met die stack:
+#  - portal-media  (alleen lezen): foto's die in het portaal zijn vervangen, in de map palletrotator/
+#  - portal-bridge (schrijven): hierin meldt deze website zich aan met haar koppelbestand
+# De mappen zijn beschrijfbaar gemaakt zodat de volumes ook goed starten als deze container ze als eerste aanmaakt.
+COPY --from=build /app/portal-bundle-out /portal-bundle
+COPY portal-bundle/45-portal-bundle.sh /docker-entrypoint.d/45-portal-bundle.sh
+RUN chmod +x /docker-entrypoint.d/45-portal-bundle.sh \
+ && mkdir -p /usr/share/nginx/media /bridge && chmod 777 /usr/share/nginx/media /bridge
 
 EXPOSE 80
 

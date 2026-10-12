@@ -319,3 +319,15 @@ Zoektermen die als uitgangspunt zijn gebruikt (glossarium in `i18n/glossary/<taa
 ## V24
 
 - Taalkiezer met vlaggen (NL, DE, EN = Britse vlag, FR, IT, ES) als inline SVG in `src/components/Flag.astro`; de vlag staat voor de taal, niet voor het domein. Op mobiel staat de taalkiezer in het menu.
+
+## V25/V26 — aansluiting op de WebsiteBeheerPortal
+De WebsiteBeheerPortal is een **losse stack** (eigen repository, map `WebsiteBeheerPortal-V1`). Deze website sluit er via twee gedeelde Docker-volumes met vaste namen op aan:
+- `portal-bridge` — bij het opstarten schrijft de website `/bridge/palletrotator/` (manifest.json met doelen, tekstentalen en 12 fotoplekken, plus `nalezen/`, `overrides/`, `baseline/`). Gebouwd door `portal-bundle/make.mjs`, gekopieerd door `portal-bundle/45-portal-bundle.sh`.
+- `portal-media` — hier zet het portaal goedgekeurde foto's. nginx serveert `/images/foto/` en `/images/team/` eerst vanaf dit volume (`/usr/share/nginx/media/palletrotator`, 5 min cache) en valt terug op de ingebouwde foto's.
+Zonder portaal werkt de site gewoon (volumes zijn dan leeg).
+
+**Vrieshuis-foto**: de pagina `vrieshuis-palletkantelaar` en de homepage tonen de foto `palletrotator-vrieshuis-{800,1600}.webp` zodra die bestaat; upload hem via het portaal (fotoplek "Vrieshuis"). Tot die tijd blijft de placeholder zichtbaar.
+
+Deploy: eerst deze stack opnieuw (maakt de volumes aan), daarna de portaalstack; de volgorde maakt niet uit.
+
+V26: alleen hernoeming — het portaal heet nu **WebsiteBeheerPortal** (stack/container `websitebeheerportal`, map `WebsiteBeheerPortal-V1`). Volumes `portal-bridge` en `portal-media` blijven ongewijzigd.
