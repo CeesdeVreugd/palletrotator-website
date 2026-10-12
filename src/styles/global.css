@@ -109,7 +109,8 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 /* Shared page-header ("title band") pattern used on every non-home page */
 .title-band { padding: 56px 0 52px; }
-.title-shape { position: absolute; top: -40px; right: -20px; opacity: 0.9; }
+.title-shape { position: absolute; top: 50%; right: -190px; transform: translateY(-50%); width: 720px; max-width: none; height: auto; opacity: 0.2; pointer-events: none; }
+@media (max-width: 700px) { .title-shape { width: 460px; right: -170px; opacity: 0.16; } }
 .title-inner { position: relative; }
 .breadcrumb { display: flex; gap: 8px; font-size: 13px; color: #9AA5D6; margin-bottom: 16px; }
 .breadcrumb a { color: #9AA5D6; }

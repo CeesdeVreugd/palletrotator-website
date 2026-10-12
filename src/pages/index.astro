@@ -37,10 +37,7 @@ const toepassingen = [
 
   <!-- HERO -->
   <section class="dark-band hero">
-    <svg class="hero-shape" width="620" height="720" viewBox="0 0 620 720" fill="none">
-      <path d="M60 60 L220 60 L400 420 L560 60 L620 60 L400 560 L280 560 Z" fill="#0080FF" fill-opacity="0.16"/>
-      <path d="M400 420 L560 60 L620 60 L440 460 Z" fill="#0080FF" fill-opacity="0.28"/>
-    </svg>
+    <img class="hero-shape" src="/images/logo-mark-shape.png" alt="" aria-hidden="true" width="1000" height="766" />
     <div class="wrap hero-inner">
       <div class="hero-copy">
         <span class="eyebrow">Palletkantelaar · Palletwisselaar</span>
@@ -157,9 +154,7 @@ const toepassingen = [
 
   <!-- VRIESHUIS -->
   <section class="dark-band vrieshuis">
-    <svg class="vrieshuis-shape" width="520" height="620" viewBox="0 0 520 620" fill="none">
-      <path d="M40 40 L180 40 L340 380 L480 40 L520 40 L340 480 L240 480 Z" fill="#0080FF" fill-opacity="0.14"/>
-    </svg>
+    <img class="vrieshuis-shape" src="/images/logo-mark-shape.png" alt="" aria-hidden="true" width="1000" height="766" />
     <div class="wrap vrieshuis-inner">
       <div class="media-placeholder vrieshuis-media">
         <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#0080FF" stroke-width="1.5"><path d="M12 2v20M2 12h20M5 5l14 14M19 5L5 19"/></svg>
@@ -217,7 +212,7 @@ const toepassingen = [
 
 <style>
   .hero { padding: 96px 0 110px; }
-  .hero-shape { position: absolute; top: 0; right: -40px; height: 100%; opacity: 0.9; }
+  .hero-shape { position: absolute; top: 50%; right: -330px; transform: translateY(-50%); width: 1180px; max-width: none; height: auto; opacity: 0.2; pointer-events: none; }
   .hero-inner { display: flex; gap: 64px; align-items: center; position: relative; }
   .hero-copy { flex: 1 1 0; display: flex; flex-direction: column; gap: 24px; max-width: 620px; }
   .hero h1 { font-size: 50px; line-height: 1.12; }
@@ -272,7 +267,7 @@ const toepassingen = [
   .compare-body .btn { margin-top: 8px; }
 
   .vrieshuis { padding: 96px 0; }
-  .vrieshuis-shape { position: absolute; top: 0; left: -60px; height: 100%; opacity: 0.9; }
+  .vrieshuis-shape { position: absolute; top: 50%; left: -300px; transform: translateY(-50%) scaleX(-1); width: 960px; max-width: none; height: auto; opacity: 0.16; pointer-events: none; }
   .vrieshuis-inner { display: flex; gap: 60px; align-items: center; position: relative; }
   .vrieshuis-media { flex: 0 0 360px; height: 300px; }
   .vrieshuis-copy { flex: 1 1 0; display: flex; flex-direction: column; gap: 20px; max-width: 560px; }
