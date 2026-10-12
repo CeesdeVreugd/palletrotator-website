@@ -1,0 +1,90 @@
+---
+interface Step {
+  /** pad zonder suffix en extensie, bv. /images/foto/palletrotator-k13-ept-oprijden */
+  base: string;
+  title: string;
+  caption: string;
+  alt: string;
+}
+interface Props { steps: Step[]; label?: string; }
+const { steps, label = 'Fotoreeks' } = Astro.props;
+---
+<div class="photo-seq" role="region" aria-roledescription="carrousel" aria-label={label}>
+  <div class="seq-track" tabindex="0">
+    {steps.map((s, i) => (
+      <figure class="seq-slide" aria-label={`Stap ${i + 1} van ${steps.length}`}>
+        <img
+          src={`${s.base}-1600.webp`}
+          srcset={`${s.base}-800.webp 800w, ${s.base}-1600.webp 1600w`}
+          sizes="(max-width: 980px) 100vw, 560px"
+          width="1600" height="1067"
+          alt={s.alt}
+          loading={i === 0 ? 'eager' : 'lazy'}
+          decoding="async"
+        />
+        <figcaption><span class="seq-num">{i + 1}</span><strong>{s.title}</strong> {s.caption}</figcaption>
+      </figure>
+    ))}
+  </div>
+  <div class="seq-nav">
+    <button type="button" class="seq-btn" data-dir="-1" aria-label="Vorige foto">‹</button>
+    <div class="seq-dots">
+      {steps.map((s, i) => <button type="button" class={`seq-dot${i === 0 ? ' on' : ''}`} data-i={i} aria-label={`Ga naar stap ${i + 1}: ${s.title}`}></button>)}
+    </div>
+    <button type="button" class="seq-btn" data-dir="1" aria-label="Volgende foto">›</button>
+  </div>
+</div>
+
+<style>
+  .photo-seq { width: 100%; }
+  .seq-track {
+    display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
+    scrollbar-width: none; border-radius: 20px; background: #EEF1FB;
+    scroll-behavior: smooth;
+  }
+  .seq-track::-webkit-scrollbar { display: none; }
+  .seq-track:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+  .seq-slide { flex: 0 0 100%; scroll-snap-align: start; margin: 0; position: relative; }
+  .seq-slide img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
+  .seq-slide figcaption {
+    position: absolute; left: 12px; right: 12px; bottom: 12px;
+    background: rgba(10, 10, 150, 0.88); color: #fff;
+    padding: 10px 14px; border-radius: 12px; font-size: 14.5px; line-height: 1.4;
+  }
+  .seq-slide figcaption strong { margin-right: 6px; }
+  .seq-num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 22px; height: 22px; border-radius: 50%; background: #fff; color: var(--navy);
+    font-weight: 700; font-size: 12.5px; margin-right: 8px;
+  }
+  .seq-nav { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 12px; }
+  .seq-btn {
+    width: 38px; height: 38px; border-radius: 50%; border: 1px solid #C9D2EE; background: #fff;
+    color: var(--navy); font-size: 22px; line-height: 1; cursor: pointer;
+  }
+  .seq-btn:hover { background: var(--navy); color: #fff; }
+  .seq-dots { display: flex; gap: 8px; }
+  .seq-dot { width: 10px; height: 10px; border-radius: 50%; border: 0; background: #C9D2EE; cursor: pointer; padding: 0; }
+  .seq-dot.on { background: var(--blue); }
+  @media (prefers-reduced-motion: reduce) { .seq-track { scroll-behavior: auto; } }
+</style>
+
+<script>
+  function initPhotoSeq() {
+    document.querySelectorAll<HTMLElement>('.photo-seq').forEach((root) => {
+      const track = root.querySelector<HTMLElement>('.seq-track')!;
+      const dots = Array.from(root.querySelectorAll<HTMLElement>('.seq-dot'));
+      const count = dots.length;
+      const index = () => Math.round(track.scrollLeft / track.clientWidth);
+      const go = (i: number) => track.scrollTo({ left: Math.max(0, Math.min(count - 1, i)) * track.clientWidth });
+      track.addEventListener('scroll', () => {
+        const i = index();
+        dots.forEach((d, n) => d.classList.toggle('on', n === i));
+      }, { passive: true });
+      root.querySelectorAll<HTMLElement>('.seq-btn').forEach((b) =>
+        b.addEventListener('click', () => go(index() + Number(b.dataset.dir))));
+      dots.forEach((d) => d.addEventListener('click', () => go(Number(d.dataset.i))));
+    });
+  }
+  initPhotoSeq();
+</script>

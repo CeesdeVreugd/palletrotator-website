@@ -1,0 +1,70 @@
+---
+interface Props {
+  id: string;
+  title: string;
+  /** eigen posterfoto (geen verbinding met Google vóór de klik) */
+  poster: string;
+  description?: string;
+  /** ISO-datum, bv. 2025-03-14. Zonder datum wordt geen VideoObject-schema geplaatst. */
+  uploadDate?: string;
+}
+const { id, title, poster, description = title, uploadDate } = Astro.props;
+const watchUrl = `https://www.youtube.com/watch?v=${id}`;
+const schema = uploadDate ? {
+  '@context': 'https://schema.org',
+  '@type': 'VideoObject',
+  name: title,
+  description,
+  thumbnailUrl: new URL(poster, 'https://www.palletrotator.nl').toString(),
+  uploadDate,
+  embedUrl: `https://www.youtube-nocookie.com/embed/${id}`,
+  contentUrl: watchUrl,
+} : null;
+---
+{schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
+<div class="yt-embed" data-yt={id} data-title={title}>
+  <button type="button" class="yt-play" aria-label={`Video afspelen: ${title}`}>
+    <img src={poster} alt="" loading="lazy" decoding="async" width="1600" height="900" />
+    <span class="yt-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="30" height="30"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+    </span>
+    <span class="yt-label">{title}</span>
+  </button>
+  <p class="yt-note">Door op afspelen te klikken laadt de video van YouTube (privacyvriendelijke modus). <a href={watchUrl} rel="noopener" target="_blank">Bekijk op YouTube</a></p>
+</div>
+
+<style>
+  .yt-embed { width: 100%; }
+  .yt-play {
+    position: relative; display: block; width: 100%; aspect-ratio: 16 / 9; padding: 0; border: 0;
+    border-radius: 20px; overflow: hidden; cursor: pointer; background: #0A0A96;
+  }
+  .yt-play img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s ease; }
+  .yt-play:hover img { transform: scale(1.03); }
+  .yt-play::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,10,150,0) 45%, rgba(10,10,150,.75)); }
+  .yt-icon {
+    position: absolute; z-index: 2; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    width: 76px; height: 76px; border-radius: 50%; background: var(--blue); color: #fff;
+    display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 28px rgba(0,0,0,.35);
+  }
+  .yt-label { position: absolute; z-index: 2; left: 18px; right: 18px; bottom: 14px; color: #fff; font-weight: 600; text-align: left; }
+  .yt-play:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+  .yt-note { font-size: 12.5px; color: #5b6480; margin: 8px 2px 0; }
+  .yt-embed iframe { width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 20px; display: block; }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.yt-embed').forEach((box) => {
+    const btn = box.querySelector<HTMLButtonElement>('.yt-play');
+    btn?.addEventListener('click', () => {
+      const f = document.createElement('iframe');
+      f.src = `https://www.youtube-nocookie.com/embed/${box.dataset.yt}?autoplay=1&rel=0`;
+      f.title = box.dataset.title || 'Video';
+      f.allow = 'accelerometer; autoplay; encrypted-media; picture-in-picture; fullscreen';
+      f.allowFullscreen = true;
+      f.referrerPolicy = 'strict-origin-when-cross-origin';
+      btn.replaceWith(f);
+      box.querySelector('.yt-note')?.remove();
+    });
+  });
+</script>

@@ -1,11 +1,17 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ProductAnimation from '../components/ProductAnimation.astro';
+import PhotoSequence from '../components/PhotoSequence.astro';
+import YouTubeEmbed from '../components/YouTubeEmbed.astro';
 
 const title = 'PalletRotator EPT — Palletkantelaar voor palletwagen & elektrische pompwagen';
 const description = 'De PalletRotator EPT is dé palletkantelaar voor belading zonder heftruck: geschikt voor een handpalletwagen of elektrische pompwagen (EPT). Laadcapaciteit 1600 kg, CE-gecertificeerd.';
 
-const eptFrames = Array.from({ length: 6 }, (_, i) => `/images/animation/k13-ept/frame-${String(i + 1).padStart(2, '0')}.jpg`);
+const eptSteps = [
+  { base: '/images/foto/palletrotator-k13-ept-machine', title: 'De machine', caption: 'PalletRotator K13 EPT met lage oprit en veiligheidshekwerk.', alt: 'PalletRotator K13 EPT palletkantelaar met oprit en hekwerk in een koelhuis' },
+  { base: '/images/foto/palletrotator-k13-ept-oprijden', title: 'Oprijden', caption: 'Rijd de pallet met een elektrische pompwagen de oprit op.', alt: 'Medewerker rijdt met elektrische pompwagen en pallet de oprit van de PalletRotator EPT op' },
+  { base: '/images/foto/palletrotator-k13-ept-pallet-in-machine', title: 'Klemmen', caption: 'De complete palletlading staat in de machine en wordt vastgeklemd.', alt: 'Pallet staat in de PalletRotator EPT klaar om geklemd en gekanteld te worden' },
+  { base: '/images/foto/palletrotator-k13-ept-gekanteld', title: 'Kantelen en wisselen', caption: 'Bediening met twee knoppen: de pallet kantelt en kan worden gewisseld.', alt: 'PalletRotator EPT met gekantelde pallet en operator bij het bedieningspaneel' },
+];
 ---
 <BaseLayout title={title} description={description} path="/palletrotator-ept/">
   <section class="dark-band title-band">
@@ -23,7 +29,7 @@ const eptFrames = Array.from({ length: 6 }, (_, i) => `/images/animation/k13-ept
   <section class="section">
     <div class="wrap intro-grid">
       <div class="product-media">
-        <ProductAnimation frames={eptFrames} alt="PalletRotator EPT met oprit voor palletwagen of elektrische pompwagen" interval={1300} />
+        <PhotoSequence steps={eptSteps} label="PalletRotator EPT in gebruik, stap voor stap" />
       </div>
       <div class="intro-copy">
         <p>Wilt u de palletkantelaar beladen met een elektrische pallettruck (EPT) of handpalletwagen? Dan is de PalletRotator EPT hiervoor speciaal ontwikkeld. Dankzij het lage klembord met oprit rijdt u eenvoudig naar binnen, zonder heftruck of reachtruck nodig te hebben.</p>
@@ -34,11 +40,25 @@ const eptFrames = Array.from({ length: 6 }, (_, i) => `/images/animation/k13-ept
           <li>Laag klembord (60 mm) met oprit</li>
           <li>Klembereik 1310–2500 mm</li>
           <li>Geleverd met EG-verklaring (CE-certificaat)</li>
+          <li>Ook leverbaar in volledig RVS-uitvoering</li>
         </ul>
         <div class="hero-actions">
           <a href="/offerte-aanvragen/" class="btn btn-primary">Offerte aanvragen</a>
           <a href="/specificaties/" class="btn btn-outline">Vergelijk met standaard uitvoering</a>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="wrap video-wrap">
+      <div class="section-head">
+        <span class="eyebrow">Zie hem in actie</span>
+        <h2>PalletRotator K13 EPT in beeld</h2>
+        <p class="section-sub">Bekijk hoe de palletkantelaar met oprit een pallet van 1.600 kg klemt, kantelt en wisselt.</p>
+      </div>
+      <div class="video-box">
+        <YouTubeEmbed id="Hmex1aMoLbM" title="PalletRotator K13 | Palletkantelaar 1.600 KG | De Vreugd" poster="/images/foto/palletrotator-k13-ept-machine-1600.webp" />
       </div>
     </div>
   </section>
@@ -89,4 +109,5 @@ const eptFrames = Array.from({ length: 6 }, (_, i) => `/images/animation/k13-ept
     .intro-grid { flex-direction: column; }
     .product-media { width: 100%; }
   }
+  .video-box { max-width: 880px; margin: 0 auto; }
 </style>

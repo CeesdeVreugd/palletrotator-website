@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProductAnimation from '../components/ProductAnimation.astro';
+import YouTubeEmbed from '../components/YouTubeEmbed.astro';
 
 const title = 'PalletRotator (Standaard) — Palletkantelaar voor heftruck & reachtruck';
 const description = 'De standaard PalletRotator palletkantelaar: 2000 kg laadcapaciteit, te beladen met heftruck, reachtruck of elektrische stapelaar. CE-gecertificeerd, optioneel geschikt voor vrieshuis.';
@@ -34,11 +35,25 @@ const stdFrames = Array.from({ length: 6 }, (_, i) => `/images/animation/k11-std
           <li>Rotatietijd van 180° in circa 11 seconden</li>
           <li>Geleverd met EG-verklaring (CE-certificaat)</li>
           <li>Optioneel geschikt voor vrieshuis</li>
+          <li>Ook leverbaar in volledig RVS-uitvoering</li>
         </ul>
         <div class="hero-actions">
           <a href="/offerte-aanvragen/" class="btn btn-primary">Offerte aanvragen</a>
           <a href="/specificaties/" class="btn btn-outline">Vergelijk met EPT-uitvoering</a>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="wrap video-wrap">
+      <div class="section-head">
+        <span class="eyebrow">Zie hem in actie</span>
+        <h2>PalletRotator K11 in beeld</h2>
+        <p class="section-sub">Bekijk hoe de palletkantelaar een pallet van 2.000 kg klemt, kantelt en wisselt.</p>
+      </div>
+      <div class="video-box">
+        <YouTubeEmbed id="BkoX3jLHnlA" title="PalletRotator K11 | Palletkantelaar 2.000 KG | De Vreugd" poster="/images/animation/k11-std/frame-01.jpg" />
       </div>
     </div>
   </section>
@@ -89,4 +104,5 @@ const stdFrames = Array.from({ length: 6 }, (_, i) => `/images/animation/k11-std
     .intro-grid { flex-direction: column; }
     .product-media { width: 100%; }
   }
+  .video-box { max-width: 880px; margin: 0 auto; }
 </style>
