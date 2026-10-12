@@ -6,7 +6,11 @@
 
 services:
   palletrotator-website:
-    build: .
+    build:
+      context: .
+      args:
+        # Leeg laten voor productie. Voor testen: STAGING_BASE=palletrotator.devreugd-pt.nl (zie README).
+        STAGING_BASE: ${STAGING_BASE:-}
     container_name: palletrotator-website
     restart: unless-stopped
     networks:
@@ -25,6 +29,12 @@ services:
       # NOOIT de sleutel in de repo zetten.
       LAPOSTA_API_KEY: ${LAPOSTA_API_KEY}
       LAPOSTA_LIST_ID: ${LAPOSTA_LIST_ID:-b12sde1bbp}
+      # Optioneel: eigen Laposta-lijst per taal (voor de bevestigingsmail in die taal). Leeg = standaardlijst.
+      LAPOSTA_LIST_ID_DE: ${LAPOSTA_LIST_ID_DE:-}
+      LAPOSTA_LIST_ID_EN: ${LAPOSTA_LIST_ID_EN:-}
+      LAPOSTA_LIST_ID_FR: ${LAPOSTA_LIST_ID_FR:-}
+      LAPOSTA_LIST_ID_IT: ${LAPOSTA_LIST_ID_IT:-}
+      LAPOSTA_LIST_ID_ES: ${LAPOSTA_LIST_ID_ES:-}
       # Offerte-aanvragen worden per e-mail (SMTP) verstuurd. Zet deze als Portainer-variabelen.
       SMTP_HOST: ${SMTP_HOST}
       SMTP_PORT: ${SMTP_PORT:-587}

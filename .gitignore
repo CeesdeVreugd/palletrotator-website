@@ -3,3 +3,4 @@ dist
 .astro
 .DS_Store
 npm-debug.log*
+i18n/glossary/*.id.json

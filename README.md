@@ -250,3 +250,60 @@ docker run --rm -p 8080:80 palletrotator-website
 ## V21 — opgemaakte aanvraagmail
 
 - De offertemail is een HTML-mail (navy kop, contactgegevens, aanvraag, opmerking, knoppen "Beantwoorden" en "Bel") met platte-tekst-versie als terugval. Opmaak in `forms-service/mail-template.mjs` (tabellen en inline CSS, werkt in Outlook/Gmail/Apple Mail; geen externe afbeeldingen). Alle invoer wordt ge-escaped.
+
+## V22 — zes talen (NL, DE, EN, FR, IT, ES)
+
+### Hoe het werkt
+
+- **Eén broncode, één container, meerdere domeinen.** De Dockerfile bouwt de site zes keer (`SITE_LANG=nl|de|en|fr|it|es`) en vertaalt de niet-Nederlandse versies met het vertaalgeheugen. Nginx kiest de taal op basis van het domein (`map $host $site` in `nginx.conf`). Eén stack, één rollout in Portainer. De formulier-service blijft één container voor alle talen.
+- **Vertaling**: `i18n/translate.mjs` haalt alle Nederlandse teksten uit de gebouwde site, vertaalt ze met DeepL (glossarium per taal, "PalletRotator" en "EPT" blijven staan) en bewaart ze in `i18n/memory/<taal>.json`. Bestaande vertalingen worden nooit overschreven. `i18n/localize.mjs` past het geheugen bij elke build toe, zet de taalspecifieke URL's (`i18n/slugs.json`), de sitemap met hreflang en de contactadressen (`i18n/sites.json`).
+- **Handgeschreven SEO-teksten (Duits)**: titels en meta-beschrijvingen van alle pagina's en de functietitels van het team staan in `i18n/overrides/de.json` en gaan voor op DeepL.
+- Ontbreekt een vertaling, dan blijft die tekst Nederlands en toont de build een waarschuwing (`[i18n] de: 410/412 segmenten vertaald, 2 ontbreken`). Met `I18N_STRICT=1` faalt de build in dat geval.
+
+### Domeinen en Nginx Proxy Manager
+
+| Taal | Domein (productie) | Pad-voorbeeld |
+|---|---|---|
+| NL | www.palletrotator.nl | /palletrotator/ |
+| DE | www.palletrotator.de | /palettenwender/ |
+| EN | www.palletrotator.eu | /pallet-inverter/ |
+| FR | www.palletrotator.fr | /retourneur-de-palettes/ |
+| IT | www.palletrotator.it | /ribaltatore-di-pallet/ |
+| ES | www.palletrotator.es | /volteador-de-palets/ |
+
+Welk domein bij welke taal hoort staat in `i18n/sites.json` (en in `nginx.conf` en `forms-service/texts.mjs`; houd die drie gelijk). EN staat op `.eu` (Brits Engels); `.co.uk` verwijst door.
+
+**Proxy Hosts** (NPM, per taal één): Domain Names = `palletrotator.<tld>` en `www.palletrotator.<tld>`, Scheme `http`, Forward Hostname `palletrotator-website`, Port `80`, SSL: eigen Let's Encrypt-certificaat + Force SSL. Alle talen wijzen naar dezelfde container.
+
+**Redirection Hosts** (zonder container, 301, "Preserve Path" uit): `.at` en `.ch` naar https://www.palletrotator.de, `.be` naar https://www.palletrotator.nl, `.co.uk` naar https://www.palletrotator.eu. Apex zonder www naar www.
+
+**DNS**: laat alle domeinen (A-record, en www) naar hetzelfde IP wijzen als palletrotator.nl.
+
+### Testen op subdomeinen (voordat de domeinen live gaan)
+
+Zet in de Portainer-stack de variabele `STAGING_BASE=palletrotator.devreugd-pt.nl` en maak in NPM Proxy Hosts voor `de.palletrotator.devreugd-pt.nl`, `en.…`, `fr.…`, `it.…`, `es.…` (zelfde bestemming). De taalkiezer wijst dan naar die subdomeinen. Voor productie de variabele leeg laten. Canonical- en hreflang-tags wijzen altijd naar de productiedomeinen.
+
+### Vertalen: eerste keer en bij wijzigingen
+
+1. Pak de versie uit naast de map `PalletRotatorWebsite`, voer `Publiceren.cmd` uit (code in git; `i18n\memory` en `i18n\nalezen` in de root blijven behouden).
+2. Voer `Vertalen.cmd` uit. Vereist Node.js (LTS). De DeepL-sleutel wordt gevraagd en nergens opgeslagen. Het script bouwt de Nederlandse site, vertaalt wat nog ontbreekt, schrijft het geheugen en de nalezen-bestanden en pusht dat naar git. `Vertalen.cmd --lang de` doet één taal.
+3. Portainer: stack **Pull and redeploy**.
+4. Nederlandse tekst gewijzigd? Opnieuw `Publiceren.cmd` en `Vertalen.cmd`: alleen nieuwe of gewijzigde zinnen worden vertaald. `node i18n/translate.mjs --prune` ruimt verouderde regels op.
+
+### Nalezen door een native speaker
+
+`i18n\nalezen\<taal>.csv` (UTF-8, puntkomma-gescheiden, opent in Excel): kolommen Pagina, Nederlands, de vertaling, Bron. Alleen de vertaalkolom aanpassen. Tekens als `{1}…{/1}` zijn opmaak (bijvoorbeeld een link of vet): laten staan, wel mag de plek in de zin verschuiven. Terugzetten: `Vertalen.cmd --import nalezen\de.csv --lang de`, daarna Pull and redeploy. Regels waarvan de `{n}`-tekens niet kloppen worden overgeslagen en gemeld.
+
+Zoektermen die als uitgangspunt zijn gebruikt (glossarium in `i18n/glossary/<taal>.tsv`): DE Palettenwender (alternatieven Palettenwechsler/Palettenkipper/Palettendreher), EN pallet inverter (pallet changer/exchanger), FR retourneur de palettes (basculeur/changeur de palettes), IT ribaltatore di pallet, ES volteador de palets. Alleen het Duits is uitgebreid onderzocht; laat de overige talen door een native speaker controleren.
+
+### E-mail, formulieren en Laposta
+
+- Formulieren sturen `taal` mee. Foutmeldingen, de bevestigingsmail aan de aanvrager (zonder vrije invoer, naam alleen als die er als naam uitziet) en de brochure-PDF volgen die taal. `CONFIRM_MAIL=false` zet de bevestiging uit.
+- Offertemail naar sales krijgt altijd Nederlands, met `[DE]` enzovoort in het onderwerp en de taal/site in de mail.
+- Antwoordadres in de bevestiging: info@palletrotator.de voor DE, info@palletrotator.nl voor de rest (zie `SITE` in `forms-service/texts.mjs` en `i18n/sites.json`). De postvakken moeten bestaan.
+- Laposta: per taal optioneel een eigen lijst (`LAPOSTA_LIST_ID_DE`, `_EN`, `_FR`, `_IT`, `_ES`), met dezelfde velden (voornaam, achternaam) en een bevestigingsmail in die taal. Niet ingesteld = standaardlijst `LAPOSTA_LIST_ID`.
+- Brochures: `public/downloads/PalletRotator-brochure-<taal>.pdf`. Ontbreekt een taal, dan serveert nginx de Engelse versie.
+
+### Overzicht nieuwe bestanden
+
+`i18n/` (sites.json, slugs.json, dnt.json, html.mjs, lib.mjs, translate.mjs, localize.mjs, build-all.mjs, glossary/, overrides/, memory/, nalezen/), `src/data/i18n.ts`, `src/data/formtext.ts`, `src/components/LanguageSwitch.astro`, `forms-service/texts.mjs`, `Vertalen.cmd`.

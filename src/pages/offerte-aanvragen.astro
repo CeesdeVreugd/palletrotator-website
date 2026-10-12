@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import TeamPortretten from '../components/TeamPortretten.astro';
+import { lang } from '../data/i18n';
 
 const title = 'Offerte aanvragen PalletRotator | Brochure downloaden';
 const description = 'Vraag een vrijblijvende offerte of brochure aan voor de PalletRotator palletkantelaar. Geef aan welk model, aantal en temperatuurbereik u nodig heeft.';
@@ -39,25 +40,25 @@ const description = 'Vraag een vrijblijvende offerte of brochure aan voor de Pal
           <div class="form-field full">
             <label for="model">Welk model heeft uw voorkeur?</label>
             <select id="model" name="model">
-              <option>PalletRotator</option>
-              <option>PalletRotator EPT</option>
-              <option>Beide / weet ik nog niet</option>
+              <option value="std">PalletRotator</option>
+              <option value="ept">PalletRotator EPT</option>
+              <option value="both">Beide / weet ik nog niet</option>
             </select>
           </div>
           <div class="form-field">
             <label for="aantal">Aantal PalletRotators</label>
             <select id="aantal" name="aantal">
-              <option>1</option>
-              <option>2</option>
-              <option>3 tot 5</option>
-              <option>6 of meer</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3-5">3 tot 5</option>
+              <option value="6+">6 of meer</option>
             </select>
           </div>
           <div class="form-field">
             <label for="temperatuur">Temperatuur op locatie</label>
             <select id="temperatuur" name="temperatuur">
-              <option>5°C tot 40°C</option>
-              <option>-25°C tot 40°C (vrieshuis)</option>
+              <option value="normal">5°C tot 40°C</option>
+              <option value="frozen">-25°C tot 40°C (vrieshuis)</option>
             </select>
           </div>
           <div class="form-field full">
@@ -70,6 +71,7 @@ const description = 'Vraag een vrijblijvende offerte of brochure aan voor de Pal
             <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
           </div>
           <input type="hidden" id="t" name="t" value="" />
+          <input type="hidden" name="taal" value={lang} />
 
           <div class="form-field full consent">
             <label class="check">
@@ -117,31 +119,33 @@ const description = 'Vraag een vrijblijvende offerte of brochure aan voor de Pal
 </BaseLayout>
 
 <script>
+  import { msgs } from '../data/formtext';
   const form = document.getElementById('offerte-form') as HTMLFormElement | null;
   if (form) {
     const done = document.getElementById('offerte-done') as HTMLElement;
     const err = document.getElementById('offerte-error') as HTMLElement;
     const btn = document.getElementById('offerte-submit') as HTMLButtonElement;
     (document.getElementById('t') as HTMLInputElement).value = String(Date.now());
-    const fail = (msg: string) => { err.textContent = msg; err.hidden = false; btn.disabled = false; btn.textContent = 'Offerte aanvragen'; };
+    const M = msgs();
+    const fail = (msg: string) => { err.textContent = msg; err.hidden = false; btn.disabled = false; btn.textContent = M.quoteBtn; };
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       err.hidden = true;
       const data = Object.fromEntries(new FormData(form).entries()) as Record<string, any>;
       data.nieuwsbrief = (document.getElementById('nieuwsbrief') as HTMLInputElement).checked;
-      if (!String(data.naam || '').trim()) return fail('Vul uw naam in.');
-      if (!String(data.telefoon || '').trim()) return fail('Vul uw telefoonnummer in.');
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(data.email || '').trim())) return fail('Vul een geldig e-mailadres in.');
-      btn.disabled = true; btn.textContent = 'Bezig…';
+      if (!String(data.naam || '').trim()) return fail(M.name);
+      if (!String(data.telefoon || '').trim()) return fail(M.phone);
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(data.email || '').trim())) return fail(M.email);
+      btn.disabled = true; btn.textContent = M.busy;
       try {
         const r = await fetch('/api/offerte', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
         const j = await r.json().catch(() => ({}));
-        if (!r.ok || !j.ok) return fail(j.error || 'Er ging iets mis. Probeer het later opnieuw.');
+        if (!r.ok || !j.ok) return fail(j.error || M.fail);
         form.hidden = true; done.hidden = false;
         done.scrollIntoView({ behavior: 'smooth', block: 'center' });
       } catch {
-        fail('Geen verbinding. Probeer het later opnieuw of mail naar info@palletrotator.nl.');
+        fail(`${M.offline} ${M.mail}.`);
       }
     });
   }

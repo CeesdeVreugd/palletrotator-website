@@ -1,4 +1,5 @@
 ---
+import { sites, lang } from '../data/i18n';
 interface Props {
   id: string;
   title: string;
@@ -15,7 +16,7 @@ const schema = uploadDate ? {
   '@type': 'VideoObject',
   name: title,
   description,
-  thumbnailUrl: new URL(poster, 'https://www.palletrotator.nl').toString(),
+  thumbnailUrl: new URL(poster, sites[lang].origin).toString(),
   uploadDate,
   embedUrl: `https://www.youtube-nocookie.com/embed/${id}`,
   contentUrl: watchUrl,

@@ -1,4 +1,5 @@
 ---
+import LanguageSwitch from './LanguageSwitch.astro';
 const nav = [
   { href: '/palletrotator/', label: 'Product' },
   { href: '/specificaties/', label: 'Standaard vs. EPT' },
@@ -16,6 +17,7 @@ const nav = [
       <a href="tel:+31488412828">+31 (0)488 412 828</a>
       <a href="mailto:info@palletrotator.nl">info@palletrotator.nl</a>
     </span>
+    <LanguageSwitch />
   </div>
 </div>
 
@@ -47,6 +49,7 @@ const nav = [
       <a href={item.href}>{item.label}</a>
     ))}
     <a href="/offerte-aanvragen/" class="btn btn-primary" style="margin-top:8px;">Offerte aanvragen</a>
+    <LanguageSwitch class="on-light mobile-lang" />
   </nav>
 </header>
 
@@ -65,7 +68,7 @@ const nav = [
     color: #C9D2FF;
   }
   .topbar-brand a { color: #FFFFFF; font-weight: 700; }
-  .topbar-contact { display: flex; gap: 22px; }
+  .topbar-contact { display: flex; gap: 22px; margin-right: auto; margin-left: 28px; }
   .topbar-contact a { color: #C9D2FF; }
 
   .site-header {
@@ -122,6 +125,8 @@ const nav = [
     .main-nav, .btn-cta { display: none; }
     .menu-toggle { display: flex; }
     .topbar-contact { display: none; }
+    .topbar :global(.lang-switch) { display: none; }
+    .mobile-nav :global(.mobile-lang) { margin-top: 12px; }
   }
 </style>
 

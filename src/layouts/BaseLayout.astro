@@ -3,17 +3,19 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
 import '../styles/global.css';
+import { sites, LANGS, lang, urlFor } from '../data/i18n';
 
 export interface Props {
   title: string;
   description: string;
+  /** Pad van de Nederlandse bronpagina; de taalversies krijgen hun eigen URL via i18n/slugs.json */
   path?: string;
   ogImage?: string;
-  lang?: 'nl' | 'de';
 }
 
-const { title, description, path = '/', ogImage = '/images/og-palletrotator.jpg', lang = 'nl' } = Astro.props;
-const canonical = new URL(path, Astro.site);
+const { title, description, path = '/', ogImage = '/images/og-palletrotator.jpg' } = Astro.props;
+const canonical = urlFor(path, lang);
+const site = sites[lang];
 ---
 <!doctype html>
 <html lang={lang}>
@@ -23,6 +25,8 @@ const canonical = new URL(path, Astro.site);
   <title>{title}</title>
   <meta name="description" content={description} />
   <link rel="canonical" href={canonical} />
+  {LANGS.map((l) => <link rel="alternate" hreflang={l} href={urlFor(path, l)} />)}
+  <link rel="alternate" hreflang="x-default" href={urlFor(path, 'nl')} />
   <meta name="theme-color" content="#0A0A96" />
   <link rel="icon" type="image/png" href="/images/logo-mark-blue.png" />
 
@@ -31,7 +35,7 @@ const canonical = new URL(path, Astro.site);
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:url" content={canonical} />
-  <meta property="og:locale" content={lang === 'de' ? 'de_DE' : 'nl_NL'} />
+  <meta property="og:locale" content={site.locale} />
   <meta name="twitter:card" content="summary_large_image" />
 
   <slot name="head" />

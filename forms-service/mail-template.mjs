@@ -1,7 +1,7 @@
 // HTML-opmaak voor de offerte-aanvraagmail (tabel-layout en inline CSS: werkt in Outlook, Gmail, Apple Mail).
 const esc = (v) => String(v ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-export function offerteHtml({ naam, bedrijf, telefoon, email, model, aantal, temperatuur, opmerking, nieuwsbrief }) {
+export function offerteHtml({ naam, bedrijf, telefoon, email, model, aantal, temperatuur, opmerking, nieuwsbrief, taal }) {
   const row = (label, value) => `
       <tr>
         <td style="padding:10px 0;border-bottom:1px solid #E3E6F3;width:38%;font-size:13px;color:#5B6390;vertical-align:top;">${esc(label)}</td>
@@ -29,6 +29,7 @@ export function offerteHtml({ naam, bedrijf, telefoon, email, model, aantal, tem
     <tr><td style="padding:12px 32px 4px;">
       <div style="font-size:13px;font-weight:700;color:#0A0A96;margin:14px 0 2px;">Contactgegevens</div>
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+        ${row('Taal / site', esc(taal || 'NL'))}
         ${row('Naam', esc(naam))}
         ${row('Bedrijf', bedrijf ? esc(bedrijf) : '-')}
         ${row('Telefoon', `<a href="tel:${esc(tel)}" style="color:#0080FF;text-decoration:none;">${esc(telefoon)}</a>`)}

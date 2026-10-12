@@ -1,9 +1,6 @@
 ---
 import { team } from '../data/team';
-const { lang = 'nl' } = Astro.props as { lang?: 'nl' | 'de' };
-const tx = lang === 'de'
-  ? { eyebrow: 'Ihre Ansprechpartner', titel: 'Lernen Sie das Team kennen', intro: 'Bei PalletRotator sprechen Sie direkt mit den Menschen, die die Maschine entwickeln, bauen und liefern.' }
-  : { eyebrow: 'Uw aanspreekpunten', titel: 'Maak kennis met het team', intro: 'Bij PalletRotator spreekt u direct met de mensen die de machine bedenken, bouwen en leveren.' };
+const tx = { eyebrow: 'Uw aanspreekpunten', titel: 'Maak kennis met het team', intro: 'Bij PalletRotator spreekt u direct met de mensen die de machine bedenken, bouwen en leveren.' };
 ---
 <section class="section team-section" aria-labelledby="team-titel">
   <div class="wrap">
@@ -19,12 +16,12 @@ const tx = lang === 'de'
             src={`/images/team/${p.slug}-800.webp`}
             srcset={`/images/team/${p.slug}-400.webp 400w, /images/team/${p.slug}-800.webp 800w`}
             sizes="(max-width: 800px) 90vw, 400px"
-            alt={`${p.naam}, ${lang === 'de' ? p.functieDe : p.functie}`}
+            alt={`${p.naam}, ${p.functie}`}
             width="800" height="800" loading="lazy"
           />
           <div class="team-text">
             <h3>{p.naam}</h3>
-            <p class="team-role">{lang === 'de' ? p.functieDe : p.functie}</p>
+            <p class="team-role">{p.functie}</p>
             <a class="team-link" href={`tel:${p.tel.replace(/[^+\d]/g, '')}`}>
               <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h3.5l1.7 4.3-2.2 1.4a11 11 0 0 0 5.3 5.3l1.4-2.2L20 14.5V18a2 2 0 0 1-2 2A14 14 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
               <span>{p.tel}</span>

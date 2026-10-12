@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { lang } from '../data/i18n';
 
 const title = 'PalletRotator brochure downloaden | Specificaties & afmetingen';
 const description = 'Download gratis de PalletRotator-brochure: technische specificaties, afmetingen en voordelen van de standaard uitvoering en de EPT-uitvoering voor palletwagen.';
@@ -46,7 +47,7 @@ const description = 'Download gratis de PalletRotator-brochure: technische speci
             <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
           </div>
           <input type="hidden" id="t" name="t" value="" />
-          <input type="hidden" name="taal" value="nl" />
+          <input type="hidden" name="taal" value={lang} />
 
           <div class="form-field full consent">
             <label class="check">
@@ -69,7 +70,7 @@ const description = 'Download gratis de PalletRotator-brochure: technische speci
           </div>
           <h2 class="brochure-h">Bedankt! De brochure staat klaar.</h2>
           <p>Start de download hieronder. Start hij niet vanzelf, klik dan op de knop.</p>
-          <a id="brochure-link" class="btn btn-primary" href="/downloads/PalletRotator-brochure-nl.pdf" download>Download de brochure (PDF)</a>
+          <a id="brochure-link" class="btn btn-primary" href={`/downloads/PalletRotator-brochure-${lang}.pdf`} download>Download de brochure (PDF)</a>
           <p class="brochure-after">Liever meteen een prijsindicatie? <a href="/offerte-aanvragen/">Vraag een vrijblijvende offerte aan</a>.</p>
         </div>
       </div>
@@ -105,6 +106,7 @@ const description = 'Download gratis de PalletRotator-brochure: technische speci
 </style>
 
 <script>
+  import { msgs } from '../data/formtext';
   const form = document.getElementById('brochure-form') as HTMLFormElement | null;
   if (form) {
     const done = document.getElementById('brochure-done') as HTMLElement;
@@ -113,27 +115,28 @@ const description = 'Download gratis de PalletRotator-brochure: technische speci
     const btn = document.getElementById('brochure-submit') as HTMLButtonElement;
     (document.getElementById('t') as HTMLInputElement).value = String(Date.now());
 
-    const fail = (msg: string) => { err.textContent = msg; err.hidden = false; btn.disabled = false; btn.textContent = 'Download de brochure'; };
+    const M = msgs();
+    const fail = (msg: string) => { err.textContent = msg; err.hidden = false; btn.disabled = false; btn.textContent = M.brochureBtn; };
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       err.hidden = true;
       const data = Object.fromEntries(new FormData(form).entries()) as Record<string, any>;
       data.akkoord = (document.getElementById('akkoord') as HTMLInputElement).checked;
-      if (!String(data.naam || '').trim()) return fail('Vul uw naam in.');
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(data.email || '').trim())) return fail('Vul een geldig e-mailadres in.');
-      if (!data.akkoord) return fail('Vink aan dat u akkoord gaat om de brochure te ontvangen.');
-      btn.disabled = true; btn.textContent = 'Bezig…';
+      if (!String(data.naam || '').trim()) return fail(M.name);
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(data.email || '').trim())) return fail(M.email);
+      if (!data.akkoord) return fail(M.consent);
+      btn.disabled = true; btn.textContent = M.busy;
       try {
         const r = await fetch('/api/brochure', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
         const j = await r.json().catch(() => ({}));
-        if (!r.ok || !j.ok) return fail(j.error || 'Er ging iets mis. Probeer het later opnieuw.');
+        if (!r.ok || !j.ok) return fail(j.error || M.fail);
         link.href = j.download;
         form.hidden = true; done.hidden = false;
         done.scrollIntoView({ behavior: 'smooth', block: 'center' });
         setTimeout(() => link.click(), 600);
       } catch {
-        fail('Geen verbinding. Probeer het later opnieuw of mail naar info@palletrotator.nl.');
+        fail(`${M.offline} ${M.mail}.`);
       }
     });
   }
