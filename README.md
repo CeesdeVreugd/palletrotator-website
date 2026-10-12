@@ -224,3 +224,9 @@ docker run --rm -p 8080:80 palletrotator-website
 
 - V14: EPT-cijfers gelijkgetrokken met de brochure (hoogte klembord 130 mm, klembereik 1250–2500 mm).
 - V15: na het versturen van het brochureformulier verdwijnt het formulier nu echt (hidden-attribuut werd door `display:grid` overschreven).
+
+
+## V17 — WhatsApp-knop en teamportretten
+
+- `src/data/contact.ts`: WhatsApp-nummer (`whatsappNumber`, formaat `31488412828`, leeg = knop verdwijnt) en voorgevulde tekst. `WhatsAppButton.astro` staat in `BaseLayout` en dus op alle pagina's (rechtsonder; op mobiel alleen het icoon).
+- `src/data/team.ts` + `TeamPortretten.astro`: blok "Maak kennis met het team" op `/offerte-aanvragen/` (Wim de Vreugd, Bert van Lankeren, Cees de Vreugd), foto's in `public/images/team/` (400/800 px WebP). Duitse functietitels staan al in `team.ts` (`functieDe`) voor de DE-versie.

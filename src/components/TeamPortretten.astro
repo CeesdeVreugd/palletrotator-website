@@ -1,0 +1,41 @@
+---
+import { team } from '../data/team';
+---
+<section class="section team-section" aria-labelledby="team-titel">
+  <div class="wrap">
+    <span class="eyebrow">Uw aanspreekpunten</span>
+    <h2 id="team-titel">Maak kennis met het team</h2>
+    <p class="team-intro">Bij PalletRotator spreekt u direct met de mensen die de machine bedenken, bouwen en leveren.</p>
+    <ul class="team-grid">
+      {team.map((p) => (
+        <li class="team-card">
+          <img
+            src={`/images/team/${p.slug}-400.webp`}
+            srcset={`/images/team/${p.slug}-400.webp 400w, /images/team/${p.slug}-800.webp 800w`}
+            sizes="(max-width: 700px) 80vw, 360px"
+            alt={`${p.naam}, ${p.functie}`}
+            width="400" height="400" loading="lazy"
+          />
+          <div class="team-text">
+            <strong>{p.naam}</strong>
+            <span>{p.functie}</span>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .team-section { background: var(--bg-soft); }
+  .team-intro { max-width: 620px; color: var(--gray); margin-bottom: 32px; }
+  .team-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .team-card { background: #fff; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+  .team-card img { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; object-position: center 20%; }
+  .team-text { display: flex; flex-direction: column; gap: 2px; padding: 16px 20px 20px; }
+  .team-text strong { color: var(--ink); font-size: 17px; }
+  .team-text span { color: var(--gray); font-size: 14px; }
+  @media (max-width: 800px) {
+    .team-grid { grid-template-columns: 1fr; max-width: 360px; }
+  }
+</style>
