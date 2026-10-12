@@ -1,0 +1,1 @@
+{"id": "evil", "name": "x", "slots": [{"id": "a", "sizes": [100], "dims": {"100": [1, 1]}, "files": {"100": "../../etc/passwd.webp"}}], "targets": [{"url": "javascript:alert(1)"}]}

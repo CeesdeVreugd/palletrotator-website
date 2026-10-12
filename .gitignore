@@ -1,6 +1,4 @@
+.git
 node_modules
-dist
-.astro
-.DS_Store
-npm-debug.log*
-i18n/glossary/*.id.json
+data
+media

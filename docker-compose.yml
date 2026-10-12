@@ -1,49 +1,44 @@
-# PalletRotator website — Portainer "Stacks from Git" stack.
-# Volgt exact de bestaande VM-conventie (zie Cheese Stock Manager):
-# alleen op het externe npm_default-netwerk, geen eigen database
-# (statische Astro-build). Sinds V13 is er een kleine formulier-service
-# (palletrotator-forms) die brochure-aanvragen naar Laposta stuurt.
-
+# WebsiteBeheerPortal — eigen, losse stack (Portainer: Stacks → Add stack → Repository).
+# Websites sluiten aan via twee gedeelde volumes met vaste namen (zie README). Deze stack heeft geen gepubliceerde poorten:
+# bereikbaar alleen via Nginx Proxy Manager (netwerk npm_default).
 services:
-  palletrotator-website:
-    build:
-      context: .
-      args:
-        # Leeg laten voor productie. Voor testen: STAGING_BASE=palletrotator.devreugd-pt.nl (zie README).
-        STAGING_BASE: ${STAGING_BASE:-}
-    container_name: palletrotator-website
+  websitebeheerportal:
+    build: .
+    image: websitebeheerportal:1
+    container_name: websitebeheerportal
     restart: unless-stopped
-    networks:
-      - npm_default
-    # Geen "ports:" nodig - Nginx Proxy Manager bereikt deze container
-    # via het interne npm_default-netwerk op containerpoort 80.
-
-  palletrotator-forms:
-    build: ./forms-service
-    container_name: palletrotator-forms
-    restart: unless-stopped
-    networks:
-      - npm_default
     environment:
-      # Zet LAPOSTA_API_KEY als stack-variabele in Portainer (Environment variables).
-      # NOOIT de sleutel in de repo zetten.
-      LAPOSTA_API_KEY: ${LAPOSTA_API_KEY}
-      LAPOSTA_LIST_ID: ${LAPOSTA_LIST_ID:-b12sde1bbp}
-      # Optioneel: eigen Laposta-lijst per taal (voor de bevestigingsmail in die taal). Leeg = standaardlijst.
-      LAPOSTA_LIST_ID_DE: ${LAPOSTA_LIST_ID_DE:-}
-      LAPOSTA_LIST_ID_EN: ${LAPOSTA_LIST_ID_EN:-}
-      LAPOSTA_LIST_ID_FR: ${LAPOSTA_LIST_ID_FR:-}
-      LAPOSTA_LIST_ID_IT: ${LAPOSTA_LIST_ID_IT:-}
-      LAPOSTA_LIST_ID_ES: ${LAPOSTA_LIST_ID_ES:-}
-      # Offerte-aanvragen worden per e-mail (SMTP) verstuurd. Zet deze als Portainer-variabelen.
-      SMTP_HOST: ${SMTP_HOST}
+      PORTAL_ADMIN_EMAIL: ${PORTAL_ADMIN_EMAIL:-cees@devreugd-pt.nl}
+      PORTAL_ADMIN_PASSWORD: ${PORTAL_ADMIN_PASSWORD:-}
+      PORTAL_URL: ${PORTAL_URL:-}
+      REQUIRE_2FA: ${REQUIRE_2FA:-all}
+      PORTAL_ALLOW_IPS: ${PORTAL_ALLOW_IPS:-}
+      COOKIE_SECURE: ${COOKIE_SECURE:-true}
+      CHECK_INTERVAL_MIN: ${CHECK_INTERVAL_MIN:-15}
+      SMTP_HOST: ${SMTP_HOST:-}
       SMTP_PORT: ${SMTP_PORT:-587}
-      SMTP_SECURE: ${SMTP_SECURE:-false}   # true voor poort 465
-      SMTP_USER: ${SMTP_USER}
-      SMTP_PASS: ${SMTP_PASS}
-      MAIL_FROM: ${MAIL_FROM:-info@palletrotator.nl}
-      MAIL_TO: ${MAIL_TO:-sales@devreugd-pt.nl}
-    # Geen "ports:" - alleen bereikbaar via palletrotator-website (nginx /api/).
+      SMTP_SECURE: ${SMTP_SECURE:-}
+      SMTP_USER: ${SMTP_USER:-}
+      SMTP_PASS: ${SMTP_PASS:-}
+      MAIL_FROM: ${MAIL_FROM:-}
+    volumes:
+      - portal-data:/data
+      - portal-media:/media
+      - portal-bridge:/bridge:ro
+    networks: [npm_default]
+    read_only: true
+    tmpfs: [/tmp]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    mem_limit: 256m
+    pids_limit: 128
+
+volumes:
+  portal-data:
+  portal-media:
+    name: portal-media
+  portal-bridge:
+    name: portal-bridge
 
 networks:
   npm_default:
