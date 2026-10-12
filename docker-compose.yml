@@ -1,7 +1,8 @@
 # PalletRotator website — Portainer "Stacks from Git" stack.
 # Volgt exact de bestaande VM-conventie (zie Cheese Stock Manager):
 # alleen op het externe npm_default-netwerk, geen eigen database
-# (statische Astro-build, geen backend nodig).
+# (statische Astro-build). Sinds V13 is er een kleine formulier-service
+# (palletrotator-forms) die brochure-aanvragen naar Laposta stuurt.
 
 services:
   palletrotator-website:
@@ -12,6 +13,19 @@ services:
       - npm_default
     # Geen "ports:" nodig - Nginx Proxy Manager bereikt deze container
     # via het interne npm_default-netwerk op containerpoort 80.
+
+  palletrotator-forms:
+    build: ./forms-service
+    container_name: palletrotator-forms
+    restart: unless-stopped
+    networks:
+      - npm_default
+    environment:
+      # Zet LAPOSTA_API_KEY als stack-variabele in Portainer (Environment variables).
+      # NOOIT de sleutel in de repo zetten.
+      LAPOSTA_API_KEY: ${LAPOSTA_API_KEY}
+      LAPOSTA_LIST_ID: ${LAPOSTA_LIST_ID:-b12sde1bbp}
+    # Geen "ports:" - alleen bereikbaar via palletrotator-website (nginx /api/).
 
 networks:
   npm_default:

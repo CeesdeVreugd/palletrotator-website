@@ -199,7 +199,7 @@ docker run --rm -p 8080:80 palletrotator-website
 ```
 
 
-## Foto's en video (V9–V12)
+## Foto's en video (V9–V13)
 - `/palletrotator-ept/`: fotoreeks (`PhotoSequence.astro`) met 4 stappen uit `public/images/foto/` (WebP 800/1600 px).
 - `/palletrotator/` en `/palletrotator-ept/`: YouTube-video via `YouTubeEmbed.astro` (klik-om-te-laden, `youtube-nocookie.com`, eigen posterfoto, geen Google-verbinding vóór de klik).
 - `VideoObject`-schema wordt pas geplaatst als `uploadDate` aan `YouTubeEmbed` is meegegeven.
@@ -213,3 +213,11 @@ docker run --rm -p 8080:80 palletrotator-website
 ## Beeldmerk-uitsnede (V11)
 - De grote decoratieve V op de donkere banden is het echte beeldmerk (`public/images/logo-mark-shape.png`), groot en half uit beeld geplaatst als uitsnede (class `title-shape`, `hero-shape`, `vrieshuis-shape`).
 - V12: beeldmerk wordt nergens meer gespiegeld (vrieshuis-sectie gecorrigeerd).
+
+## Brochure via Laposta (V13)
+- Pagina `/brochure/` (formulier: naam, e-mail, bedrijf + akkoord). Na het versturen start de PDF-download direct.
+- Het formulier post naar `/api/brochure`; nginx stuurt dat door naar de aparte container `palletrotator-forms` (map `forms-service/`, Node 20, geen dependencies) die het adres in Laposta-lijst `b12sde1bbp` zet. Veldkoppeling: Naam → `voornaam`, Bedrijfsnaam → `achternaam`.
+- **Portainer:** voeg bij de stack de variabele `LAPOSTA_API_KEY` toe (de API-sleutel uit Laposta). Optioneel `LAPOSTA_LIST_ID` (standaard `b12sde1bbp`). De sleutel nooit in de repo zetten.
+- Brochures staan in `public/downloads/PalletRotator-brochure-<taal>.pdf` (nu: nl en de; en, fr, it, es, pl volgen met hun taalversie: PDF in die map zetten en de taal toevoegen aan `TALEN` in `forms-service/server.mjs`). Het formulier stuurt `taal` mee; nu alleen `nl`.
+- Spambeveiliging: verborgen veld, minimale invultijd en maximaal 5 aanvragen per uur per IP-adres.
+- Health-check: `GET /api/health` (zegt of de sleutel is ingesteld).

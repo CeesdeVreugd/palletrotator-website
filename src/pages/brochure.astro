@@ -1,0 +1,138 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'PalletRotator brochure downloaden | Specificaties & afmetingen';
+const description = 'Download gratis de PalletRotator-brochure: technische specificaties, afmetingen en voordelen van de standaard uitvoering en de EPT-uitvoering voor palletwagen.';
+---
+<BaseLayout title={title} description={description} path="/brochure/">
+  <section class="dark-band title-band">
+    <img class="title-shape" src="/images/logo-mark-shape.png" alt="" aria-hidden="true" width="1000" height="766" />
+    <div class="wrap title-inner">
+      <nav class="breadcrumb"><a href="/">Home</a> <span>/</span> <span class="current">Brochure</span></nav>
+      <span class="eyebrow">Gratis download</span>
+      <h1>Download de PalletRotator-brochure</h1>
+      <p>Alle specificaties, afmetingen en voordelen van de standaard uitvoering en de EPT-uitvoering in vier pagina's. Direct te downloaden.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap brochure-grid">
+      <div class="brochure-cover">
+        <img src="/images/brochure-cover-nl.webp" alt="Voorpagina van de PalletRotator-brochure" width="662" height="936" loading="eager" decoding="async" />
+      </div>
+
+      <div class="card form-card brochure-card">
+        <form id="brochure-form" class="form-grid" method="POST" action="/api/brochure" novalidate>
+          <div class="form-field full">
+            <h2 class="brochure-h">Waar mogen we de brochure naartoe sturen?</h2>
+            <p class="brochure-sub">Na het invullen start de download direct. U hoeft niet te wachten op een e-mail.</p>
+          </div>
+          <div class="form-field full">
+            <label for="naam">Naam*</label>
+            <input type="text" id="naam" name="naam" autocomplete="name" required maxlength="100" />
+          </div>
+          <div class="form-field full">
+            <label for="email">E-mailadres*</label>
+            <input type="email" id="email" name="email" autocomplete="email" required maxlength="200" />
+          </div>
+          <div class="form-field full">
+            <label for="bedrijf">Bedrijfsnaam</label>
+            <input type="text" id="bedrijf" name="bedrijf" autocomplete="organization" maxlength="120" />
+          </div>
+
+          <!-- Honeypot: voor mensen onzichtbaar, bots vullen dit in -->
+          <div class="hp" aria-hidden="true">
+            <label for="website">Website</label>
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+          </div>
+          <input type="hidden" id="t" name="t" value="" />
+          <input type="hidden" name="taal" value="nl" />
+
+          <div class="form-field full consent">
+            <label class="check">
+              <input type="checkbox" id="akkoord" name="akkoord" required />
+              <span>Ja, stuur mij de brochure en houd mij af en toe op de hoogte van de PalletRotator. Afmelden kan altijd. Zie de <a href="https://devreugd-pt.nl/privacyverklaring/" target="_blank" rel="noopener">privacyverklaring</a>.*</span>
+            </label>
+          </div>
+
+          <p id="brochure-error" class="form-error full" role="alert" hidden></p>
+
+          <div class="form-field full">
+            <button type="submit" class="btn btn-primary" id="brochure-submit" style="width:100%;">Download de brochure</button>
+          </div>
+          <noscript><p class="full">Zonder JavaScript werkt dit formulier niet. Mail naar <a href="mailto:info@palletrotator.nl">info@palletrotator.nl</a> en we sturen de brochure toe.</p></noscript>
+        </form>
+
+        <div id="brochure-done" class="brochure-done" hidden>
+          <div class="done-icon" aria-hidden="true">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          </div>
+          <h2 class="brochure-h">Bedankt! De brochure staat klaar.</h2>
+          <p>Start de download hieronder. Start hij niet vanzelf, klik dan op de knop.</p>
+          <a id="brochure-link" class="btn btn-primary" href="/downloads/PalletRotator-brochure-nl.pdf" download>Download de brochure (PDF)</a>
+          <p class="brochure-after">Liever meteen een prijsindicatie? <a href="/offerte-aanvragen/">Vraag een vrijblijvende offerte aan</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .brochure-grid { display: flex; gap: 48px; align-items: flex-start; justify-content: center; }
+  .brochure-cover { flex: 0 0 300px; }
+  .brochure-cover img { width: 100%; height: auto; border-radius: 10px; box-shadow: 0 24px 60px rgba(10,10,150,0.22); transform: rotate(-2deg); }
+  .brochure-card { flex: 1; max-width: 560px; }
+  .brochure-h { font-size: 22px; margin: 0 0 6px; }
+  .brochure-sub { font-size: 14px; margin: 0; }
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .consent .check { display: flex; gap: 10px; align-items: flex-start; font-weight: 400; font-size: 13.5px; line-height: 1.5; color: var(--ink); cursor: pointer; }
+  .consent .check input { width: 18px; height: 18px; margin-top: 3px; flex: 0 0 18px; accent-color: var(--blue); }
+  .consent a { color: var(--blue); font-weight: 600; }
+  .form-error { grid-column: span 2; color: #B00020; font-size: 14px; font-weight: 600; margin: 0; }
+  .full { grid-column: span 2; }
+  .brochure-done { text-align: center; padding: 12px 0; }
+  .done-icon { width: 64px; height: 64px; border-radius: 50%; background: var(--blue); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
+  .brochure-done .btn { margin: 14px 0 6px; }
+  .brochure-after { font-size: 14px; margin-top: 16px; }
+  .brochure-after a { color: var(--blue); font-weight: 600; }
+  @media (max-width: 900px) {
+    .brochure-grid { flex-direction: column; align-items: center; }
+    .brochure-cover { flex: none; width: 220px; }
+    .brochure-card { width: 100%; max-width: none; padding: 26px; }
+  }
+</style>
+
+<script>
+  const form = document.getElementById('brochure-form') as HTMLFormElement | null;
+  if (form) {
+    const done = document.getElementById('brochure-done') as HTMLElement;
+    const link = document.getElementById('brochure-link') as HTMLAnchorElement;
+    const err = document.getElementById('brochure-error') as HTMLElement;
+    const btn = document.getElementById('brochure-submit') as HTMLButtonElement;
+    (document.getElementById('t') as HTMLInputElement).value = String(Date.now());
+
+    const fail = (msg: string) => { err.textContent = msg; err.hidden = false; btn.disabled = false; btn.textContent = 'Download de brochure'; };
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      err.hidden = true;
+      const data = Object.fromEntries(new FormData(form).entries()) as Record<string, any>;
+      data.akkoord = (document.getElementById('akkoord') as HTMLInputElement).checked;
+      if (!String(data.naam || '').trim()) return fail('Vul uw naam in.');
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(data.email || '').trim())) return fail('Vul een geldig e-mailadres in.');
+      if (!data.akkoord) return fail('Vink aan dat u akkoord gaat om de brochure te ontvangen.');
+      btn.disabled = true; btn.textContent = 'Bezig…';
+      try {
+        const r = await fetch('/api/brochure', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+        const j = await r.json().catch(() => ({}));
+        if (!r.ok || !j.ok) return fail(j.error || 'Er ging iets mis. Probeer het later opnieuw.');
+        link.href = j.download;
+        form.hidden = true; done.hidden = false;
+        done.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setTimeout(() => link.click(), 600);
+      } catch {
+        fail('Geen verbinding. Probeer het later opnieuw of mail naar info@palletrotator.nl.');
+      }
+    });
+  }
+</script>
