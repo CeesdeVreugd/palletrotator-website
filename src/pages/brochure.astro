@@ -84,6 +84,8 @@ const description = 'Download gratis de PalletRotator-brochure: technische speci
   .brochure-card { flex: 1; max-width: 560px; }
   .brochure-h { font-size: 22px; margin: 0 0 6px; }
   .brochure-sub { font-size: 14px; margin: 0; }
+  /* .form-grid zet display:grid en overschrijft anders het hidden-attribuut */
+  #brochure-form[hidden], .brochure-done[hidden], .form-error[hidden] { display: none !important; }
   .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
   .consent .check { display: flex; gap: 10px; align-items: flex-start; font-weight: 400; font-size: 13.5px; line-height: 1.5; color: var(--ink); cursor: pointer; }
   .consent .check input { width: 18px; height: 18px; margin-top: 3px; flex: 0 0 18px; accent-color: var(--blue); }

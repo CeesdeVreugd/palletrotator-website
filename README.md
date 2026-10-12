@@ -199,7 +199,7 @@ docker run --rm -p 8080:80 palletrotator-website
 ```
 
 
-## Foto's en video (V9–V13)
+## Foto's en video (V9–V15)
 - `/palletrotator-ept/`: fotoreeks (`PhotoSequence.astro`) met 4 stappen uit `public/images/foto/` (WebP 800/1600 px).
 - `/palletrotator/` en `/palletrotator-ept/`: YouTube-video via `YouTubeEmbed.astro` (klik-om-te-laden, `youtube-nocookie.com`, eigen posterfoto, geen Google-verbinding vóór de klik).
 - `VideoObject`-schema wordt pas geplaatst als `uploadDate` aan `YouTubeEmbed` is meegegeven.
@@ -221,3 +221,6 @@ docker run --rm -p 8080:80 palletrotator-website
 - Brochures staan in `public/downloads/PalletRotator-brochure-<taal>.pdf` (nu: nl en de; en, fr, it, es, pl volgen met hun taalversie: PDF in die map zetten en de taal toevoegen aan `TALEN` in `forms-service/server.mjs`). Het formulier stuurt `taal` mee; nu alleen `nl`.
 - Spambeveiliging: verborgen veld, minimale invultijd en maximaal 5 aanvragen per uur per IP-adres.
 - Health-check: `GET /api/health` (zegt of de sleutel is ingesteld).
+
+- V14: EPT-cijfers gelijkgetrokken met de brochure (hoogte klembord 130 mm, klembereik 1250–2500 mm).
+- V15: na het versturen van het brochureformulier verdwijnt het formulier nu echt (hidden-attribuut werd door `display:grid` overschreven).
