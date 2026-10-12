@@ -235,8 +235,18 @@ docker run --rm -p 8080:80 palletrotator-website
 
 - `src/data/contact.ts` bevat per taal (`nl`, `de`) knoptekst, toegankelijkheidslabel en voorgevulde WhatsApp-tekst (DE: "Guten Tag, ich habe eine Frage zum PalletRotator.", Sie-vorm). `BaseLayout` krijgt een `lang`-prop (standaard `nl`; zet ook `<html lang>` en `og:locale`) en geeft die door aan `WhatsAppButton`. `TeamPortretten` accepteert `lang` en toont dan de Duitse functietitels en tekst. Nieuwe talen: type `Lang` en teksten uitbreiden.
 
-## V19 — offerte-aanvraag per e-mail
+## V19/V20 — offerte-aanvraag per e-mail
 
-- `/offerte-aanvragen/` post naar `/api/offerte` (zelfde `palletrotator-forms`-container). De service mailt de aanvraag via SMTP (`forms-service/smtp.mjs`, geen dependencies; STARTTLS op 587 of TLS op 465) naar `MAIL_TO` (standaard info@palletrotator.nl), met Reply-To = aanvrager. Telefoon is verplicht. Optioneel vinkje 'Houd mij op de hoogte' zet het adres alleen met toestemming in Laposta-lijst `b12sde1bbp`.
+- `/offerte-aanvragen/` post naar `/api/offerte` (zelfde `palletrotator-forms`-container). De service mailt de aanvraag via SMTP (`forms-service/smtp.mjs`, geen dependencies; STARTTLS op 587 of TLS op 465) naar `MAIL_TO` (standaard **sales@devreugd-pt.nl**, sinds V20), met Reply-To = aanvrager. Telefoon is verplicht. Optioneel vinkje 'Houd mij op de hoogte' zet het adres alleen met toestemming in Laposta-lijst `b12sde1bbp`.
 - Portainer-variabelen: `SMTP_HOST`, `SMTP_PORT` (587), `SMTP_SECURE` (`true` bij 465), `SMTP_USER`, `SMTP_PASS`, optioneel `MAIL_FROM`, `MAIL_TO`. `GET /api/health` toont `mailConfigured`. Spambeveiliging als bij de brochure (honeypot, 2,5 s, 5/uur/IP).
 - Teamportretten in staand 3:2-formaat met telefoon en e-mail per persoon (`src/data/team.ts`).
+
+### SMTP-instellingen (live, STH)
+
+- `SMTP_HOST` moet de naam uit het certificaat zijn (`mail1.sth.host`), niet de MX-naam (`mx1.sth.nl`: certificaatfout). Poort 587 met `SMTP_SECURE=false` (STARTTLS); alternatief 465 met `SMTP_SECURE=true`.
+- `MAIL_FROM` moet een afzender zijn die de server kent. info@palletrotator.nl gaf `451 unable to verify sender` zolang dat postvak/maildomein bij STH niet bestond; tijdelijk een bestaand devreugd-pt.nl-adres gebruiken. Zodra palletrotator.nl als maildomein staat (postvak, MX, SPF, DKIM): `MAIL_FROM` terugzetten op info@palletrotator.nl.
+- Na elke variabelewijziging in Portainer: **Update the stack**.
+
+## V21 — opgemaakte aanvraagmail
+
+- De offertemail is een HTML-mail (navy kop, contactgegevens, aanvraag, opmerking, knoppen "Beantwoorden" en "Bel") met platte-tekst-versie als terugval. Opmaak in `forms-service/mail-template.mjs` (tabellen en inline CSS, werkt in Outlook/Gmail/Apple Mail; geen externe afbeeldingen). Alle invoer wordt ge-escaped.

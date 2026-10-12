@@ -32,7 +32,7 @@ services:
       SMTP_USER: ${SMTP_USER}
       SMTP_PASS: ${SMTP_PASS}
       MAIL_FROM: ${MAIL_FROM:-info@palletrotator.nl}
-      MAIL_TO: ${MAIL_TO:-info@palletrotator.nl}
+      MAIL_TO: ${MAIL_TO:-sales@devreugd-pt.nl}
     # Geen "ports:" - alleen bereikbaar via palletrotator-website (nginx /api/).
 
 networks:

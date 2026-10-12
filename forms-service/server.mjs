@@ -3,6 +3,7 @@
 // (Portainer stack-variabele), nooit in de repo of in de browser.
 import http from 'node:http';
 import { sendMail } from './smtp.mjs';
+import { offerteHtml } from './mail-template.mjs';
 
 const PORT = Number(process.env.PORT || 3000);
 const API_KEY = process.env.LAPOSTA_API_KEY || '';
@@ -20,7 +21,7 @@ const SMTP = {
   rejectUnauthorized: String(process.env.SMTP_INSECURE_TLS || '').toLowerCase() !== 'true',
 };
 const MAIL_FROM = process.env.MAIL_FROM || 'info@palletrotator.nl';
-const MAIL_TO = process.env.MAIL_TO || 'info@palletrotator.nl';
+const MAIL_TO = process.env.MAIL_TO || 'sales@devreugd-pt.nl';
 const MAX_BODY = 16 * 1024;
 const MIN_FILL_MS = 2500;              // sneller dan 2,5 s ingevuld = waarschijnlijk bot
 const RATE_MAX = 5, RATE_WINDOW = 60 * 60 * 1000; // 5 aanvragen per uur per IP
@@ -118,7 +119,8 @@ async function handleOfferte(req, res) {
     `Nieuwsbrief-toestemming: ${nieuwsbrief ? 'ja (toegevoegd aan Laposta)' : 'nee'}`,
   ].join('\n');
   try {
-    await sendMail({ ...SMTP, from: MAIL_FROM, to: MAIL_TO, replyTo: email, subject: `Offerte-aanvraag PalletRotator: ${naam}${bedrijf ? ' (' + bedrijf + ')' : ''}`, text });
+    await sendMail({ ...SMTP, from: MAIL_FROM, to: MAIL_TO, replyTo: email, subject: `Offerte-aanvraag PalletRotator: ${naam}${bedrijf ? ' (' + bedrijf + ')' : ''}`, text,
+      html: offerteHtml({ naam, bedrijf, telefoon, email, model, aantal, temperatuur, opmerking, nieuwsbrief }) });
   } catch (e) {
     console.error('[smtp] fout', e?.message);
     return send(res, 502, { ok: false, error: 'Versturen is niet gelukt. Probeer het later opnieuw of mail naar info@palletrotator.nl.' });

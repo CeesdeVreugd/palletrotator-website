@@ -28,7 +28,9 @@ const b64 = (s) => Buffer.from(s, 'utf8').toString('base64');
 const encHeader = (s) => (/^[\x20-\x7e]*$/.test(s) ? s : `=?UTF-8?B?${b64(s)}?=`);
 const addr = (a) => String(a).replace(/[\r\n<>]/g, '');
 
-export function buildMessage({ from, to, replyTo, subject, text }) {
+export function buildMessage({ from, to, replyTo, subject, text, html }) {
+  const boundary = '=_pr_' + randomUUID().replace(/-/g, '');
+  const wrap = (str) => b64(str).replace(/(.{76})/g, '$1\r\n');
   const head = [
     `From: PalletRotator website <${addr(from)}>`,
     `To: ${addr(to)}`,
@@ -37,15 +39,16 @@ export function buildMessage({ from, to, replyTo, subject, text }) {
     `Date: ${new Date().toUTCString().replace('GMT', '+0000')}`,
     `Message-ID: <${randomUUID()}@palletrotator.nl>`,
     'MIME-Version: 1.0',
-    'Content-Type: text/plain; charset=utf-8',
-    'Content-Transfer-Encoding: base64',
+    html ? `Content-Type: multipart/alternative; boundary="${boundary}"` : 'Content-Type: text/plain; charset=utf-8',
+    html ? null : 'Content-Transfer-Encoding: base64',
   ].filter(Boolean).join('\r\n');
-  const body = b64(text).replace(/(.{76})/g, '$1\r\n');
-  return `${head}\r\n\r\n${body}\r\n`;
+  if (!html) return `${head}\r\n\r\n${wrap(text)}\r\n`;
+  const part = (type, body) => `--${boundary}\r\nContent-Type: ${type}; charset=utf-8\r\nContent-Transfer-Encoding: base64\r\n\r\n${wrap(body)}\r\n`;
+  return `${head}\r\n\r\n${part('text/plain', text)}${part('text/html', html)}--${boundary}--\r\n`;
 }
 
-export async function sendMail({ host, port = 587, secure = false, user, pass, from, to, replyTo, subject, text, rejectUnauthorized = true }) {
-  const msg = buildMessage({ from, to, replyTo, subject, text });
+export async function sendMail({ host, port = 587, secure = false, user, pass, from, to, replyTo, subject, text, html, rejectUnauthorized = true }) {
+  const msg = buildMessage({ from, to, replyTo, subject, text, html });
   let socket = secure
     ? tls.connect({ host, port, servername: host, rejectUnauthorized })
     : net.connect({ host, port });

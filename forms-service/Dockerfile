@@ -1,6 +1,6 @@
 FROM node:20-alpine
 WORKDIR /app
-COPY package.json server.mjs smtp.mjs ./
+COPY package.json server.mjs smtp.mjs mail-template.mjs ./
 ENV NODE_ENV=production PORT=3000
 EXPOSE 3000
 USER node
