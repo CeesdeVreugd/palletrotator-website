@@ -300,10 +300,22 @@ Zoektermen die als uitgangspunt zijn gebruikt (glossarium in `i18n/glossary/<taa
 
 - Formulieren sturen `taal` mee. Foutmeldingen, de bevestigingsmail aan de aanvrager (zonder vrije invoer, naam alleen als die er als naam uitziet) en de brochure-PDF volgen die taal. `CONFIRM_MAIL=false` zet de bevestiging uit.
 - Offertemail naar sales krijgt altijd Nederlands, met `[DE]` enzovoort in het onderwerp en de taal/site in de mail.
-- Antwoordadres in de bevestiging: info@palletrotator.de voor DE, info@palletrotator.nl voor de rest (zie `SITE` in `forms-service/texts.mjs` en `i18n/sites.json`). De postvakken moeten bestaan.
+- Antwoordadres in de bevestiging en e-mailadres op de site per taal (V23): info@palletrotator.nl (NL), .de (DE), .eu (EN), .fr (FR), .it (IT), .es (ES); zie `SITE` in `forms-service/texts.mjs`, `i18n/sites.json` en `mail` in `src/data/formtext.ts`. Deze postvakken moeten bestaan (of doorsturen naar info@palletrotator.nl).
 - Laposta: per taal optioneel een eigen lijst (`LAPOSTA_LIST_ID_DE`, `_EN`, `_FR`, `_IT`, `_ES`), met dezelfde velden (voornaam, achternaam) en een bevestigingsmail in die taal. Niet ingesteld = standaardlijst `LAPOSTA_LIST_ID`.
 - Brochures: `public/downloads/PalletRotator-brochure-<taal>.pdf`. Ontbreekt een taal, dan serveert nginx de Engelse versie.
 
 ### Overzicht nieuwe bestanden
 
 `i18n/` (sites.json, slugs.json, dnt.json, html.mjs, lib.mjs, translate.mjs, localize.mjs, build-all.mjs, glossary/, overrides/, memory/, nalezen/), `src/data/i18n.ts`, `src/data/formtext.ts`, `src/components/LanguageSwitch.astro`, `forms-service/texts.mjs`, `Vertalen.cmd`.
+
+
+## V23
+
+- Fotoreeks: het bijschrift vult nu de volle hoogte van de slide, zodat onder een kort bijschrift (zoals in het Engels) geen lichte rand meer zichtbaar is (`PhotoSequence.astro`).
+- Elke taalsite toont het eigen e-mailadres (info@palletrotator.<tld>) op de site, in formuliermeldingen en in de bevestigingsmail.
+- `i18n/translate.mjs`: werkt met DeepL Free (maar 1 glossarium tegelijk; wordt per taal aangemaakt en weer verwijderd).
+- Let op: de brochures IT en ES (`public/downloads/PalletRotator-brochure-it.pdf` en `-es.pdf`) zitten niet in deze zip. Kopieer ze uit de map van V22 naar `public\downloads` van deze map voordat u Publiceren.cmd draait.
+
+## V24
+
+- Taalkiezer met vlaggen (NL, DE, EN = Britse vlag, FR, IT, ES) als inline SVG in `src/components/Flag.astro`; de vlag staat voor de taal, niet voor het domein. Op mobiel staat de taalkiezer in het menu.

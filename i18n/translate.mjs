@@ -78,15 +78,12 @@ async function glossaryFor(lang) {
   if (!fs.existsSync(gp)) return undefined;
   const entries = fs.readFileSync(gp, 'utf8').split(/\r?\n/).filter((l) => l.trim() && !l.startsWith('#') && l.includes('\t')).join('\n');
   if (!entries) return undefined;
-  const hash = crypto.createHash('sha1').update(entries).digest('hex');
-  const idFile = gp.replace(/\.tsv$/, '.id.json');
-  let cached = {}; try { cached = JSON.parse(fs.readFileSync(idFile, 'utf8')); } catch {}
-  if (cached.id && cached.hash === hash) {
-    try { await deepl('GET', `/v2/glossaries/${cached.id}`); return cached.id; } catch {}
-  }
-  if (cached.id) { try { await deepl('DELETE', `/v2/glossaries/${cached.id}`); } catch {} }
+  // DeepL Free staat maar 1 glossarium toe: ruim eerst onze eigen oude glossaria op
+  try {
+    const list = await deepl('GET', '/v2/glossaries');
+    for (const x of list.glossaries || []) if ((x.name || '').startsWith('palletrotator-')) { try { await deepl('DELETE', `/v2/glossaries/${x.glossary_id}`); } catch {} }
+  } catch {}
   const g = await deepl('POST', '/v2/glossaries', { name: `palletrotator-${lang}`, source_lang: 'nl', target_lang: sites[lang].deepl.slice(0, 2).toLowerCase(), entries, entries_format: 'tsv' });
-  fs.writeFileSync(idFile, JSON.stringify({ id: g.glossary_id, hash }, null, 2));
   console.log(`  glossarium aangemaakt (${entries.split('\n').length} termen)`);
   return g.glossary_id;
 }
@@ -96,6 +93,13 @@ const unKeep = (s) => s.replace(/<\/?keep>/g, '');
 
 async function translateAll(lang, keys) {
   const glossary_id = await glossaryFor(lang);
+  try {
+    return await translateInner(lang, keys, glossary_id);
+  } finally {
+    if (glossary_id) { try { await deepl('DELETE', `/v2/glossaries/${glossary_id}`); } catch {} }
+  }
+}
+async function translateInner(lang, keys, glossary_id) {
   const out = {};
   let batch = [], size = 0;
   const flush = async () => {

@@ -48,7 +48,7 @@ const { steps, label = 'Fotoreeks' } = Astro.props;
   .seq-slide img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
   .seq-slide figcaption {
     background: var(--navy); color: #fff; padding: 14px 18px; font-size: 14.5px; line-height: 1.45;
-    min-height: 3.6em; display: flex; align-items: flex-start; gap: 10px;
+    min-height: 3.6em; flex: 1 1 auto; display: flex; align-items: flex-start; gap: 10px;
   }
   .seq-slide figcaption strong { margin-right: 4px; }
   .seq-num {

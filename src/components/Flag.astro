@@ -1,0 +1,18 @@
+---
+// Eenvoudige vlaggen als inline SVG (emoji-vlaggen worden op Windows niet getoond).
+const { code } = Astro.props as { code: 'nl' | 'de' | 'en' | 'fr' | 'it' | 'es' };
+---
+<span class="flag" aria-hidden="true">
+  {code === 'nl' && (<svg viewBox="0 0 9 6" preserveAspectRatio="none"><rect width="9" height="2" fill="#AE1C28"/><rect y="2" width="9" height="2" fill="#fff"/><rect y="4" width="9" height="2" fill="#21468B"/></svg>)}
+  {code === 'de' && (<svg viewBox="0 0 5 3" preserveAspectRatio="none"><rect width="5" height="1" fill="#000"/><rect y="1" width="5" height="1" fill="#DD0000"/><rect y="2" width="5" height="1" fill="#FFCE00"/></svg>)}
+  {code === 'fr' && (<svg viewBox="0 0 3 2" preserveAspectRatio="none"><rect width="1" height="2" fill="#0055A4"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#EF4135"/></svg>)}
+  {code === 'it' && (<svg viewBox="0 0 3 2" preserveAspectRatio="none"><rect width="1" height="2" fill="#009246"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#CE2B37"/></svg>)}
+  {code === 'es' && (<svg viewBox="0 0 4 3" preserveAspectRatio="none"><rect width="4" height="3" fill="#AA151B"/><rect y="0.75" width="4" height="1.5" fill="#F1BF00"/></svg>)}
+  {code === 'en' && (<svg viewBox="0 0 60 30" preserveAspectRatio="none"><rect width="60" height="30" fill="#012169"/><path d="M0,0 60,30M60,0 0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 60,30M60,0 0,30" stroke="#C8102E" stroke-width="2.4"/><path d="M30,0V30M0,15H60" stroke="#fff" stroke-width="10"/><path d="M30,0V30M0,15H60" stroke="#C8102E" stroke-width="6"/></svg>)}
+</span>
+
+<style>
+  .flag { display: inline-block; width: 18px; height: 12px; border-radius: 2px; overflow: hidden; flex: 0 0 18px;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.18); vertical-align: -1px; }
+  .flag :global(svg) { display: block; width: 100%; height: 100%; }
+</style>

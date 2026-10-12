@@ -4,10 +4,10 @@ export const TALEN = ['nl', 'de', 'en', 'fr', 'it', 'es'];
 export const SITE = {
   nl: { origin: 'https://www.palletrotator.nl', brochure: '/brochure/', email: 'info@palletrotator.nl' },
   de: { origin: 'https://www.palletrotator.de', brochure: '/broschuere/', email: 'info@palletrotator.de' },
-  en: { origin: 'https://www.palletrotator.eu', brochure: '/brochure/', email: 'info@palletrotator.nl' },
-  fr: { origin: 'https://www.palletrotator.fr', brochure: '/brochure/', email: 'info@palletrotator.nl' },
-  it: { origin: 'https://www.palletrotator.it', brochure: '/brochure/', email: 'info@palletrotator.nl' },
-  es: { origin: 'https://www.palletrotator.es', brochure: '/folleto/', email: 'info@palletrotator.nl' },
+  en: { origin: 'https://www.palletrotator.eu', brochure: '/brochure/', email: 'info@palletrotator.eu' },
+  fr: { origin: 'https://www.palletrotator.fr', brochure: '/brochure/', email: 'info@palletrotator.fr' },
+  it: { origin: 'https://www.palletrotator.it', brochure: '/brochure/', email: 'info@palletrotator.it' },
+  es: { origin: 'https://www.palletrotator.es', brochure: '/folleto/', email: 'info@palletrotator.es' },
 };
 
 export const ERR = {
