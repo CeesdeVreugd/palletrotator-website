@@ -1,13 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ProductAnimation from '../components/ProductAnimation.astro';
+import PhotoSequence from '../components/PhotoSequence.astro';
 import YouTubeEmbed from '../components/YouTubeEmbed.astro';
 import VersionSwitch from '../components/VersionSwitch.astro';
+import { stdSteps } from '../data/fotoreeks';
 
 const title = 'PalletRotator (Standaard) — Palletkantelaar voor heftruck & reachtruck';
 const description = 'De standaard PalletRotator palletkantelaar: 2000 kg laadcapaciteit, te beladen met heftruck, reachtruck of elektrische stapelaar. CE-gecertificeerd, optioneel geschikt voor vrieshuis.';
 
-const stdFrames = Array.from({ length: 6 }, (_, i) => `/images/animation/k11-std/frame-${String(i + 1).padStart(2, '0')}.jpg`);
 ---
 <BaseLayout title={title} description={description} path="/palletrotator/">
   <section class="dark-band title-band">
@@ -25,7 +25,7 @@ const stdFrames = Array.from({ length: 6 }, (_, i) => `/images/animation/k11-std
   <section class="section">
     <div class="wrap intro-grid">
       <div class="product-media">
-        <ProductAnimation frames={stdFrames} alt="PalletRotator standaard uitvoering — pallet laden, kantelen en wisselen" interval={1100} />
+        <PhotoSequence steps={stdSteps} label="PalletRotator K11 in gebruik, stap voor stap" />
       </div>
       <div class="intro-copy">
         <p>De PalletRotator klemt de complete palletlading stevig vast en roteert deze snel en veilig naar de gewenste positie. Vervolgens kan de bestaande pallet eenvoudig worden verwijderd en vervangen — zonder dat producten handmatig worden overgepakt.</p>
@@ -54,7 +54,7 @@ const stdFrames = Array.from({ length: 6 }, (_, i) => `/images/animation/k11-std
         <p class="section-sub">Bekijk hoe de palletkantelaar een pallet van 2.000 kg klemt, kantelt en wisselt.</p>
       </div>
       <div class="video-box">
-        <YouTubeEmbed id="BkoX3jLHnlA" title="PalletRotator K11 | Palletkantelaar 2.000 KG | De Vreugd" poster="/images/animation/k11-std/frame-01.jpg" />
+        <YouTubeEmbed id="BkoX3jLHnlA" title="PalletRotator K11 | Palletkantelaar 2.000 KG | De Vreugd" poster="/images/foto/palletrotator-k11-kantelen-1600.webp" />
       </div>
     </div>
   </section>

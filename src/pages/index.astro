@@ -1,9 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ProductAnimation from '../components/ProductAnimation.astro';
+import PhotoSequence from '../components/PhotoSequence.astro';
+import { stdSteps } from '../data/fotoreeks';
 import KlantLogos from '../components/KlantLogos.astro';
 
-const heroFrames = Array.from({ length: 6 }, (_, i) => `/images/animation/k11-std/frame-${String(i + 1).padStart(2, '0')}.jpg`);
 
 const title = 'PalletRotator — Palletkantelaar voor pallets wisselen in 5 seconden';
 const description = 'De PalletRotator is dé palletkantelaar (palletwisselaar) voor de foodindustrie: pallets wisselen zonder ompakken, kunststof naar hout wisselen en freezer spacers verwijderen. CE-gecertificeerd, ook geschikt voor vrieshuis (-25°C tot +40°C).';
@@ -55,7 +55,7 @@ const toepassingen = [
         </div>
       </div>
       <div class="hero-media">
-        <ProductAnimation frames={heroFrames} alt="PalletRotator palletkantelaar in bedrijf — pallet laden, kantelen en wisselen" interval={1100} />
+        <PhotoSequence steps={stdSteps} label="PalletRotator in gebruik, stap voor stap" />
       </div>
     </div>
   </section>
@@ -70,7 +70,7 @@ const toepassingen = [
       </div>
       <div class="compare-grid">
         <a href="/palletrotator/" class="card compare-card compare-link">
-          <div class="compare-img"><img src="/images/animation/k11-std/frame-01.jpg" alt="PalletRotator K11 standaard palletkantelaar voor heftruck" loading="lazy" decoding="async" width="800" height="600" /><span class="compare-tag">K11 · Standaard</span></div>
+          <div class="compare-img"><img src="/images/foto/palletrotator-k11-machine-800.webp" alt="PalletRotator K11 standaard palletkantelaar voor heftruck" loading="lazy" decoding="async" width="800" height="533" /><span class="compare-tag">K11 · Standaard</span></div>
           <div class="compare-head compare-head-light">
             <span class="eyebrow">Standaard</span>
             <h3>PalletRotator</h3>
@@ -218,7 +218,7 @@ const toepassingen = [
   .hero h1 { font-size: 50px; line-height: 1.12; }
   .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
   .hero-chips { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 6px; }
-  .hero-media { flex: 0 0 440px; }
+  .hero-media { flex: 0 0 500px; }
   .media-placeholder {
     border-radius: 24px;
     background: linear-gradient(155deg, rgba(255,255,255,0.10), rgba(255,255,255,0.03));

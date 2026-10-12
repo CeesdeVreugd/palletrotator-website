@@ -3,16 +3,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PhotoSequence from '../components/PhotoSequence.astro';
 import YouTubeEmbed from '../components/YouTubeEmbed.astro';
 import VersionSwitch from '../components/VersionSwitch.astro';
+import { eptSteps } from '../data/fotoreeks';
 
 const title = 'PalletRotator EPT — Palletkantelaar voor palletwagen & elektrische pompwagen';
 const description = 'De PalletRotator EPT is dé palletkantelaar voor belading zonder heftruck: geschikt voor een handpalletwagen of elektrische pompwagen (EPT). Laadcapaciteit 1600 kg, CE-gecertificeerd.';
 
-const eptSteps = [
-  { base: '/images/foto/palletrotator-k13-ept-machine', title: 'De machine', caption: 'PalletRotator K13 EPT met lage oprit en veiligheidshekwerk.', alt: 'PalletRotator K13 EPT palletkantelaar met oprit en hekwerk in een koelhuis' },
-  { base: '/images/foto/palletrotator-k13-ept-oprijden', title: 'Oprijden', caption: 'Rijd de pallet met een elektrische pompwagen de oprit op.', alt: 'Medewerker rijdt met elektrische pompwagen en pallet de oprit van de PalletRotator EPT op' },
-  { base: '/images/foto/palletrotator-k13-ept-pallet-in-machine', title: 'Klemmen', caption: 'De complete palletlading staat in de machine en wordt vastgeklemd.', alt: 'Pallet staat in de PalletRotator EPT klaar om geklemd en gekanteld te worden' },
-  { base: '/images/foto/palletrotator-k13-ept-gekanteld', title: 'Kantelen en wisselen', caption: 'Bediening met twee knoppen: de pallet kantelt en kan worden gewisseld.', alt: 'PalletRotator EPT met gekantelde pallet en operator bij het bedieningspaneel' },
-];
 ---
 <BaseLayout title={title} description={description} path="/palletrotator-ept/">
   <section class="dark-band title-band">

@@ -199,11 +199,11 @@ docker run --rm -p 8080:80 palletrotator-website
 ```
 
 
-## Foto's en video (V9–V15)
+## Foto's en video (V9–V16)
 - `/palletrotator-ept/`: fotoreeks (`PhotoSequence.astro`) met 4 stappen uit `public/images/foto/` (WebP 800/1600 px).
 - `/palletrotator/` en `/palletrotator-ept/`: YouTube-video via `YouTubeEmbed.astro` (klik-om-te-laden, `youtube-nocookie.com`, eigen posterfoto, geen Google-verbinding vóór de klik).
 - `VideoObject`-schema wordt pas geplaatst als `uploadDate` aan `YouTubeEmbed` is meegegeven.
-- Homepage-hero en `/palletrotator/` gebruiken nog de renders (`ProductAnimation.astro`) tot de K11-foto's er zijn.
+- Fotoreeksen staan in `src/data/fotoreeks.ts` (K11 standaard en K13 EPT, 4 stappen met bijschrift). Homepage-hero en `/palletrotator/` tonen de K11-reeks, `/palletrotator-ept/` de K13-reeks. De oude crossfade-animatie en renders zijn verwijderd (V16).
 
 ## Referenties (V10)
 - Klantlogo's staan transparant in `public/images/klanten/`; de lijst staat in `src/data/klanten.ts`.
