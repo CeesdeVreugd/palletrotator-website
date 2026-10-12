@@ -9,13 +9,14 @@ export interface Props {
   description: string;
   path?: string;
   ogImage?: string;
+  lang?: 'nl' | 'de';
 }
 
-const { title, description, path = '/', ogImage = '/images/og-palletrotator.jpg' } = Astro.props;
+const { title, description, path = '/', ogImage = '/images/og-palletrotator.jpg', lang = 'nl' } = Astro.props;
 const canonical = new URL(path, Astro.site);
 ---
 <!doctype html>
-<html lang="nl">
+<html lang={lang}>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -30,7 +31,7 @@ const canonical = new URL(path, Astro.site);
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:url" content={canonical} />
-  <meta property="og:locale" content="nl_NL" />
+  <meta property="og:locale" content={lang === 'de' ? 'de_DE' : 'nl_NL'} />
   <meta name="twitter:card" content="summary_large_image" />
 
   <slot name="head" />
@@ -41,6 +42,6 @@ const canonical = new URL(path, Astro.site);
     <slot />
   </main>
   <Footer />
-  <WhatsAppButton />
+  <WhatsAppButton lang={lang} />
 </body>
 </html>

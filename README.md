@@ -230,3 +230,7 @@ docker run --rm -p 8080:80 palletrotator-website
 
 - `src/data/contact.ts`: WhatsApp-nummer (`whatsappNumber`, formaat `31488412828`, leeg = knop verdwijnt) en voorgevulde tekst. `WhatsAppButton.astro` staat in `BaseLayout` en dus op alle pagina's (rechtsonder; op mobiel alleen het icoon).
 - `src/data/team.ts` + `TeamPortretten.astro`: blok "Maak kennis met het team" op `/offerte-aanvragen/` (Wim de Vreugd, Bert van Lankeren, Cees de Vreugd), foto's in `public/images/team/` (400/800 px WebP). Duitse functietitels staan al in `team.ts` (`functieDe`) voor de DE-versie.
+
+## V18 — taalafhankelijke WhatsApp-knop en teamblok
+
+- `src/data/contact.ts` bevat per taal (`nl`, `de`) knoptekst, toegankelijkheidslabel en voorgevulde WhatsApp-tekst (DE: "Guten Tag, ich habe eine Frage zum PalletRotator.", Sie-vorm). `BaseLayout` krijgt een `lang`-prop (standaard `nl`; zet ook `<html lang>` en `og:locale`) en geeft die door aan `WhatsAppButton`. `TeamPortretten` accepteert `lang` en toont dan de Duitse functietitels en tekst. Nieuwe talen: type `Lang` en teksten uitbreiden.
