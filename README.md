@@ -111,6 +111,8 @@ Portainer op **"Pull and redeploy"** klikken (met "Re-pull image" aan)
 om de nieuwe versie ook echt live te zetten — het script zegt dit ook
 zelf aan het einde.
 
+> **V28:** het testadres verschijnt alleen nog in het portaal als `STAGING_BASE` is ingesteld. Het staging-domein opheffen? Zie de stappen in de chat/portaal: Proxy Host in NPM verwijderen en het adres in het portaal verwijderen.
+
 ## Stap 2 — Staging: `palletrotator.devreugd-pt.nl` (met wachtwoord)
 
 Dit volgt exact hetzelfde patroon als de bestaande Cheese Stock Manager-stack

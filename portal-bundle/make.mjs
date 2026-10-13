@@ -19,7 +19,8 @@ fs.mkdirSync(out, { recursive: true });
 
 // adressen: de productiedomeinen + de testsite
 const targets = Object.entries(sites).map(([lang, s]) => ({ id: lang, label: `${(s.label || lang).toUpperCase()} · ${new URL(s.origin).hostname}`, lang, url: s.origin + '/' }));
-targets.push({ id: 'test', label: 'NL · testsite', lang: 'nl', url: 'https://palletrotator.devreugd-pt.nl/' });
+// testsite alleen als er bewust een staging-domein is ingesteld (STAGING_BASE); in productie niet
+if (process.env.STAGING_BASE) targets.push({ id: 'test', label: 'NL · testsite', lang: 'nl', url: `https://${process.env.STAGING_BASE.replace(/^https?:\/\//, '').replace(/\/$/, '')}/` });
 
 // teksten
 const langs = [];
