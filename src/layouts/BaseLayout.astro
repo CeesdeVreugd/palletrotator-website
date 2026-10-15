@@ -13,6 +13,11 @@ export interface Props {
   ogImage?: string;
 }
 
+// Cookieloze bezoekstatistieken (Umami, eigen server). Alleen actief als UMAMI_URL en UMAMI_ID bij de build zijn ingesteld.
+const umamiUrl = ((typeof process !== 'undefined' && process.env.UMAMI_URL) || '').replace(/\/$/, '');
+const umamiId = (typeof process !== 'undefined' && process.env.UMAMI_ID) || '';
+const umamiDomains = LANGS.flatMap((l) => { const h = new URL(sites[l].origin).hostname; return [h, h.replace(/^www\./, '')]; }).join(',');
+
 const { title, description, path = '/', ogImage = '/images/og-palletrotator.jpg' } = Astro.props;
 const canonical = urlFor(path, lang);
 const site = sites[lang];
@@ -38,6 +43,7 @@ const site = sites[lang];
   <meta property="og:locale" content={site.locale} />
   <meta name="twitter:card" content="summary_large_image" />
 
+  {umamiUrl && umamiId && <script is:inline defer src={`${umamiUrl}/script.js`} data-website-id={umamiId} data-domains={umamiDomains} data-do-not-track="true"></script>}
   <slot name="head" />
 </head>
 <body>

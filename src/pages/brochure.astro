@@ -132,6 +132,7 @@ const description = 'Download gratis de PalletRotator-brochure: technische speci
         const j = await r.json().catch(() => ({}));
         if (!r.ok || !j.ok) return fail(j.error || M.fail);
         link.href = j.download;
+        (window as any).umami?.track('brochure-download');
         form.hidden = true; done.hidden = false;
         done.scrollIntoView({ behavior: 'smooth', block: 'center' });
         setTimeout(() => link.click(), 600);

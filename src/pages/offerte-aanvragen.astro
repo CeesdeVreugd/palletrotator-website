@@ -142,6 +142,7 @@ const description = 'Vraag een vrijblijvende offerte of brochure aan voor de Pal
         const r = await fetch('/api/offerte', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
         const j = await r.json().catch(() => ({}));
         if (!r.ok || !j.ok) return fail(j.error || M.fail);
+        (window as any).umami?.track('offerte-aanvraag');
         form.hidden = true; done.hidden = false;
         done.scrollIntoView({ behavior: 'smooth', block: 'center' });
       } catch {

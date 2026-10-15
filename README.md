@@ -4,6 +4,9 @@ Statische marketingsite (Astro) voor de PalletRotator — "Powered by De Vreugd
 Productietechniek". Gebouwd volgens het visuele voorstel, met de echte
 huisstijlkleuren (`#0A0A96` / `#0080FF`) en het echte De Vreugd-beeldmerk.
 
+## V33
+- Optionele cookieloze statistieken met Umami (eigen server): stack in `analytics/`, script alleen op de sites als `UMAMI_URL` en `UMAMI_ID` zijn gezet. Gebeurtenissen *brochure-download* en *offerte-aanvraag*. Zie `analytics/README.md` (installatie en privacytekst).
+
 ## V32
 - Fotobestanden hernoemd naar Engelse, beschrijvende namen (bv. `palletrotator-k11-forklift-approach`, `palletrotator-coldstore`); fotoplekken in `portal-bundle/slots.json` meeveranderd. Een via het portaal vervangen foto onder de oude naam moet opnieuw worden geüpload.
 - Alt-teksten van de fotoreeksen bevatten nu het zoekwoord (palletkantelaar / Palettenwender / pallet inverter / retourneur de palettes / ribaltatore di pallet / volteador de palets); vertalingen in `i18n/overrides`.

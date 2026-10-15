@@ -11,6 +11,9 @@ services:
       args:
         # Leeg laten voor productie. Voor testen: STAGING_BASE=palletrotator.devreugd-pt.nl (zie README).
         STAGING_BASE: ${STAGING_BASE:-}
+        # Cookieloze statistieken: adres van Umami en website-ID (zie map analytics/). Leeg = uit.
+        UMAMI_URL: ${UMAMI_URL:-}
+        UMAMI_ID: ${UMAMI_ID:-}
     container_name: palletrotator-website
     restart: unless-stopped
     networks:

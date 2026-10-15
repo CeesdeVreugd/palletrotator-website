@@ -12,6 +12,10 @@ COPY . .
 # https://de.<base>, https://en.<base>, ... wijzen i.p.v. naar de productiedomeinen.
 ARG STAGING_BASE=""
 ENV STAGING_BASE=$STAGING_BASE
+# Cookieloze statistieken (Umami); leeg = geen script op de site
+ARG UMAMI_URL=""
+ARG UMAMI_ID=""
+ENV UMAMI_URL=$UMAMI_URL UMAMI_ID=$UMAMI_ID
 RUN npm run build:all
 # Koppelbestand voor de WebsiteBeheerPortal (manifest, nalezen-bestanden, originele foto's)
 RUN node portal-bundle/make.mjs /app/portal-bundle-out

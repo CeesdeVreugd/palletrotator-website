@@ -1,0 +1,42 @@
+# Cookieloze bezoekstatistieken (Umami) voor de PalletRotator-websites. Eigen Portainer-stack ("Stacks from Git" of plakken),
+# draait op de eigen server: geen data naar derden, geen cookies.
+# Portainer-variabelen: UMAMI_DB_PASSWORD (sterk wachtwoord) en UMAMI_APP_SECRET (lange willekeurige tekst). Nooit in de repo zetten.
+services:
+  umami-db:
+    image: postgres:16-alpine
+    container_name: umami-db
+    restart: unless-stopped
+    networks: [umami_internal]
+    environment:
+      POSTGRES_DB: umami
+      POSTGRES_USER: umami
+      POSTGRES_PASSWORD: ${UMAMI_DB_PASSWORD}
+    volumes:
+      - umami-db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U umami -d umami"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  umami:
+    image: ghcr.io/umami-software/umami:postgresql-latest
+    container_name: umami
+    restart: unless-stopped
+    depends_on:
+      umami-db:
+        condition: service_healthy
+    networks: [umami_internal, npm_default]
+    environment:
+      DATABASE_URL: postgresql://umami:${UMAMI_DB_PASSWORD}@umami-db:5432/umami
+      APP_SECRET: ${UMAMI_APP_SECRET}
+      DISABLE_TELEMETRY: "1"
+    # Geen "ports:": Nginx Proxy Manager bereikt Umami op umami:3000 (proxy host, bijv. stats.palletrotator.eu, met SSL).
+
+networks:
+  umami_internal:
+  npm_default:
+    external: true
+
+volumes:
+  umami-db:
