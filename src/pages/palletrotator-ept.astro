@@ -8,6 +8,7 @@ import { eptSteps } from '../data/fotoreeks';
 const title = 'PalletRotator EPT — Palletkantelaar voor palletwagen & elektrische pompwagen';
 const description = 'De PalletRotator EPT is dé palletkantelaar voor belading zonder heftruck: geschikt voor een handpalletwagen of elektrische pompwagen (EPT). Laadcapaciteit 1600 kg, CE-gecertificeerd.';
 
+import EptUitleg from '../components/EptUitleg.astro';
 ---
 <BaseLayout title={title} description={description} path="/palletrotator-ept/">
   <section class="dark-band title-band">
@@ -28,6 +29,7 @@ const description = 'De PalletRotator EPT is dé palletkantelaar voor belading z
         <PhotoSequence steps={eptSteps} label="PalletRotator EPT in gebruik, stap voor stap" />
       </div>
       <div class="intro-copy">
+        <EptUitleg />
         <p>Wilt u de palletkantelaar beladen met een elektrische pallettruck (EPT) of handpalletwagen? Dan is de PalletRotator EPT hiervoor speciaal ontwikkeld. Dankzij het lage klembord met oprit rijdt u eenvoudig naar binnen, zonder heftruck of reachtruck nodig te hebben.</p>
         <p>De PalletRotator EPT werkt in de basis hetzelfde als de standaard uitvoering: de complete palletlading wordt geklemd en geroteerd, waarna u de pallet eenvoudig wisselt.</p>
         <ul class="check-list">

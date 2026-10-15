@@ -7,16 +7,22 @@ const description = 'Drie toepassingen van de PalletRotator palletkantelaar: pal
 const items = [
   {
     id: 'pallet-wisselen',
+    foto: 'palletrotator-k11-pallet-in-machine',
+    alt: 'PalletRotator klemt een volle pallet vast om de pallet te wisselen',
     title: 'Pallet wisselen zonder ompakken',
     text: 'Komen er dagelijks goederen binnen op verkeerde, vuile of beschadigde pallets? De PalletRotator klemt de complete lading vast, roteert deze, en u vervangt de pallet in één beweging — zonder producten handmatig te verplaatsen. Dat bespaart tijd en voorkomt fysieke belasting bij medewerkers.',
   },
   {
     id: 'kunststof-naar-hout',
+    foto: 'palletrotator-k11-kantelen',
+    alt: 'Medewerker bedient het paneel van de PalletRotator bij het kantelen van een pallet',
     title: 'Kunststof naar houten pallet omwisselen',
     text: 'Sommige klanten of hygiëneprotocollen vragen om een houten pallet, terwijl goederen op kunststof binnenkomen (of andersom). Met de PalletRotator wisselt u eenvoudig van pallettype, passend bij de eisen van uw klant of interne kwaliteitsnormen.',
   },
   {
     id: 'vriesspacers',
+    foto: 'palletrotator-k13-ept-gekanteld',
+    alt: 'PalletRotator met gekantelde pallet in een koude opslagruimte',
     title: 'Vriesspacers en vriesmatten verwijderen',
     text: 'In coldstores en vrieshuizen worden freezer spacers en vriesmatten gebruikt om productlagen tijdens het invriezen te scheiden. Bij het uitleveren verwijdert u deze eenvoudig en snel met de PalletRotator — ook bij temperaturen tot -25°C.',
   },
@@ -38,10 +44,11 @@ const items = [
       {items.map((item, i) => (
         <div class="toepassing-item" id={item.id}>
           <span class="toepassing-index">0{i + 1}</span>
-          <div>
+          <div class="toepassing-tekst">
             <h2>{item.title}</h2>
             <p>{item.text}</p>
           </div>
+          <img class="toepassing-foto" src={`/images/foto/${item.foto}-800.webp`} alt={item.alt} width="800" height="533" loading="lazy" decoding="async" />
         </div>
       ))}
     </div>
@@ -67,8 +74,12 @@ const items = [
   .toepassing-index { font-size: 40px; font-weight: 700; color: var(--bg-soft-2); flex: 0 0 auto; -webkit-text-stroke: 1.5px var(--blue); color: transparent; }
   .toepassing-item h2 { font-size: 24px; margin-bottom: 12px; }
   .toepassing-item p { font-size: 15px; max-width: 680px; }
+  .toepassing-tekst { flex: 1; min-width: 0; }
+  .toepassing-foto { flex: 0 0 260px; width: 260px; height: auto; aspect-ratio: 3 / 2; object-fit: cover; display: block; box-shadow: 0 2px 10px rgba(10, 10, 80, 0.12); }
   @media (max-width: 700px) {
-    .toepassing-item { gap: 16px; }
+    .toepassing-item { gap: 16px; flex-wrap: wrap; }
+    .toepassing-tekst { flex: 1 1 calc(100% - 60px); }
+    .toepassing-foto { flex: 1 1 100%; width: 100%; max-width: 420px; margin-left: 0; }
     .toepassing-index { font-size: 28px; }
   }
 </style>

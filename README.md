@@ -4,6 +4,15 @@ Statische marketingsite (Astro) voor de PalletRotator — "Powered by De Vreugd
 Productietechniek". Gebouwd volgens het visuele voorstel, met de echte
 huisstijlkleuren (`#0A0A96` / `#0080FF`) en het echte De Vreugd-beeldmerk.
 
+## V30 — opmerkingen Duitse nalezer
+- Brochurepagina: voorpagina per taal (`public/images/brochure-cover-<taal>.webp`, uit de PDF's) in plaats van altijd de Nederlandse.
+- EPT-uitleg ("Wat betekent EPT?", component `EptUitleg`) op de EPT- en de specificatiepagina; vertalingen in `i18n/overrides/<taal>.json` (laat door moedertaalsprekers nalezen).
+- Toepassingen: kleine landschapsfoto naast elke toepassing.
+- Adres overal `Edisonring 11` / `NL-6669 NA, Dodewaard` (niet vertaald).
+- "Powered by De Vreugd" (onder het logo, eyebrow, footer) blijft in alle talen origineel (`translate="no"`).
+- Topbalk zonder aanhalingstekens in alle talen (override).
+- Vast nummer +31 (0)488 412 828 onder elke portretfoto.
+
 ## Lokaal testen
 
 ```bash

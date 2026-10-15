@@ -1,0 +1,16 @@
+---
+const tx = {
+  titel: 'Wat betekent EPT?',
+  tekst: 'EPT staat voor Electric Pallet Truck (elektrische pallettruck): denk aan een pompwagen of elektrische pompwagen. Met de EPT kan de machine met eenvoudiger materieel worden beladen, waardoor voor het laden en lossen minder hoog gekwalificeerd personeel volstaat.',
+};
+---
+<aside class="ept-uitleg">
+  <h3>{tx.titel}</h3>
+  <p>{tx.tekst}</p>
+</aside>
+
+<style>
+  .ept-uitleg { background: var(--bg-soft); border-left: 4px solid var(--blue); padding: 16px 20px; margin: 0 0 22px; }
+  .ept-uitleg h3 { font-size: 17px; color: var(--navy); margin: 0 0 6px; }
+  .ept-uitleg p { font-size: 15px; margin: 0; }
+</style>

@@ -26,6 +26,7 @@ const rows = [
   ['Herkomst componenten A-merken', 'Europa', 'Europa'],
   ['Jaarlijkse inspectie', 'Ja', 'Ja'],
 ];
+import EptUitleg from '../components/EptUitleg.astro';
 ---
 <BaseLayout title={title} description={description} path="/specificaties/">
   <section class="dark-band title-band">
@@ -36,6 +37,10 @@ const rows = [
       <h1>PalletRotator vs. PalletRotator EPT — volledige specificaties</h1>
       <p>Beide uitvoeringen van de palletkantelaar wisselen pallets snel en veilig. Vergelijk laadcapaciteit, belading en technische specificaties om te bepalen welke PalletRotator bij uw situatie past.</p>
     </div>
+  </section>
+
+  <section class="section" style="padding-bottom:0;">
+    <div class="wrap"><EptUitleg /></div>
   </section>
 
   <section class="section" style="padding-bottom:40px;">
