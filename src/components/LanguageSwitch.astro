@@ -11,7 +11,7 @@ const { class: cls = '' } = Astro.props;
     <li>
       {l === lang
         ? <span class="lang-current" aria-current="true" lang={l}><Flag code={l} />{sites[l].label}</span>
-        : <a href={switchUrl(nlPath, l)} data-keep-url hreflang={l} lang={l} title={sites[l].name} rel="alternate"><Flag code={l} />{sites[l].label}</a>}
+        : <a href={switchUrl(nlPath, l)} data-keep-url hreflang={l} lang={l} title={sites[l].name} rel="alternate noreferrer"><Flag code={l} />{sites[l].label}</a>}
     </li>
   ))}
 </ul>

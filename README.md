@@ -4,6 +4,9 @@ Statische marketingsite (Astro) voor de PalletRotator — "Powered by De Vreugd
 Productietechniek". Gebouwd volgens het visuele voorstel, met de echte
 huisstijlkleuren (`#0A0A96` / `#0080FF`) en het echte De Vreugd-beeldmerk.
 
+## V34
+- Taalkiezer: links met `rel="alternate noreferrer"`, zodat een wissel tussen de taalsites in de statistieken niet als herkomst (bijv. palletrotator.de) telt maar als Direct.
+
 ## V33
 - Optionele cookieloze statistieken met Umami (eigen server): stack in `analytics/`, script alleen op de sites als `UMAMI_URL` en `UMAMI_ID` zijn gezet. Gebeurtenissen *brochure-download* en *offerte-aanvraag*. Zie `analytics/README.md` (installatie en privacytekst).
 
