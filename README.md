@@ -4,6 +4,13 @@ Statische marketingsite (Astro) voor de PalletRotator — "Powered by De Vreugd
 Productietechniek". Gebouwd volgens het visuele voorstel, met de echte
 huisstijlkleuren (`#0A0A96` / `#0080FF`) en het echte De Vreugd-beeldmerk.
 
+## V38
+- LinkedIn: showcase-pagina `linkedin.com/showcase/palletrotator` (onder De Vreugd Productietechniek). Link "LinkedIn" in de footer (kolom Contact, niet vertaald) en `Organization`-JSON-LD op elke pagina met `sameAs` naar LinkedIn, `logo`, `email` en `parentOrganization`.
+
+## V37
+- Brochureformulier: heeft een Laposta-lijst een verplicht veld onder een andere tag dan `voornaam` (bijv. `naam`, zoals de oudere EN-lijst), dan vult de formulierservice dat veld automatisch ook met de naam en probeert het opnieuw (maximaal 2 extra pogingen). Daarvoor hoeft de lijst in Laposta niet aangepast te worden. Lijst-ID's staan in `LAPOSTA_LIST_ID_<TAAL>` (NL ook als `LAPOSTA_LIST_ID_NL`).
+- Getest met een nagebootste Laposta-API: verplicht-veld-fout wordt hersteld, "bestaat al" geldt als gelukt, onbekende lijst geeft een nette fout en een logregel.
+
 ## V36
 - Laposta: de NL-lijst komt nu uit de stack-variabele `LAPOSTA_LIST_ID_NL` (past bij `_DE`, `_EN`, `_FR`, `_IT`, `_ES`). `LAPOSTA_LIST_ID` is niet meer nodig; staat die er nog, dan werkt het als terugval. Zonder beide geldt `b12sde1bbp`.
 

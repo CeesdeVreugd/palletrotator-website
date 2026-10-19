@@ -63,30 +63,41 @@ async function readBody(req) {
 }
 
 async function addToLaposta({ email, naam, bedrijf, ip, sourceUrl, taal = 'nl' }) {
-  const form = new URLSearchParams();
-  form.set('list_id', listFor(taal));
-  form.set('ip', ip);
-  form.set('email', email);
-  form.set('source_url', sourceUrl);
-  // Veldkoppeling volgens de lijst: Naam = {{voornaam}}, Bedrijfsnaam = {{achternaam}}
-  form.set('custom_fields[voornaam]', naam);
-  if (bedrijf) form.set('custom_fields[achternaam]', bedrijf);
-  const r = await fetch(`${BASE}/v2/member`, {
-    method: 'POST',
-    headers: {
-      Authorization: 'Basic ' + Buffer.from(`${API_KEY}:`).toString('base64'),
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    body: form,
-    signal: AbortSignal.timeout(10000),
-  });
-  let data = {}; try { data = await r.json(); } catch {}
-  if (r.ok) return { ok: true };
-  const err = data?.error || {};
-  // E-mailadres staat al in de lijst: voor een brochure-aanvraag is dat geen fout.
-  if (err.code === 204 || /already|bestaat al|exists/i.test(String(err.message || ''))) return { ok: true, existing: true };
-  console.error('[laposta] fout', r.status, err.code, err.message, err.parameter || '');
-  return { ok: false, status: r.status, code: err.code };
+  // Veldkoppeling volgens de lijst: Naam = {{voornaam}}, Bedrijfsnaam = {{achternaam}}.
+  // Heeft een lijst een verplicht veld onder een andere tag (bijv. "naam"), dan vult de tweede poging dat veld ook met de naam.
+  const velden = { voornaam: naam };
+  if (bedrijf) velden.achternaam = bedrijf;
+  for (let poging = 1; poging <= 3; poging++) {
+    const form = new URLSearchParams();
+    form.set('list_id', listFor(taal));
+    form.set('ip', ip);
+    form.set('email', email);
+    form.set('source_url', sourceUrl);
+    for (const [k, v] of Object.entries(velden)) form.set(`custom_fields[${k}]`, v);
+    const r = await fetch(`${BASE}/v2/member`, {
+      method: 'POST',
+      headers: {
+        Authorization: 'Basic ' + Buffer.from(`${API_KEY}:`).toString('base64'),
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: form,
+      signal: AbortSignal.timeout(10000),
+    });
+    let data = {}; try { data = await r.json(); } catch {}
+    if (r.ok) return { ok: true };
+    const err = data?.error || {};
+    // E-mailadres staat al in de lijst: voor een brochure-aanvraag is dat geen fout.
+    if (err.code === 204 || /already|bestaat al|exists/i.test(String(err.message || ''))) return { ok: true, existing: true };
+    // Verplicht veld met een andere tag dan voornaam/achternaam: vul het met de naam en probeer opnieuw.
+    const veld = String(err.parameter || '').trim();
+    if (err.code === 201 && /cannot be empty/i.test(String(err.message || '')) && /^[a-z0-9_]{1,40}$/i.test(veld) && !(veld in velden) && poging < 3) {
+      velden[veld] = naam;
+      continue;
+    }
+    console.error('[laposta] fout', r.status, err.code, err.message, err.parameter || '');
+    return { ok: false, status: r.status, code: err.code };
+  }
+  return { ok: false };
 }
 
 const KEUZE = {

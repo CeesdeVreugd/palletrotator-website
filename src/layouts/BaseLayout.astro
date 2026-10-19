@@ -44,6 +44,16 @@ const site = sites[lang];
   <meta name="twitter:card" content="summary_large_image" />
 
   {umamiUrl && umamiId && <script is:inline defer src={`${umamiUrl}/script.js`} data-website-id={umamiId} data-domains={umamiDomains} data-do-not-track="true"></script>}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'PalletRotator',
+    url: site.origin,
+    logo: `${site.origin}/images/logo-mark-blue.png`,
+    email: site.email,
+    sameAs: ['https://www.linkedin.com/showcase/palletrotator/'],
+    parentOrganization: { '@type': 'Organization', name: 'De Vreugd Productietechniek', url: 'https://devreugd-pt.nl' },
+  })} />
   <slot name="head" />
 </head>
 <body>
