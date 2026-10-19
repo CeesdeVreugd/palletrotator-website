@@ -4,6 +4,10 @@ Statische marketingsite (Astro) voor de PalletRotator — "Powered by De Vreugd
 Productietechniek". Gebouwd volgens het visuele voorstel, met de echte
 huisstijlkleuren (`#0A0A96` / `#0080FF`) en het echte De Vreugd-beeldmerk.
 
+## V42
+- Correctie: de PalletRotator kantelt de lading 90 graden (niet 180) en de spacers worden met de hand uitgepakt. Aangepast op de pagina's Freezer spacers verwijderen, Palletwisselaar en Vrieshuis (NL-bron + overrides in 5 talen).
+- Palletwisselaar-pagina: de machine draait 90 of 180 graden. Bij 90 graden wisselt men de pallet met de hand, bij 180 graden vaak met heftruck of reachtruck (tekst, FAQ en vertalingen aangepast).
+
 ## V40
 - Nieuwe zoekpagina's, in alle zes talen: **Freezer spacers verwijderen** (`/freezer-spacers-verwijderen/`) en **Palletwisselaar** (`/palletwisselaar/`). Elk met de zoekterm in kop en inleiding, uitleg in stappen, veelgestelde vragen (met FAQ-gegevens voor Google), video en offerte-knop. Nieuwe URL's per taal staan in `i18n/slugs.json`, de pagina's komen automatisch in de sitemap.
 - Titel, beschrijving, kopjes, vragen en stapnamen van de nieuwe pagina's staan handgeschreven in `i18n/overrides/<taal>.json` (alle vijf talen). De overige tekst (antwoorden, opsommingen) vertaalt DeepL: voer na het publiceren `Vertalen.cmd` uit.
