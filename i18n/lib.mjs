@@ -41,7 +41,10 @@ export function loadMemory(lang) {
   const p = memoryPaths(lang);
   return { memory: readJson(p.memory, {}), overrides: readJson(p.overrides, {}) };
 }
-export const lookup = (mem, key) => mem.overrides[key] ?? mem.memory[key];
+// De bron (NL) bevat geen aanhalingstekens; die voegt de automatische vertaling soms toe rond merknamen en kopjes
+// (bijv. „Standard“ und „EPT“). Die halen we er in alle talen weer uit (nalezer DE, oktober 2026).
+export const stripQuotes = (s) => (typeof s === 'string' ? s.replace(/[«‹]\s*/g, '').replace(/\s*[»›]/g, '').replace(/[„“”]|&quot;|&ldquo;|&rdquo;|&bdquo;/g, '') : s);
+export const lookup = (mem, key) => stripQuotes(mem.overrides[key] ?? mem.memory[key]);
 
 // Valideer dat plaatshouders in dezelfde volgorde-structuur staan (open voor sluit, netjes genest).
 export function tagsOk(src, tr) {
