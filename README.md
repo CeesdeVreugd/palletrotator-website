@@ -4,6 +4,9 @@ Statische marketingsite (Astro) voor de PalletRotator — "Powered by De Vreugd
 Productietechniek". Gebouwd volgens het visuele voorstel, met de echte
 huisstijlkleuren (`#0A0A96` / `#0080FF`) en het echte De Vreugd-beeldmerk.
 
+## V39
+- LinkedIn-link in de footer heeft nu het LinkedIn-logo (inline SVG, geen extern bestand) voor de tekst.
+
 ## V38
 - LinkedIn: showcase-pagina `linkedin.com/showcase/palletrotator` (onder De Vreugd Productietechniek). Link "LinkedIn" in de footer (kolom Contact, niet vertaald) en `Organization`-JSON-LD op elke pagina met `sameAs` naar LinkedIn, `logo`, `email` en `parentOrganization`.
 
