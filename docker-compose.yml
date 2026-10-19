@@ -36,7 +36,7 @@ services:
       # Zet LAPOSTA_API_KEY als stack-variabele in Portainer (Environment variables).
       # NOOIT de sleutel in de repo zetten.
       LAPOSTA_API_KEY: ${LAPOSTA_API_KEY}
-      LAPOSTA_LIST_ID: ${LAPOSTA_LIST_ID:-b12sde1bbp}
+      LAPOSTA_LIST_ID_NL: ${LAPOSTA_LIST_ID_NL:-b12sde1bbp}
       # Optioneel: eigen Laposta-lijst per taal (voor de bevestigingsmail in die taal). Leeg = standaardlijst.
       LAPOSTA_LIST_ID_DE: ${LAPOSTA_LIST_ID_DE:-}
       LAPOSTA_LIST_ID_EN: ${LAPOSTA_LIST_ID_EN:-}

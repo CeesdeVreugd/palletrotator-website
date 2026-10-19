@@ -4,6 +4,9 @@ Statische marketingsite (Astro) voor de PalletRotator — "Powered by De Vreugd
 Productietechniek". Gebouwd volgens het visuele voorstel, met de echte
 huisstijlkleuren (`#0A0A96` / `#0080FF`) en het echte De Vreugd-beeldmerk.
 
+## V36
+- Laposta: de NL-lijst komt nu uit de stack-variabele `LAPOSTA_LIST_ID_NL` (past bij `_DE`, `_EN`, `_FR`, `_IT`, `_ES`). `LAPOSTA_LIST_ID` is niet meer nodig; staat die er nog, dan werkt het als terugval. Zonder beide geldt `b12sde1bbp`.
+
 ## V35
 - Nalezer DE: aanhalingstekens (`„…“`, `“…”`, `« … »`) die de automatische vertaling rond merknamen en kopjes toevoegde (bijv. `„Standard“ und „EPT“`, `Über „PalletRotator“`) worden bij het bouwen in alle talen verwijderd (`stripQuotes` in `i18n/lib.mjs`). De Nederlandse bron bevat geen aanhalingstekens.
 - "Voeding" (rij in de specificatietabel) vastgezet per taal: Stromversorgung, Power supply, Alimentation électrique, Alimentazione elettrica, Alimentación eléctrica.

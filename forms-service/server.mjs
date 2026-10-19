@@ -8,12 +8,12 @@ import { TALEN, ERR, CHOICES, SITE, confirmation, safeName } from './texts.mjs';
 
 const PORT = Number(process.env.PORT || 3000);
 const API_KEY = process.env.LAPOSTA_API_KEY || '';
-const LIST_ID = process.env.LAPOSTA_LIST_ID || 'b12sde1bbp';
+const LIST_ID = process.env.LAPOSTA_LIST_ID_NL || process.env.LAPOSTA_LIST_ID || 'b12sde1bbp';
 const BASE = (process.env.LAPOSTA_BASE_URL || 'https://api.laposta.nl').replace(/\/$/, '');
 // Per taal moet public/downloads/PalletRotator-brochure-<taal>.pdf bestaan (nl, de, en, fr, it, es).
 const normTaal = (t) => { t = String(t || '').toLowerCase().slice(0, 2); return TALEN.includes(t) ? t : 'nl'; };
 const brochureUrl = (taal) => `/downloads/PalletRotator-brochure-${normTaal(taal)}.pdf`;
-// Eigen Laposta-lijst per taal (voor de bevestigingsmail in de juiste taal): LAPOSTA_LIST_ID_DE, _EN, _FR, _IT, _ES.
+// Eigen Laposta-lijst per taal (voor de bevestigingsmail in de juiste taal): LAPOSTA_LIST_ID_NL, _DE, _EN, _FR, _IT, _ES (NL ook als terugval voor talen zonder eigen lijst).
 const listFor = (taal) => process.env[`LAPOSTA_LIST_ID_${taal.toUpperCase()}`] || LIST_ID;
 const CONFIRM_MAIL = String(process.env.CONFIRM_MAIL || 'true').toLowerCase() !== 'false';
 const msg = (taal, key) => (ERR[taal] || ERR.nl)[key].replace('{mail}', (SITE[taal] || SITE.nl).email);
