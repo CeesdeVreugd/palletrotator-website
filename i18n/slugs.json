@@ -1,12 +1,14 @@
 {
-  "/": { "de": "/", "en": "/", "fr": "/", "it": "/", "es": "/" },
-  "/palletrotator/": { "de": "/palettenwender/", "en": "/pallet-inverter/", "fr": "/retourneur-de-palettes/", "it": "/ribaltatore-di-pallet/", "es": "/volteador-de-palets/" },
-  "/palletrotator-ept/": { "de": "/palettenwender-ept/", "en": "/pallet-inverter-ept/", "fr": "/retourneur-de-palettes-ept/", "it": "/ribaltatore-di-pallet-ept/", "es": "/volteador-de-palets-ept/" },
-  "/specificaties/": { "de": "/technische-daten/", "en": "/specifications/", "fr": "/caracteristiques-techniques/", "it": "/specifiche-tecniche/", "es": "/especificaciones/" },
-  "/toepassingen/": { "de": "/anwendungen/", "en": "/applications/", "fr": "/applications/", "it": "/applicazioni/", "es": "/aplicaciones/" },
-  "/vrieshuis-palletkantelaar/": { "de": "/tiefkuehllager-palettenwender/", "en": "/cold-store-pallet-inverter/", "fr": "/retourneur-de-palettes-entrepot-frigorifique/", "it": "/ribaltatore-di-pallet-celle-frigorifere/", "es": "/volteador-de-palets-camaras-frigorificas/" },
-  "/referenties/": { "de": "/referenzen/", "en": "/references/", "fr": "/references/", "it": "/referenze/", "es": "/referencias/" },
-  "/over-palletrotator/": { "de": "/ueber-palletrotator/", "en": "/about-palletrotator/", "fr": "/a-propos-de-palletrotator/", "it": "/chi-e-palletrotator/", "es": "/acerca-de-palletrotator/" },
-  "/offerte-aanvragen/": { "de": "/angebot-anfordern/", "en": "/request-a-quote/", "fr": "/demande-de-devis/", "it": "/richiesta-preventivo/", "es": "/solicitar-presupuesto/" },
-  "/brochure/": { "de": "/broschuere/", "en": "/brochure/", "fr": "/brochure/", "it": "/brochure/", "es": "/folleto/" }
+  "/": {"de": "/", "en": "/", "fr": "/", "it": "/", "es": "/"},
+  "/palletrotator/": {"de": "/palettenwender/", "en": "/pallet-inverter/", "fr": "/retourneur-de-palettes/", "it": "/ribaltatore-di-pallet/", "es": "/volteador-de-palets/"},
+  "/palletrotator-ept/": {"de": "/palettenwender-ept/", "en": "/pallet-inverter-ept/", "fr": "/retourneur-de-palettes-ept/", "it": "/ribaltatore-di-pallet-ept/", "es": "/volteador-de-palets-ept/"},
+  "/specificaties/": {"de": "/technische-daten/", "en": "/specifications/", "fr": "/caracteristiques-techniques/", "it": "/specifiche-tecniche/", "es": "/especificaciones/"},
+  "/toepassingen/": {"de": "/anwendungen/", "en": "/applications/", "fr": "/applications/", "it": "/applicazioni/", "es": "/aplicaciones/"},
+  "/vrieshuis-palletkantelaar/": {"de": "/tiefkuehllager-palettenwender/", "en": "/cold-store-pallet-inverter/", "fr": "/retourneur-de-palettes-entrepot-frigorifique/", "it": "/ribaltatore-di-pallet-celle-frigorifere/", "es": "/volteador-de-palets-camaras-frigorificas/"},
+  "/referenties/": {"de": "/referenzen/", "en": "/references/", "fr": "/references/", "it": "/referenze/", "es": "/referencias/"},
+  "/over-palletrotator/": {"de": "/ueber-palletrotator/", "en": "/about-palletrotator/", "fr": "/a-propos-de-palletrotator/", "it": "/chi-e-palletrotator/", "es": "/acerca-de-palletrotator/"},
+  "/offerte-aanvragen/": {"de": "/angebot-anfordern/", "en": "/request-a-quote/", "fr": "/demande-de-devis/", "it": "/richiesta-preventivo/", "es": "/solicitar-presupuesto/"},
+  "/brochure/": {"de": "/broschuere/", "en": "/brochure/", "fr": "/brochure/", "it": "/brochure/", "es": "/folleto/"},
+  "/freezer-spacers-verwijderen/": {"de": "/freezer-spacer-entfernen/", "en": "/freezer-spacer-removal/", "fr": "/retirer-intercalaires-congelation/", "it": "/rimozione-distanziatori-congelamento/", "es": "/retirar-separadores-congelacion/"},
+  "/palletwisselaar/": {"de": "/palettenwechsler/", "en": "/pallet-changer/", "fr": "/changeur-de-palettes/", "it": "/cambia-pallet/", "es": "/cambiador-de-palets/"}
 }

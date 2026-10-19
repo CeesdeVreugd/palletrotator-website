@@ -23,6 +23,7 @@ const items = [
     id: 'vriesspacers',
     foto: 'palletrotator-k13-ept-pallet-tilted',
     alt: 'PalletRotator met gekantelde pallet in een koude opslagruimte',
+    link: true,
     title: 'Vriesspacers en vriesmatten verwijderen',
     text: 'In coldstores en vrieshuizen worden freezer spacers en vriesmatten gebruikt om productlagen tijdens het invriezen te scheiden. Bij het uitleveren verwijdert u deze eenvoudig en snel met de PalletRotator — ook bij temperaturen tot -25°C.',
   },
@@ -47,6 +48,7 @@ const items = [
           <div class="toepassing-tekst">
             <h2>{item.title}</h2>
             <p>{item.text}</p>
+            {item.link && <p><a href="/freezer-spacers-verwijderen/" style="color:var(--blue); font-weight:600;">Freezer spacers verwijderen</a></p>}
           </div>
           <img class="toepassing-foto" src={`/images/foto/${item.foto}-800.webp`} alt={item.alt} width="800" height="533" loading="lazy" decoding="async" />
         </div>

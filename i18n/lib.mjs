@@ -93,7 +93,7 @@ export const nlPathOfFile = (rel) => '/' + rel.replace(/\\/g, '/').replace(/inde
 
 export function sitemapXml(lang, pages) {
   const o = sites[lang].origin;
-  const prio = { '/': '1.0', '/offerte-aanvragen/': '0.9', '/palletrotator/': '0.8', '/palletrotator-ept/': '0.8', '/vrieshuis-palletkantelaar/': '0.8' };
+  const prio = { '/': '1.0', '/offerte-aanvragen/': '0.9', '/palletrotator/': '0.8', '/palletrotator-ept/': '0.8', '/vrieshuis-palletkantelaar/': '0.8', '/freezer-spacers-verwijderen/': '0.8', '/palletwisselaar/': '0.8' };
   const langs = Object.keys(sites);
   const hreflang = (l) => (l === 'en' ? 'en' : l);
   const rows = pages.map((nl) => {

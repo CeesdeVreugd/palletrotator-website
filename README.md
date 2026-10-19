@@ -4,6 +4,14 @@ Statische marketingsite (Astro) voor de PalletRotator — "Powered by De Vreugd
 Productietechniek". Gebouwd volgens het visuele voorstel, met de echte
 huisstijlkleuren (`#0A0A96` / `#0080FF`) en het echte De Vreugd-beeldmerk.
 
+## V40
+- Nieuwe zoekpagina's, in alle zes talen: **Freezer spacers verwijderen** (`/freezer-spacers-verwijderen/`) en **Palletwisselaar** (`/palletwisselaar/`). Elk met de zoekterm in kop en inleiding, uitleg in stappen, veelgestelde vragen (met FAQ-gegevens voor Google), video en offerte-knop. Nieuwe URL's per taal staan in `i18n/slugs.json`, de pagina's komen automatisch in de sitemap.
+- Titel, beschrijving, kopjes, vragen en stapnamen van de nieuwe pagina's staan handgeschreven in `i18n/overrides/<taal>.json` (alle vijf talen). De overige tekst (antwoorden, opsommingen) vertaalt DeepL: voer na het publiceren `Vertalen.cmd` uit.
+- Homepage-titel korter, zonder afkappen: "PalletRotator: palletwisselaar en palletkantelaar | De Vreugd".
+- Links naar de nieuwe pagina's in de footer (kolom Product), op de vrieshuis-pagina, op Toepassingen en in de homepage-kaart "Vriesspacers verwijderen".
+- Nieuw onderdeel `src/components/FaqList.astro` (uitklapbare vragen + FAQPage-schema).
+- Inclusief V38 (organisatiegegevens en LinkedIn) en V39 (LinkedIn-logo in de footer).
+
 ## V39
 - LinkedIn-link in de footer heeft nu het LinkedIn-logo (inline SVG, geen extern bestand) voor de tekst.
 

@@ -1,0 +1,127 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FaqList from '../components/FaqList.astro';
+import YouTubeEmbed from '../components/YouTubeEmbed.astro';
+
+const title = 'Palletwisselaar: pallets wisselen zonder ompakken | PalletRotator';
+const description = 'Een palletwisselaar zet een volle pallet in één beweging op een andere pallet, zonder ompakken. Lees hoe de PalletRotator werkt en welke uitvoering bij u past.';
+
+const steps = [
+  { t: 'Beladen', p: 'De standaard uitvoering belaadt u met een heftruck, reachtruck of stapelaar. De EPT-uitvoering ook met een handpalletwagen of elektrische pompwagen.' },
+  { t: 'Klemmen en kantelen', p: 'De machine klemt de lading vast en draait deze in circa 11 seconden 180 graden.' },
+  { t: 'Pallet wisselen', p: 'Verwijder de oude pallet, leg de nieuwe pallet erop en draai de lading terug.' },
+];
+const faq = [
+  { q: 'Wat is een palletwisselaar?', a: 'Een palletwisselaar is een machine waarmee u een volle pallet in één beweging op een andere pallet zet, zonder de producten om te pakken. Ook palletkantelaar en pallet inverter zijn gangbare namen.' },
+  { q: 'Wat is het verschil tussen een palletwisselaar en een palletkantelaar?', a: 'Er is geen verschil in functie. Het zijn twee namen voor dezelfde machine. De machine klemt een lading vast, kantelt deze en maakt het wisselen van de pallet mogelijk.' },
+  { q: 'Hoe lang duurt het wisselen van een pallet?', a: 'De rotatie van 180 graden duurt circa 11 seconden. Het klemmen duurt maximaal 13 seconden.' },
+  { q: 'Welke pallets kan ik wisselen?', a: 'Onder meer van beschadigd naar nieuw en van kunststof naar hout, passend bij de wensen van uw klant of uw hygiënevoorschriften.' },
+  { q: 'Welke afmetingen kan de PalletRotator aan?', a: 'Het klembord meet 1200 x 1200 mm. Het klembereik is bij de standaard uitvoering 1100 tot 2500 mm en bij de EPT-uitvoering 1310 tot 2500 mm.' },
+  { q: 'Waarmee belaadt u de palletwisselaar?', a: 'De standaard PalletRotator met een heftruck, reachtruck of elektrische stapelaar. De EPT-uitvoering ook met een handpalletwagen of elektrische pompwagen.' },
+  { q: 'Is de PalletRotator CE-gecertificeerd?', a: 'Ja. Elke PalletRotator wordt geleverd inclusief hekwerk en EG-verklaring.' },
+];
+---
+<BaseLayout title={title} description={description} path="/palletwisselaar/">
+  <section class="dark-band title-band">
+    <img class="title-shape" src="/images/logo-mark-shape.png" alt="" aria-hidden="true" width="1000" height="766" />
+    <div class="wrap title-inner">
+      <nav class="breadcrumb"><a href="/">Home</a> <span>/</span> <span class="current">Palletwisselaar</span></nav>
+      <span class="eyebrow">Palletwisselaar</span>
+      <h1>Palletwisselaar: pallets wisselen zonder ompakken</h1>
+      <p>Een palletwisselaar zet een complete, beladen pallet in één beweging op een andere pallet. De PalletRotator doet dat voor een lading tot 2000 kg, zonder handmatig ompakken.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap intro-grid">
+      <div class="intro-copy">
+        <h2>Wat is een palletwisselaar?</h2>
+        <p>Een palletwisselaar is een machine die een volle pallet vastklemt, kantelt en op een nieuwe pallet zet. Palletwisselaar, palletkantelaar en pallet inverter zijn verschillende namen voor hetzelfde soort machine.</p>
+        <p>De PalletRotator is een palletwisselaar voor de foodindustrie, vrieshuizen en distributiecentra. Hij is er in een standaard uitvoering en een EPT-uitvoering.</p>
+        <div class="hero-actions">
+          <a href="/offerte-aanvragen/" class="btn btn-primary">Offerte aanvragen</a>
+          <a href="/specificaties/" class="btn btn-outline">Bekijk specificaties</a>
+        </div>
+      </div>
+      <img class="intro-photo" src="/images/foto/palletrotator-k11-standard-machine-1600.webp" srcset="/images/foto/palletrotator-k11-standard-machine-800.webp 800w, /images/foto/palletrotator-k11-standard-machine-1600.webp 1600w" sizes="(max-width: 980px) 100vw, 460px" width="1600" height="1066" alt="Palletwisselaar PalletRotator K11 met hekwerk en bedieningspaneel" loading="lazy" decoding="async" />
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="wrap">
+      <div class="section-head"><h2>Zo werkt de PalletRotator</h2></div>
+      <div class="steps">
+        {steps.map((s, i) => (
+          <div class="step"><span class="step-nr">{i + 1}</span><h3>{s.t}</h3><p>{s.p}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap intro-grid">
+      <div class="intro-copy">
+        <h2>Wanneer wisselt u een pallet?</h2>
+        <ul class="check-list">
+          <li>Een beschadigde of vuile pallet vervangen</li>
+          <li>Van een kunststof pallet naar een houten pallet, of andersom</li>
+          <li>Het pallettype aanpassen aan klant- of hygiëne-eisen</li>
+          <li>Goederen die op de verkeerde pallet binnenkomen</li>
+        </ul>
+        <p>Standaard: laadcapaciteit 2000 kg, te beladen met heftruck, reachtruck of stapelaar.</p>
+        <p>EPT: laadcapaciteit 1600 kg, ook te beladen met handpalletwagen of elektrische pompwagen.</p>
+        <div class="hero-actions">
+          <a href="/palletrotator/" class="btn btn-outline">Bekijk PalletRotator</a>
+          <a href="/palletrotator-ept/" class="btn btn-outline">Bekijk PalletRotator EPT</a>
+        </div>
+      </div>
+      <div style="flex:0 0 460px; width:460px; max-width:100%;">
+        <YouTubeEmbed id="BkoX3jLHnlA" title="PalletRotator K11 | Palletkantelaar 2.000 KG | De Vreugd" poster="/images/foto/palletrotator-k11-pallet-clamping-1600.webp" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="wrap">
+      <div class="section-head"><h2>Veelgestelde vragen over de palletwisselaar</h2></div>
+      <FaqList items={faq} />
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="wrap cta-inner">
+      <div>
+        <h2 style="color:#fff;">Een palletwisselaar voor uw bedrijf?</h2>
+        <p style="color:#E3EEFF;">Vraag een vrijblijvende offerte of laat u adviseren over de juiste uitvoering.</p>
+      </div>
+      <div style="display:flex; gap:14px;">
+        <a href="/offerte-aanvragen/" class="btn" style="background:var(--navy); border-color:var(--navy); color:#fff;">Offerte aanvragen</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .intro-grid { display: flex; gap: 56px; align-items: flex-start; }
+  .intro-copy { flex: 1 1 0; display: flex; flex-direction: column; gap: 18px; }
+  .intro-photo { flex: 0 0 460px; border-radius: 14px; width: 460px; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 8px; }
+  .step { background: #fff; border: 1px solid #DCE3F5; border-radius: 14px; padding: 26px; }
+  .step-nr { display: inline-flex; width: 34px; height: 34px; border-radius: 50%; background: var(--blue); color: #fff; font-weight: 700; align-items: center; justify-content: center; margin-bottom: 14px; }
+  .step h3 { font-size: 18px; margin-bottom: 8px; }
+  .step p { font-size: 14.5px; color: var(--gray); }
+  .check-list { display: flex; flex-direction: column; gap: 10px; margin: 4px 0; }
+  .check-list li { position: relative; padding-left: 26px; font-size: 15px; color: var(--gray); }
+  .check-list li::before {
+    content: ""; position: absolute; left: 0; top: 6px; width: 16px; height: 16px; background: var(--blue);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E") center/contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E") center/contain no-repeat;
+  }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 6px; }
+  .section-head { margin-bottom: 8px; }
+  @media (max-width: 980px) {
+    .intro-grid { flex-direction: column; }
+    .intro-photo { width: 100%; flex-basis: auto; }
+    .steps { grid-template-columns: 1fr; }
+  }
+</style>
