@@ -4,6 +4,9 @@ Statische marketingsite (Astro) voor de PalletRotator — "Powered by De Vreugd
 Productietechniek". Gebouwd volgens het visuele voorstel, met de echte
 huisstijlkleuren (`#0A0A96` / `#0080FF`) en het echte De Vreugd-beeldmerk.
 
+## V44
+- Brochure-aanvraag blijft volledig via Laposta (geen eigen brochuremail vanuit de formulier-service; V43 is teruggedraaid). De brochuremail komt uit de welkomstmail van de Laposta-lijst per taal (`LAPOSTA_LIST_ID_DE` enz.).
+
 ## V42
 - Correctie: de PalletRotator kantelt de lading 90 graden (niet 180) en de spacers worden met de hand uitgepakt. Aangepast op de pagina's Freezer spacers verwijderen, Palletwisselaar en Vrieshuis (NL-bron + overrides in 5 talen).
 - Palletwisselaar-pagina: de machine draait 90 of 180 graden. Bij 90 graden wisselt men de pallet met de hand, bij 180 graden vaak met heftruck of reachtruck (tekst, FAQ en vertalingen aangepast).
